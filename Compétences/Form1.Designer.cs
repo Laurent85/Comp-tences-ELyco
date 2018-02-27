@@ -42,6 +42,9 @@
             this.bouton_periode3 = new System.Windows.Forms.RadioButton();
             this.bouton_annee = new System.Windows.Forms.RadioButton();
             this.Créer_arborescence = new System.Windows.Forms.Button();
+            this.Dossier_destination = new System.Windows.Forms.Button();
+            this.Chemin_destination = new System.Windows.Forms.Label();
+            this.Créer_arborescence_destination = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button1
@@ -191,7 +194,7 @@
             // Chemin_dossier
             // 
             this.Chemin_dossier.AutoSize = true;
-            this.Chemin_dossier.Location = new System.Drawing.Point(180, 103);
+            this.Chemin_dossier.Location = new System.Drawing.Point(156, 74);
             this.Chemin_dossier.Name = "Chemin_dossier";
             this.Chemin_dossier.Size = new System.Drawing.Size(0, 13);
             this.Chemin_dossier.TabIndex = 8;
@@ -199,7 +202,7 @@
             // bouton_periode1
             // 
             this.bouton_periode1.AutoSize = true;
-            this.bouton_periode1.Location = new System.Drawing.Point(38, 140);
+            this.bouton_periode1.Location = new System.Drawing.Point(130, 260);
             this.bouton_periode1.Name = "bouton_periode1";
             this.bouton_periode1.Size = new System.Drawing.Size(84, 17);
             this.bouton_periode1.TabIndex = 10;
@@ -210,7 +213,7 @@
             // bouton_periode2
             // 
             this.bouton_periode2.AutoSize = true;
-            this.bouton_periode2.Location = new System.Drawing.Point(140, 140);
+            this.bouton_periode2.Location = new System.Drawing.Point(232, 260);
             this.bouton_periode2.Name = "bouton_periode2";
             this.bouton_periode2.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode2.TabIndex = 11;
@@ -221,7 +224,7 @@
             // bouton_periode3
             // 
             this.bouton_periode3.AutoSize = true;
-            this.bouton_periode3.Location = new System.Drawing.Point(247, 140);
+            this.bouton_periode3.Location = new System.Drawing.Point(339, 260);
             this.bouton_periode3.Name = "bouton_periode3";
             this.bouton_periode3.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode3.TabIndex = 12;
@@ -232,7 +235,7 @@
             // bouton_annee
             // 
             this.bouton_annee.AutoSize = true;
-            this.bouton_annee.Location = new System.Drawing.Point(366, 140);
+            this.bouton_annee.Location = new System.Drawing.Point(458, 260);
             this.bouton_annee.Name = "bouton_annee";
             this.bouton_annee.Size = new System.Drawing.Size(56, 17);
             this.bouton_annee.TabIndex = 13;
@@ -242,7 +245,7 @@
             // 
             // Créer_arborescence
             // 
-            this.Créer_arborescence.Location = new System.Drawing.Point(38, 98);
+            this.Créer_arborescence.Location = new System.Drawing.Point(35, 98);
             this.Créer_arborescence.Name = "Créer_arborescence";
             this.Créer_arborescence.Size = new System.Drawing.Size(118, 23);
             this.Créer_arborescence.TabIndex = 9;
@@ -250,11 +253,42 @@
             this.Créer_arborescence.UseVisualStyleBackColor = true;
             this.Créer_arborescence.Click += new System.EventHandler(this.Créer_arborescence_Click);
             // 
+            // Dossier_destination
+            // 
+            this.Dossier_destination.Location = new System.Drawing.Point(35, 152);
+            this.Dossier_destination.Name = "Dossier_destination";
+            this.Dossier_destination.Size = new System.Drawing.Size(75, 23);
+            this.Dossier_destination.TabIndex = 14;
+            this.Dossier_destination.Text = "Parcourir...";
+            this.Dossier_destination.UseVisualStyleBackColor = true;
+            this.Dossier_destination.Click += new System.EventHandler(this.Dossier_destination_Click);
+            // 
+            // Chemin_destination
+            // 
+            this.Chemin_destination.AutoSize = true;
+            this.Chemin_destination.Location = new System.Drawing.Point(153, 157);
+            this.Chemin_destination.Name = "Chemin_destination";
+            this.Chemin_destination.Size = new System.Drawing.Size(0, 13);
+            this.Chemin_destination.TabIndex = 15;
+            // 
+            // Créer_arborescence_destination
+            // 
+            this.Créer_arborescence_destination.Location = new System.Drawing.Point(35, 181);
+            this.Créer_arborescence_destination.Name = "Créer_arborescence_destination";
+            this.Créer_arborescence_destination.Size = new System.Drawing.Size(121, 23);
+            this.Créer_arborescence_destination.TabIndex = 16;
+            this.Créer_arborescence_destination.Text = "Créer l\'arborescence";
+            this.Créer_arborescence_destination.UseVisualStyleBackColor = true;
+            this.Créer_arborescence_destination.Click += new System.EventHandler(this.Créer_arborescence_destination_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(720, 520);
+            this.Controls.Add(this.Créer_arborescence_destination);
+            this.Controls.Add(this.Chemin_destination);
+            this.Controls.Add(this.Dossier_destination);
             this.Controls.Add(this.bouton_annee);
             this.Controls.Add(this.bouton_periode3);
             this.Controls.Add(this.bouton_periode2);
@@ -293,6 +327,9 @@
         private System.Windows.Forms.RadioButton bouton_periode3;
         private System.Windows.Forms.RadioButton bouton_annee;
         private System.Windows.Forms.Button Créer_arborescence;
+        private System.Windows.Forms.Button Dossier_destination;
+        private System.Windows.Forms.Label Chemin_destination;
+        private System.Windows.Forms.Button Créer_arborescence_destination;
     }
 }
 
