@@ -1,6 +1,6 @@
 ﻿namespace Compétences
 {
-    partial class Form1
+    partial class Principal
     {
         /// <summary>
         /// Variable nécessaire au concepteur.
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.button1 = new System.Windows.Forms.Button();
+            this.Lancer_traitement = new System.Windows.Forms.Button();
             this.Liste_CSV = new System.Windows.Forms.ListBox();
             this.Niveau_6 = new System.Windows.Forms.ComboBox();
             this.Niveau_5 = new System.Windows.Forms.ComboBox();
@@ -45,17 +45,18 @@
             this.Dossier_destination = new System.Windows.Forms.Button();
             this.Chemin_destination = new System.Windows.Forms.Label();
             this.Créer_arborescence_destination = new System.Windows.Forms.Button();
+            this.Liste_csv_présents = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // button1
+            // Lancer_traitement
             // 
-            this.button1.Location = new System.Drawing.Point(607, 485);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Lancer_traitement.Location = new System.Drawing.Point(561, 485);
+            this.Lancer_traitement.Name = "Lancer_traitement";
+            this.Lancer_traitement.Size = new System.Drawing.Size(109, 23);
+            this.Lancer_traitement.TabIndex = 0;
+            this.Lancer_traitement.Text = "Lancer le traitement";
+            this.Lancer_traitement.UseVisualStyleBackColor = true;
+            this.Lancer_traitement.Click += new System.EventHandler(this.Lancer_traitement_Click);
             // 
             // Liste_CSV
             // 
@@ -209,6 +210,7 @@
             this.bouton_periode1.TabStop = true;
             this.bouton_periode1.Text = "1ère période";
             this.bouton_periode1.UseVisualStyleBackColor = true;
+            this.bouton_periode1.CheckedChanged += new System.EventHandler(this.bouton_periode1_CheckedChanged);
             // 
             // bouton_periode2
             // 
@@ -220,6 +222,7 @@
             this.bouton_periode2.TabStop = true;
             this.bouton_periode2.Text = "2ème période";
             this.bouton_periode2.UseVisualStyleBackColor = true;
+            this.bouton_periode2.CheckedChanged += new System.EventHandler(this.bouton_periode2_CheckedChanged);
             // 
             // bouton_periode3
             // 
@@ -231,6 +234,7 @@
             this.bouton_periode3.TabStop = true;
             this.bouton_periode3.Text = "3ème période";
             this.bouton_periode3.UseVisualStyleBackColor = true;
+            this.bouton_periode3.CheckedChanged += new System.EventHandler(this.bouton_periode3_CheckedChanged);
             // 
             // bouton_annee
             // 
@@ -242,6 +246,7 @@
             this.bouton_annee.TabStop = true;
             this.bouton_annee.Text = "Année";
             this.bouton_annee.UseVisualStyleBackColor = true;
+            this.bouton_annee.CheckedChanged += new System.EventHandler(this.bouton_annee_CheckedChanged);
             // 
             // Créer_arborescence
             // 
@@ -281,11 +286,20 @@
             this.Créer_arborescence_destination.UseVisualStyleBackColor = true;
             this.Créer_arborescence_destination.Click += new System.EventHandler(this.Créer_arborescence_destination_Click);
             // 
-            // Form1
+            // Liste_csv_présents
+            // 
+            this.Liste_csv_présents.FormattingEnabled = true;
+            this.Liste_csv_présents.Location = new System.Drawing.Point(807, 296);
+            this.Liste_csv_présents.Name = "Liste_csv_présents";
+            this.Liste_csv_présents.Size = new System.Drawing.Size(270, 212);
+            this.Liste_csv_présents.TabIndex = 17;
+            // 
+            // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 520);
+            this.ClientSize = new System.Drawing.Size(1099, 520);
+            this.Controls.Add(this.Liste_csv_présents);
             this.Controls.Add(this.Créer_arborescence_destination);
             this.Controls.Add(this.Chemin_destination);
             this.Controls.Add(this.Dossier_destination);
@@ -302,10 +316,10 @@
             this.Controls.Add(this.Niveau_5);
             this.Controls.Add(this.Niveau_6);
             this.Controls.Add(this.Liste_CSV);
-            this.Controls.Add(this.button1);
-            this.Name = "Form1";
-            this.Text = "Form1";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Controls.Add(this.Lancer_traitement);
+            this.Name = "Principal";
+            this.Text = "Conversion des compétences sur E-Lyco";
+            this.Load += new System.EventHandler(this.Principal_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -313,7 +327,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button Lancer_traitement;
         private System.Windows.Forms.ListBox Liste_CSV;
         private System.Windows.Forms.ComboBox Niveau_6;
         private System.Windows.Forms.ComboBox Niveau_5;
@@ -330,6 +344,7 @@
         private System.Windows.Forms.Button Dossier_destination;
         private System.Windows.Forms.Label Chemin_destination;
         private System.Windows.Forms.Button Créer_arborescence_destination;
+        private System.Windows.Forms.ListBox Liste_csv_présents;
     }
 }
 
