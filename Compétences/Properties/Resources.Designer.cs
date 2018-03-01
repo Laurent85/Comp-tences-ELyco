@@ -69,5 +69,25 @@ namespace Compétences.Properties {
                 return ((byte[])(obj));
             }
         }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap E_Lyco {
+            get {
+                object obj = ResourceManager.GetObject("E_Lyco", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap St_Jacques {
+            get {
+                object obj = ResourceManager.GetObject("St_Jacques", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

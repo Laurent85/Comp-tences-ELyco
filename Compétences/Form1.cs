@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 
@@ -14,23 +15,49 @@ namespace Compétences
 
         private void Principal_Load(object sender, EventArgs e)
         {
-            if (File.Exists("C:\\ELyco.txt"))
+            Directory.CreateDirectory("C:\\ELyco");
+            if (File.Exists("C:\\ELyco\\ELyco_in.txt"))
             {
-                using (TextReader tr = new StreamReader("C:\\ELyco.txt"))
+                using (TextReader tr = new StreamReader("C:\\ELyco\\ELyco_in.txt"))
                 {
                     Chemin_dossier.Text = tr.ReadLine() + @"\";
                 }
             }
-            if (File.Exists("C:\\ELyco1.txt"))
+            if (File.Exists("C:\\ELyco\\ELyco_out.txt"))
             {
-                using (TextReader tr1 = new StreamReader("C:\\ELyco1.txt"))
+                using (TextReader tr1 = new StreamReader("C:\\ELyco\\ELyco_out.txt"))
                 {
                     Chemin_destination.Text = tr1.ReadLine() + @"\";
                 }
             }
-
-            Liste_fichiers_présents(Chemin_dossier.Text);
+            Liste_csv_présents.Items.Add("1ère période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "1ère période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("2ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "2ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("3ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "3ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("Année");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "Année" + "\\");
             Lancer_traitement.Enabled = false;
+            try
+            {
+                Annee_scolaire.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(2).Take(3).First();
+                Niveau_6.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(3).Take(4).First();
+                Niveau_5.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(4).Take(5).First();
+                Niveau_4.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(5).Take(6).First();
+                Niveau_3.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(6).Take(7).First();
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
         }
 
         private void Dossier_travail_Click(object sender, EventArgs e)
@@ -41,16 +68,18 @@ namespace Compétences
             {
                 string folder = dlg.SelectedPath + "\\ELyco_CSV\\" + Annee_scolaire.SelectedItem;
                 Chemin_dossier.Text = folder;
+                Directory.CreateDirectory("C:\\ELyco");
 
-                if (!File.Exists("C:\\ELyco.txt"))
+                if (!File.Exists("C:\\ELyco\\ELyco_in.txt"))
                 {
-                    using (File.Create("C:\\ELyco.txt"))
+                    using (File.Create("C:\\ELyco\\ELyco_in.txt"))
                     {
                     }
                 }
-                using (StreamWriter sw = new StreamWriter("C:\\ELyco.txt"))
+                using (StreamWriter sw = new StreamWriter("C:\\ELyco\\ELyco_in.txt"))
                 {
-                    sw.Write(Chemin_dossier.Text);
+                    sw.WriteLine(Chemin_dossier.Text);
+                    sw.WriteLine(dlg.SelectedPath + "\\ELyco_CSV" + "\n");
                 }
             }
             else
@@ -67,16 +96,18 @@ namespace Compétences
             {
                 string folder = dlg.SelectedPath + "\\ELyco_Competences\\" + Annee_scolaire.SelectedItem;
                 Chemin_destination.Text = folder;
+                Directory.CreateDirectory("C:\\ELyco");
 
-                if (!File.Exists("C:\\ELyco1.txt"))
+                if (!File.Exists("C:\\ELyco\\ELyco_out.txt"))
                 {
-                    using (File.Create("C:\\ELyco1.txt"))
+                    using (File.Create("C:\\ELyco\\ELyco_out.txt"))
                     {
                     }
                 }
-                using (StreamWriter sw = new StreamWriter("C:\\ELyco1.txt"))
+                using (StreamWriter sw = new StreamWriter("C:\\ELyco\\ELyco_out.txt"))
                 {
-                    sw.Write(Chemin_destination.Text);
+                    sw.WriteLine(Chemin_destination.Text);
+                    sw.WriteLine(dlg.SelectedPath + "\\ELyco_Competences");
                 }
             }
             else
@@ -134,44 +165,89 @@ namespace Compétences
                 Directory.CreateDirectory(Chemin_dossier.Text + "\\" + "3" + c1);
                 c1++; // c1 is 'B' now
             }
-        }
 
-        private void Créer_arborescence_destination_Click(object sender, EventArgs e)
-        {
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "1ère période");
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "2ème période");
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "3ème période");
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "Année");
+
+            LineChanger(Annee_scolaire.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 3);
+            LineChanger(Niveau_6.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 4);
+            LineChanger(Niveau_5.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 5);
+            LineChanger(Niveau_4.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 6);
+            LineChanger(Niveau_3.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 7);
+        }
+
+        private static void LineChanger(string newText, string fileName, int lineToEdit)
+        {
+            string[] arrLine = File.ReadAllLines(fileName);
+            arrLine[lineToEdit - 1] = newText;
+            File.WriteAllLines(fileName, arrLine);
         }
 
         private void Lancer_traitement_Click(object sender, EventArgs e)
         {
             if (bouton_periode1.Checked)
             {
-                Executer_macro("Deplacer_P1");
-                Executer_macro("Compétences_par_lot_P1");
+                Executer_macro("Deplacer_P1.Deplacer_P1");
+                Executer_macro("Compétences_par_lot_P1.Compétences_par_lot_P1");
+                MessageBox.Show(@"Traitement terminé");
+                EffacerListbox(Liste_CSV);
+                EffacerListbox(Liste_csv_présents);
+                Liste_CSV.Refresh();
+                Liste_csv_présents.Refresh();
             }
             if (bouton_periode2.Checked)
             {
-                Executer_macro("Deplacer_P2");
-                Executer_macro("Compétences_par_lot_P2");
+                Executer_macro("Deplacer_P2.Deplacer_P2");
+                Executer_macro("Compétences_par_lot_P2.Compétences_par_lot_P2");
+                MessageBox.Show(@"Traitement terminé");
+                EffacerListbox(Liste_CSV);
+                EffacerListbox(Liste_csv_présents);
+                Liste_CSV.Refresh();
+                Liste_csv_présents.Refresh();
             }
             if (bouton_periode3.Checked)
             {
-                Executer_macro("Deplacer_P3");
-                Executer_macro("Compétences_par_lot_P3");
+                Executer_macro("Deplacer_P3.Deplacer_P3");
+                Executer_macro("Compétences_par_lot_P3.Compétences_par_lot_P3");
+                MessageBox.Show(@"Traitement terminé");
+                EffacerListbox(Liste_CSV);
+                EffacerListbox(Liste_csv_présents);
+                Liste_CSV.Refresh();
+                Liste_csv_présents.Refresh();
             }
             if (bouton_annee.Checked)
             {
                 Executer_macro("Fusionner.Fusionner");
                 Executer_macro("Compétences_par_lot_Année.Compétences_par_lot_Année");
+                MessageBox.Show(@"Traitement terminé");
+                EffacerListbox(Liste_CSV);
+                EffacerListbox(Liste_csv_présents);
+                Liste_CSV.Refresh();
+                Liste_csv_présents.Refresh();
             }
+            Liste_csv_présents.Items.Add("1ère période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "1ère période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("2ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "2ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("3ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "3ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("Année");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "Année" + "\\");
         }
 
-        public void Liste_fichiers_présents(string directoryPath)
+        public void Liste_fichiers_présents(string directoryPath, string periode)
 
         {
-            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath);
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath + periode);
 
             if (directoryInfo.Exists)
 
@@ -183,7 +259,7 @@ namespace Compétences
                 foreach (DirectoryInfo subDirectory in subdirectoryInfo)
 
                 {
-                    Liste_fichiers_présents(subDirectory.FullName);
+                    Liste_fichiers_présents(subDirectory.FullName, "");
                 }
 
                 foreach (FileInfo file in fileInfo)
@@ -192,6 +268,38 @@ namespace Compétences
                     Liste_csv_présents.Items.Add(file.Name);
                 }
             }
+        }
+
+        public void Supprimer_fichiers()
+
+        {
+            // Get list of files in the specific directory.
+            // ... Please change the first argument.
+            string[] files = Directory.GetFiles(Chemin_dossier.Text,"*.*",SearchOption.AllDirectories);
+
+            // Display all the files.
+            foreach (string file in files)
+            {
+                foreach (var selecteditem in Liste_csv_présents.SelectedItems)
+                {
+                    if (file.Contains(selecteditem.ToString()))
+                        File.Delete(file);
+                    //Liste_csv_présents.Items.Remove(selecteditem);
+                }
+            }
+            //Liste_csv_présents.Items.Remove(Liste_csv_présents.SelectedItem);
+            ListBox.SelectedObjectCollection selectedItems = new ListBox.SelectedObjectCollection(Liste_csv_présents);
+            selectedItems = Liste_csv_présents.SelectedItems;
+
+            if (Liste_csv_présents.SelectedIndex != -1)
+            {
+                for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    Liste_csv_présents.Items.Remove(selectedItems[i]);
+            }
+
+            //File.Delete(file.Name);
+
+
         }
 
         private void releaseObject(object obj)
@@ -279,6 +387,55 @@ namespace Compétences
         private void bouton_annee_CheckedChanged(object sender, EventArgs e)
         {
             Lancer_traitement.Enabled = true;
+        }
+
+        private void Reset_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Directory.Delete(File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(1).Take(1).First(), true);
+            }
+            catch
+            {
+                // ignored
+            }
+            try
+            {
+                Directory.Delete(File.ReadLines("C:\\ELyco\\ELyco_out.txt").Skip(1).Take(1).First(), true);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+            try
+            {
+                Directory.Delete(@"C:\ELyco", true);
+            }
+            catch (Exception)
+            {
+                // ignored
+            }
+
+            Chemin_dossier.Text = "";
+            Chemin_destination.Text = "";
+            Annee_scolaire.Text = "";
+            Niveau_6.Text = "";
+            Niveau_5.Text = "";
+            Niveau_4.Text = "";
+            Niveau_3.Text = "";
+        }
+
+        private void EffacerListbox(ListBox liste)
+        {
+            for (int i = liste.Items.Count - 1; i >= 0; i--)
+            {
+                liste.Items.RemoveAt(i);
+            }
+        }
+
+        private void SuppressionFichier_Click(object sender, EventArgs e)
+        {
+            Supprimer_fichiers();
         }
     }
 }

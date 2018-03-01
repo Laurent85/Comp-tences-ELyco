@@ -44,13 +44,24 @@
             this.Créer_arborescence = new System.Windows.Forms.Button();
             this.Dossier_destination = new System.Windows.Forms.Button();
             this.Chemin_destination = new System.Windows.Forms.Label();
-            this.Créer_arborescence_destination = new System.Windows.Forms.Button();
             this.Liste_csv_présents = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Reset = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.SuppressionFichier = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Lancer_traitement
             // 
-            this.Lancer_traitement.Location = new System.Drawing.Point(561, 485);
+            this.Lancer_traitement.Location = new System.Drawing.Point(443, 257);
             this.Lancer_traitement.Name = "Lancer_traitement";
             this.Lancer_traitement.Size = new System.Drawing.Size(109, 23);
             this.Lancer_traitement.TabIndex = 0;
@@ -88,9 +99,9 @@
             "13",
             "14",
             "15"});
-            this.Niveau_6.Location = new System.Drawing.Point(180, 33);
+            this.Niveau_6.Location = new System.Drawing.Point(363, 93);
             this.Niveau_6.Name = "Niveau_6";
-            this.Niveau_6.Size = new System.Drawing.Size(121, 21);
+            this.Niveau_6.Size = new System.Drawing.Size(84, 21);
             this.Niveau_6.TabIndex = 2;
             // 
             // Niveau_5
@@ -112,9 +123,9 @@
             "13",
             "14",
             "15"});
-            this.Niveau_5.Location = new System.Drawing.Point(307, 33);
+            this.Niveau_5.Location = new System.Drawing.Point(495, 93);
             this.Niveau_5.Name = "Niveau_5";
-            this.Niveau_5.Size = new System.Drawing.Size(121, 21);
+            this.Niveau_5.Size = new System.Drawing.Size(84, 21);
             this.Niveau_5.TabIndex = 3;
             // 
             // Niveau_4
@@ -136,9 +147,9 @@
             "13",
             "14",
             "15"});
-            this.Niveau_4.Location = new System.Drawing.Point(434, 33);
+            this.Niveau_4.Location = new System.Drawing.Point(629, 93);
             this.Niveau_4.Name = "Niveau_4";
-            this.Niveau_4.Size = new System.Drawing.Size(121, 21);
+            this.Niveau_4.Size = new System.Drawing.Size(84, 21);
             this.Niveau_4.TabIndex = 4;
             // 
             // Niveau_3
@@ -160,9 +171,9 @@
             "13",
             "14",
             "15"});
-            this.Niveau_3.Location = new System.Drawing.Point(561, 33);
+            this.Niveau_3.Location = new System.Drawing.Point(748, 93);
             this.Niveau_3.Name = "Niveau_3";
-            this.Niveau_3.Size = new System.Drawing.Size(121, 21);
+            this.Niveau_3.Size = new System.Drawing.Size(84, 21);
             this.Niveau_3.TabIndex = 5;
             // 
             // Annee_scolaire
@@ -177,25 +188,25 @@
             "2022-2023",
             "2023-2024",
             "2024-2025"});
-            this.Annee_scolaire.Location = new System.Drawing.Point(35, 33);
+            this.Annee_scolaire.Location = new System.Drawing.Point(155, 93);
             this.Annee_scolaire.Name = "Annee_scolaire";
-            this.Annee_scolaire.Size = new System.Drawing.Size(121, 21);
+            this.Annee_scolaire.Size = new System.Drawing.Size(94, 21);
             this.Annee_scolaire.TabIndex = 6;
             // 
             // Dossier_travail
             // 
-            this.Dossier_travail.Location = new System.Drawing.Point(35, 69);
+            this.Dossier_travail.Location = new System.Drawing.Point(155, 139);
             this.Dossier_travail.Name = "Dossier_travail";
-            this.Dossier_travail.Size = new System.Drawing.Size(75, 23);
+            this.Dossier_travail.Size = new System.Drawing.Size(106, 23);
             this.Dossier_travail.TabIndex = 7;
-            this.Dossier_travail.Text = "Parcourir...";
+            this.Dossier_travail.Text = "Dossier des csv";
             this.Dossier_travail.UseVisualStyleBackColor = true;
             this.Dossier_travail.Click += new System.EventHandler(this.Dossier_travail_Click);
             // 
             // Chemin_dossier
             // 
             this.Chemin_dossier.AutoSize = true;
-            this.Chemin_dossier.Location = new System.Drawing.Point(156, 74);
+            this.Chemin_dossier.Location = new System.Drawing.Point(276, 144);
             this.Chemin_dossier.Name = "Chemin_dossier";
             this.Chemin_dossier.Size = new System.Drawing.Size(0, 13);
             this.Chemin_dossier.TabIndex = 8;
@@ -203,7 +214,7 @@
             // bouton_periode1
             // 
             this.bouton_periode1.AutoSize = true;
-            this.bouton_periode1.Location = new System.Drawing.Point(130, 260);
+            this.bouton_periode1.Location = new System.Drawing.Point(14, 260);
             this.bouton_periode1.Name = "bouton_periode1";
             this.bouton_periode1.Size = new System.Drawing.Size(84, 17);
             this.bouton_periode1.TabIndex = 10;
@@ -215,7 +226,7 @@
             // bouton_periode2
             // 
             this.bouton_periode2.AutoSize = true;
-            this.bouton_periode2.Location = new System.Drawing.Point(232, 260);
+            this.bouton_periode2.Location = new System.Drawing.Point(116, 260);
             this.bouton_periode2.Name = "bouton_periode2";
             this.bouton_periode2.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode2.TabIndex = 11;
@@ -227,7 +238,7 @@
             // bouton_periode3
             // 
             this.bouton_periode3.AutoSize = true;
-            this.bouton_periode3.Location = new System.Drawing.Point(339, 260);
+            this.bouton_periode3.Location = new System.Drawing.Point(223, 260);
             this.bouton_periode3.Name = "bouton_periode3";
             this.bouton_periode3.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode3.TabIndex = 12;
@@ -239,7 +250,7 @@
             // bouton_annee
             // 
             this.bouton_annee.AutoSize = true;
-            this.bouton_annee.Location = new System.Drawing.Point(458, 260);
+            this.bouton_annee.Location = new System.Drawing.Point(342, 260);
             this.bouton_annee.Name = "bouton_annee";
             this.bouton_annee.Size = new System.Drawing.Size(56, 17);
             this.bouton_annee.TabIndex = 13;
@@ -250,7 +261,7 @@
             // 
             // Créer_arborescence
             // 
-            this.Créer_arborescence.Location = new System.Drawing.Point(35, 98);
+            this.Créer_arborescence.Location = new System.Drawing.Point(155, 197);
             this.Créer_arborescence.Name = "Créer_arborescence";
             this.Créer_arborescence.Size = new System.Drawing.Size(118, 23);
             this.Créer_arborescence.TabIndex = 9;
@@ -260,47 +271,144 @@
             // 
             // Dossier_destination
             // 
-            this.Dossier_destination.Location = new System.Drawing.Point(35, 152);
+            this.Dossier_destination.Location = new System.Drawing.Point(155, 168);
             this.Dossier_destination.Name = "Dossier_destination";
-            this.Dossier_destination.Size = new System.Drawing.Size(75, 23);
+            this.Dossier_destination.Size = new System.Drawing.Size(106, 23);
             this.Dossier_destination.TabIndex = 14;
-            this.Dossier_destination.Text = "Parcourir...";
+            this.Dossier_destination.Text = "Dossier des xlsx";
             this.Dossier_destination.UseVisualStyleBackColor = true;
             this.Dossier_destination.Click += new System.EventHandler(this.Dossier_destination_Click);
             // 
             // Chemin_destination
             // 
             this.Chemin_destination.AutoSize = true;
-            this.Chemin_destination.Location = new System.Drawing.Point(153, 157);
+            this.Chemin_destination.Location = new System.Drawing.Point(273, 173);
             this.Chemin_destination.Name = "Chemin_destination";
             this.Chemin_destination.Size = new System.Drawing.Size(0, 13);
             this.Chemin_destination.TabIndex = 15;
             // 
-            // Créer_arborescence_destination
-            // 
-            this.Créer_arborescence_destination.Location = new System.Drawing.Point(35, 181);
-            this.Créer_arborescence_destination.Name = "Créer_arborescence_destination";
-            this.Créer_arborescence_destination.Size = new System.Drawing.Size(121, 23);
-            this.Créer_arborescence_destination.TabIndex = 16;
-            this.Créer_arborescence_destination.Text = "Créer l\'arborescence";
-            this.Créer_arborescence_destination.UseVisualStyleBackColor = true;
-            this.Créer_arborescence_destination.Click += new System.EventHandler(this.Créer_arborescence_destination_Click);
-            // 
             // Liste_csv_présents
             // 
             this.Liste_csv_présents.FormattingEnabled = true;
-            this.Liste_csv_présents.Location = new System.Drawing.Point(807, 296);
+            this.Liste_csv_présents.Location = new System.Drawing.Point(616, 296);
             this.Liste_csv_présents.Name = "Liste_csv_présents";
-            this.Liste_csv_présents.Size = new System.Drawing.Size(270, 212);
+            this.Liste_csv_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.Liste_csv_présents.Size = new System.Drawing.Size(461, 212);
             this.Liste_csv_présents.TabIndex = 17;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Blue;
+            this.label1.Location = new System.Drawing.Point(270, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(498, 35);
+            this.label1.TabIndex = 18;
+            this.label1.Text = "Traitement des domaines de compétences";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(158, 74);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(77, 13);
+            this.label2.TabIndex = 19;
+            this.label2.Text = "Année scolaire";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(360, 74);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(87, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Classes de 6ème";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(492, 74);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(87, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Classes de 5ème";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(626, 74);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(87, 13);
+            this.label5.TabIndex = 22;
+            this.label5.Text = "Classes de 4ème";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(745, 74);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(87, 13);
+            this.label6.TabIndex = 23;
+            this.label6.Text = "Classes de 3ème";
+            // 
+            // Reset
+            // 
+            this.Reset.Location = new System.Drawing.Point(965, 254);
+            this.Reset.Name = "Reset";
+            this.Reset.Size = new System.Drawing.Size(112, 23);
+            this.Reset.TabIndex = 26;
+            this.Reset.Text = "Supprimer les bases";
+            this.Reset.UseVisualStyleBackColor = true;
+            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::Compétences.Properties.Resources.St_Jacques;
+            this.pictureBox2.Location = new System.Drawing.Point(14, 9);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(94, 55);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 25;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::Compétences.Properties.Resources.E_Lyco;
+            this.pictureBox1.Location = new System.Drawing.Point(926, 12);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(151, 56);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 24;
+            this.pictureBox1.TabStop = false;
+            // 
+            // SuppressionFichier
+            // 
+            this.SuppressionFichier.Location = new System.Drawing.Point(616, 260);
+            this.SuppressionFichier.Name = "SuppressionFichier";
+            this.SuppressionFichier.Size = new System.Drawing.Size(97, 23);
+            this.SuppressionFichier.TabIndex = 27;
+            this.SuppressionFichier.Text = "Supprimer fichier";
+            this.SuppressionFichier.UseVisualStyleBackColor = true;
+            this.SuppressionFichier.Click += new System.EventHandler(this.SuppressionFichier_Click);
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1099, 520);
+            this.Controls.Add(this.SuppressionFichier);
+            this.Controls.Add(this.Reset);
+            this.Controls.Add(this.pictureBox2);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.label2);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.Liste_csv_présents);
-            this.Controls.Add(this.Créer_arborescence_destination);
             this.Controls.Add(this.Chemin_destination);
             this.Controls.Add(this.Dossier_destination);
             this.Controls.Add(this.bouton_annee);
@@ -320,6 +428,8 @@
             this.Name = "Principal";
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -343,8 +453,17 @@
         private System.Windows.Forms.Button Créer_arborescence;
         private System.Windows.Forms.Button Dossier_destination;
         private System.Windows.Forms.Label Chemin_destination;
-        private System.Windows.Forms.Button Créer_arborescence_destination;
         private System.Windows.Forms.ListBox Liste_csv_présents;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button Reset;
+        private System.Windows.Forms.Button SuppressionFichier;
     }
 }
 
