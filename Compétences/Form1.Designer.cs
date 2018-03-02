@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.Lancer_traitement = new System.Windows.Forms.Button();
             this.Liste_CSV = new System.Windows.Forms.ListBox();
             this.Niveau_6 = new System.Windows.Forms.ComboBox();
@@ -425,6 +426,7 @@
             this.Controls.Add(this.Niveau_6);
             this.Controls.Add(this.Liste_CSV);
             this.Controls.Add(this.Lancer_traitement);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);

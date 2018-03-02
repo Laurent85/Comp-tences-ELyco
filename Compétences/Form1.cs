@@ -30,21 +30,7 @@ namespace Compétences
                     Chemin_destination.Text = tr1.ReadLine() + @"\";
                 }
             }
-            Liste_csv_présents.Items.Add("1ère période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "1ère période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("2ème période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "2ème période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("3ème période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "3ème période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("Année");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "Année" + "\\");
+            RemplirListeCsvPrésents();
             Lancer_traitement.Enabled = false;
             try
             {
@@ -63,7 +49,7 @@ namespace Compétences
         private void Dossier_travail_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog();
-            // This is what will execute if the user selects a folder and hits OK (File if you change to FileBrowserDialog)
+
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string folder = dlg.SelectedPath + "\\ELyco_CSV\\" + Annee_scolaire.SelectedItem;
@@ -91,7 +77,7 @@ namespace Compétences
         private void Dossier_destination_Click(object sender, EventArgs e)
         {
             FolderBrowserDialog dlg = new FolderBrowserDialog();
-            // This is what will execute if the user selects a folder and hits OK (File if you change to FileBrowserDialog)
+
             if (dlg.ShowDialog() == DialogResult.OK)
             {
                 string folder = dlg.SelectedPath + "\\ELyco_Competences\\" + Annee_scolaire.SelectedItem;
@@ -171,18 +157,11 @@ namespace Compétences
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "3ème période");
             Directory.CreateDirectory(Chemin_destination.Text + "\\" + "Année");
 
-            LineChanger(Annee_scolaire.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 3);
-            LineChanger(Niveau_6.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 4);
-            LineChanger(Niveau_5.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 5);
-            LineChanger(Niveau_4.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 6);
-            LineChanger(Niveau_3.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 7);
-        }
-
-        private static void LineChanger(string newText, string fileName, int lineToEdit)
-        {
-            string[] arrLine = File.ReadAllLines(fileName);
-            arrLine[lineToEdit - 1] = newText;
-            File.WriteAllLines(fileName, arrLine);
+            Changer_ligne_fichier_txt(Annee_scolaire.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 3);
+            Changer_ligne_fichier_txt(Niveau_6.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 4);
+            Changer_ligne_fichier_txt(Niveau_5.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 5);
+            Changer_ligne_fichier_txt(Niveau_4.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 6);
+            Changer_ligne_fichier_txt(Niveau_3.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 7);
         }
 
         private void Lancer_traitement_Click(object sender, EventArgs e)
@@ -227,146 +206,7 @@ namespace Compétences
                 Liste_CSV.Refresh();
                 Liste_csv_présents.Refresh();
             }
-            Liste_csv_présents.Items.Add("1ère période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "1ère période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("2ème période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "2ème période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("3ème période");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "3ème période" + "\\");
-            Liste_csv_présents.Items.Add("");
-            Liste_csv_présents.Items.Add("Année");
-            Liste_csv_présents.Items.Add("-----------------------------------");
-            Liste_fichiers_présents(Chemin_dossier.Text, "Année" + "\\");
-        }
-
-        public void Liste_fichiers_présents(string directoryPath, string periode)
-
-        {
-            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath + periode);
-
-            if (directoryInfo.Exists)
-
-            {
-                FileInfo[] fileInfo = directoryInfo.GetFiles();
-
-                DirectoryInfo[] subdirectoryInfo = directoryInfo.GetDirectories();
-
-                foreach (DirectoryInfo subDirectory in subdirectoryInfo)
-
-                {
-                    Liste_fichiers_présents(subDirectory.FullName, "");
-                }
-
-                foreach (FileInfo file in fileInfo)
-
-                {
-                    Liste_csv_présents.Items.Add(file.Name);
-                }
-            }
-        }
-
-        public void Supprimer_fichiers()
-
-        {
-            // Get list of files in the specific directory.
-            // ... Please change the first argument.
-            string[] files = Directory.GetFiles(Chemin_dossier.Text,"*.*",SearchOption.AllDirectories);
-
-            // Display all the files.
-            foreach (string file in files)
-            {
-                foreach (var selecteditem in Liste_csv_présents.SelectedItems)
-                {
-                    if (file.Contains(selecteditem.ToString()))
-                        File.Delete(file);
-                    //Liste_csv_présents.Items.Remove(selecteditem);
-                }
-            }
-            //Liste_csv_présents.Items.Remove(Liste_csv_présents.SelectedItem);
-            ListBox.SelectedObjectCollection selectedItems = new ListBox.SelectedObjectCollection(Liste_csv_présents);
-            selectedItems = Liste_csv_présents.SelectedItems;
-
-            if (Liste_csv_présents.SelectedIndex != -1)
-            {
-                for (int i = selectedItems.Count - 1; i >= 0; i--)
-                    Liste_csv_présents.Items.Remove(selectedItems[i]);
-            }
-
-            //File.Delete(file.Name);
-
-
-        }
-
-        private void releaseObject(object obj)
-        {
-            try
-            {
-                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
-            }
-            catch
-            {
-                // ignored
-            }
-            finally
-            {
-                GC.Collect();
-            }
-        }
-
-        private void Executer_macro(string macro)
-        {
-            //~~> Define your Excel Objects
-            Excel.Application xlApp = new Excel.Application();
-
-            Excel.Workbook xlWorkBook;
-
-            string sPath = Path.GetTempFileName();
-            File.WriteAllBytes(sPath, Properties.Resources.Compétences);
-
-            //~~> Start Excel and open the workbook.
-            xlWorkBook = xlApp.Workbooks.Open(sPath);
-
-            //~~> Run the macros by supplying the necessary arguments
-            xlApp.Run(macro);
-
-            //~~> Clean-up: Close the workbook
-            xlWorkBook.Close(false);
-
-            //~~> Quit the Excel Application
-            xlApp.Quit();
-
-            //~~> Clean Up
-            releaseObject(xlApp);
-            releaseObject(xlWorkBook);
-        }
-
-        private void Drag(object sender, DragEventArgs e)
-        {
-            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
-            foreach (string file in fileList)
-            {
-                string filename = Path.GetFullPath(file);
-                Liste_CSV.Items.Add(filename);
-            }
-
-            foreach (var listBoxItem in Liste_CSV.Items)
-            {
-                if (!File.Exists(Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
-                    File.Copy(listBoxItem.ToString(), Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
-            }
-        }
-
-        private void Drag_Enter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
-            {
-                e.Effect = DragDropEffects.All;
-            }
+            RemplirListeCsvPrésents();
         }
 
         private void bouton_periode1_CheckedChanged(object sender, EventArgs e)
@@ -387,6 +227,28 @@ namespace Compétences
         private void bouton_annee_CheckedChanged(object sender, EventArgs e)
         {
             Lancer_traitement.Enabled = true;
+        }
+
+        private void SuppressionFichier_Click(object sender, EventArgs e)
+        {
+            string[] files = Directory.GetFiles(Chemin_dossier.Text, "*.*", SearchOption.AllDirectories);
+
+            foreach (string file in files)
+            {
+                foreach (var selecteditem in Liste_csv_présents.SelectedItems)
+                {
+                    if (file.Contains(selecteditem.ToString()))
+                        File.Delete(file);
+                }
+            }
+            ListBox.SelectedObjectCollection selectedItems;
+            selectedItems = Liste_csv_présents.SelectedItems;
+
+            if (Liste_csv_présents.SelectedIndex != -1)
+            {
+                for (int i = selectedItems.Count - 1; i >= 0; i--)
+                    Liste_csv_présents.Items.Remove(selectedItems[i]);
+            }
         }
 
         private void Reset_Click(object sender, EventArgs e)
@@ -425,6 +287,58 @@ namespace Compétences
             Niveau_3.Text = "";
         }
 
+        private static void Changer_ligne_fichier_txt(string newText, string fileName, int lineToEdit)
+        {
+            string[] arrLine = File.ReadAllLines(fileName);
+            arrLine[lineToEdit - 1] = newText;
+            File.WriteAllLines(fileName, arrLine);
+        }
+
+        public void Liste_fichiers_présents(string directoryPath, string periode)
+
+        {
+            DirectoryInfo directoryInfo = new DirectoryInfo(directoryPath + periode);
+
+            if (directoryInfo.Exists)
+
+            {
+                FileInfo[] fileInfo = directoryInfo.GetFiles();
+
+                DirectoryInfo[] subdirectoryInfo = directoryInfo.GetDirectories();
+
+                foreach (DirectoryInfo subDirectory in subdirectoryInfo)
+
+                {
+                    Liste_fichiers_présents(subDirectory.FullName, "");
+                }
+
+                foreach (FileInfo file in fileInfo)
+
+                {
+                    Liste_csv_présents.Items.Add(file.Name);
+                }
+            }
+        }
+
+        private void RemplirListeCsvPrésents()
+        {
+            Liste_csv_présents.Items.Add("1ère période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "1ère période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("2ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "2ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("3ème période");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "3ème période" + "\\");
+            Liste_csv_présents.Items.Add("");
+            Liste_csv_présents.Items.Add("Année");
+            Liste_csv_présents.Items.Add("-----------------------------------");
+            Liste_fichiers_présents(Chemin_dossier.Text, "Année" + "\\");
+        }
+
         private void EffacerListbox(ListBox liste)
         {
             for (int i = liste.Items.Count - 1; i >= 0; i--)
@@ -433,9 +347,71 @@ namespace Compétences
             }
         }
 
-        private void SuppressionFichier_Click(object sender, EventArgs e)
+        private void Supprimer_objets(object obj)
         {
-            Supprimer_fichiers();
+            try
+            {
+                System.Runtime.InteropServices.Marshal.ReleaseComObject(obj);
+            }
+            catch
+            {
+                // ignored
+            }
+            finally
+            {
+                GC.Collect();
+            }
+        }
+
+        private void Executer_macro(string macro)
+        {
+            //~~> Define your Excel Objects
+            Excel.Application xlApp = new Excel.Application();
+
+            Excel.Workbook xlWorkBook;
+
+            string sPath = Path.GetTempFileName();
+            File.WriteAllBytes(sPath, Properties.Resources.Compétences);
+
+            //~~> Start Excel and open the workbook.
+            xlWorkBook = xlApp.Workbooks.Open(sPath);
+
+            //~~> Run the macros by supplying the necessary arguments
+            xlApp.Run(macro);
+
+            //~~> Clean-up: Close the workbook
+            xlWorkBook.Close(false);
+
+            //~~> Quit the Excel Application
+            xlApp.Quit();
+
+            //~~> Clean Up
+            Supprimer_objets(xlApp);
+            Supprimer_objets(xlWorkBook);
+        }
+
+        private void Drag(object sender, DragEventArgs e)
+        {
+            string[] fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            foreach (string file in fileList)
+            {
+                string filename = Path.GetFullPath(file);
+                Liste_CSV.Items.Add(filename);
+            }
+
+            foreach (var listBoxItem in Liste_CSV.Items)
+            {
+                if (!File.Exists(Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
+                    File.Copy(listBoxItem.ToString(), Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
+            }
+        }
+
+        private void Drag_Enter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop, false))
+            {
+                e.Effect = DragDropEffects.All;
+            }
         }
     }
 }

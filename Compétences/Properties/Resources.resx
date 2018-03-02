@@ -121,6 +121,9 @@
   <data name="Compétences" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\Compétences.xlsm;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
+  <data name="Elyco" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Elyco.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="E_Lyco" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\E-Lyco.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
