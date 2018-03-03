@@ -52,17 +52,22 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Reset = new System.Windows.Forms.Button();
+            this.Supprimer_tout = new System.Windows.Forms.Button();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SuppressionFichier = new System.Windows.Forms.Button();
+            this.SuppressionFichierCsv = new System.Windows.Forms.Button();
+            this.Liste_xlsx_présents = new System.Windows.Forms.ListBox();
+            this.SuppressionFichierXlsx = new System.Windows.Forms.Button();
+            this.lbl_fichiers_csv_a_traiter = new System.Windows.Forms.Label();
+            this.lbl_fichiers_csv_conservés = new System.Windows.Forms.Label();
+            this.lbl_fichiers_xlsx = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Lancer_traitement
             // 
-            this.Lancer_traitement.Location = new System.Drawing.Point(443, 257);
+            this.Lancer_traitement.Location = new System.Drawing.Point(443, 553);
             this.Lancer_traitement.Name = "Lancer_traitement";
             this.Lancer_traitement.Size = new System.Drawing.Size(109, 23);
             this.Lancer_traitement.TabIndex = 0;
@@ -74,7 +79,7 @@
             // 
             this.Liste_CSV.AllowDrop = true;
             this.Liste_CSV.FormattingEnabled = true;
-            this.Liste_CSV.Location = new System.Drawing.Point(12, 296);
+            this.Liste_CSV.Location = new System.Drawing.Point(12, 320);
             this.Liste_CSV.Name = "Liste_CSV";
             this.Liste_CSV.Size = new System.Drawing.Size(540, 212);
             this.Liste_CSV.TabIndex = 1;
@@ -215,7 +220,7 @@
             // bouton_periode1
             // 
             this.bouton_periode1.AutoSize = true;
-            this.bouton_periode1.Location = new System.Drawing.Point(14, 260);
+            this.bouton_periode1.Location = new System.Drawing.Point(14, 556);
             this.bouton_periode1.Name = "bouton_periode1";
             this.bouton_periode1.Size = new System.Drawing.Size(84, 17);
             this.bouton_periode1.TabIndex = 10;
@@ -227,7 +232,7 @@
             // bouton_periode2
             // 
             this.bouton_periode2.AutoSize = true;
-            this.bouton_periode2.Location = new System.Drawing.Point(116, 260);
+            this.bouton_periode2.Location = new System.Drawing.Point(116, 556);
             this.bouton_periode2.Name = "bouton_periode2";
             this.bouton_periode2.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode2.TabIndex = 11;
@@ -239,7 +244,7 @@
             // bouton_periode3
             // 
             this.bouton_periode3.AutoSize = true;
-            this.bouton_periode3.Location = new System.Drawing.Point(223, 260);
+            this.bouton_periode3.Location = new System.Drawing.Point(223, 556);
             this.bouton_periode3.Name = "bouton_periode3";
             this.bouton_periode3.Size = new System.Drawing.Size(89, 17);
             this.bouton_periode3.TabIndex = 12;
@@ -251,7 +256,7 @@
             // bouton_annee
             // 
             this.bouton_annee.AutoSize = true;
-            this.bouton_annee.Location = new System.Drawing.Point(342, 260);
+            this.bouton_annee.Location = new System.Drawing.Point(342, 556);
             this.bouton_annee.Name = "bouton_annee";
             this.bouton_annee.Size = new System.Drawing.Size(56, 17);
             this.bouton_annee.TabIndex = 13;
@@ -291,10 +296,10 @@
             // Liste_csv_présents
             // 
             this.Liste_csv_présents.FormattingEnabled = true;
-            this.Liste_csv_présents.Location = new System.Drawing.Point(616, 296);
+            this.Liste_csv_présents.Location = new System.Drawing.Point(616, 320);
             this.Liste_csv_présents.Name = "Liste_csv_présents";
             this.Liste_csv_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Liste_csv_présents.Size = new System.Drawing.Size(461, 212);
+            this.Liste_csv_présents.Size = new System.Drawing.Size(252, 212);
             this.Liste_csv_présents.TabIndex = 17;
             // 
             // label1
@@ -353,15 +358,15 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Classes de 3ème";
             // 
-            // Reset
+            // Supprimer_tout
             // 
-            this.Reset.Location = new System.Drawing.Point(965, 254);
-            this.Reset.Name = "Reset";
-            this.Reset.Size = new System.Drawing.Size(112, 23);
-            this.Reset.TabIndex = 26;
-            this.Reset.Text = "Supprimer les bases";
-            this.Reset.UseVisualStyleBackColor = true;
-            this.Reset.Click += new System.EventHandler(this.Reset_Click);
+            this.Supprimer_tout.Location = new System.Drawing.Point(1025, 91);
+            this.Supprimer_tout.Name = "Supprimer_tout";
+            this.Supprimer_tout.Size = new System.Drawing.Size(112, 23);
+            this.Supprimer_tout.TabIndex = 26;
+            this.Supprimer_tout.Text = "Supprimer les bases";
+            this.Supprimer_tout.UseVisualStyleBackColor = true;
+            this.Supprimer_tout.Click += new System.EventHandler(this.Supprimer_tout_Click);
             // 
             // pictureBox2
             // 
@@ -376,31 +381,79 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::Compétences.Properties.Resources.E_Lyco;
-            this.pictureBox1.Location = new System.Drawing.Point(926, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(1025, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(151, 56);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 24;
             this.pictureBox1.TabStop = false;
             // 
-            // SuppressionFichier
+            // SuppressionFichierCsv
             // 
-            this.SuppressionFichier.Location = new System.Drawing.Point(616, 260);
-            this.SuppressionFichier.Name = "SuppressionFichier";
-            this.SuppressionFichier.Size = new System.Drawing.Size(97, 23);
-            this.SuppressionFichier.TabIndex = 27;
-            this.SuppressionFichier.Text = "Supprimer fichier";
-            this.SuppressionFichier.UseVisualStyleBackColor = true;
-            this.SuppressionFichier.Click += new System.EventHandler(this.SuppressionFichier_Click);
+            this.SuppressionFichierCsv.Location = new System.Drawing.Point(771, 550);
+            this.SuppressionFichierCsv.Name = "SuppressionFichierCsv";
+            this.SuppressionFichierCsv.Size = new System.Drawing.Size(97, 23);
+            this.SuppressionFichierCsv.TabIndex = 27;
+            this.SuppressionFichierCsv.Text = "Supprimer fichier";
+            this.SuppressionFichierCsv.UseVisualStyleBackColor = true;
+            this.SuppressionFichierCsv.Click += new System.EventHandler(this.SuppressionFichierCsv_Click);
+            // 
+            // Liste_xlsx_présents
+            // 
+            this.Liste_xlsx_présents.FormattingEnabled = true;
+            this.Liste_xlsx_présents.Location = new System.Drawing.Point(924, 320);
+            this.Liste_xlsx_présents.Name = "Liste_xlsx_présents";
+            this.Liste_xlsx_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
+            this.Liste_xlsx_présents.Size = new System.Drawing.Size(252, 212);
+            this.Liste_xlsx_présents.TabIndex = 28;
+            // 
+            // SuppressionFichierXlsx
+            // 
+            this.SuppressionFichierXlsx.Location = new System.Drawing.Point(1079, 550);
+            this.SuppressionFichierXlsx.Name = "SuppressionFichierXlsx";
+            this.SuppressionFichierXlsx.Size = new System.Drawing.Size(97, 23);
+            this.SuppressionFichierXlsx.TabIndex = 29;
+            this.SuppressionFichierXlsx.Text = "Supprimer fichier";
+            this.SuppressionFichierXlsx.UseVisualStyleBackColor = true;
+            this.SuppressionFichierXlsx.Click += new System.EventHandler(this.SuppressionFichierXlsx_Click);
+            // 
+            // lbl_fichiers_csv_a_traiter
+            // 
+            this.lbl_fichiers_csv_a_traiter.AutoSize = true;
+            this.lbl_fichiers_csv_a_traiter.Location = new System.Drawing.Point(60, 280);
+            this.lbl_fichiers_csv_a_traiter.Name = "lbl_fichiers_csv_a_traiter";
+            this.lbl_fichiers_csv_a_traiter.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fichiers_csv_a_traiter.TabIndex = 30;
+            // 
+            // lbl_fichiers_csv_conservés
+            // 
+            this.lbl_fichiers_csv_conservés.AutoSize = true;
+            this.lbl_fichiers_csv_conservés.Location = new System.Drawing.Point(613, 280);
+            this.lbl_fichiers_csv_conservés.Name = "lbl_fichiers_csv_conservés";
+            this.lbl_fichiers_csv_conservés.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fichiers_csv_conservés.TabIndex = 31;
+            // 
+            // lbl_fichiers_xlsx
+            // 
+            this.lbl_fichiers_xlsx.AutoSize = true;
+            this.lbl_fichiers_xlsx.Location = new System.Drawing.Point(921, 280);
+            this.lbl_fichiers_xlsx.Name = "lbl_fichiers_xlsx";
+            this.lbl_fichiers_xlsx.Size = new System.Drawing.Size(0, 13);
+            this.lbl_fichiers_xlsx.TabIndex = 32;
             // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
-            this.ClientSize = new System.Drawing.Size(1099, 520);
-            this.Controls.Add(this.SuppressionFichier);
-            this.Controls.Add(this.Reset);
+            this.ClientSize = new System.Drawing.Size(1188, 594);
+            this.Controls.Add(this.lbl_fichiers_xlsx);
+            this.Controls.Add(this.lbl_fichiers_csv_conservés);
+            this.Controls.Add(this.lbl_fichiers_csv_a_traiter);
+            this.Controls.Add(this.SuppressionFichierXlsx);
+            this.Controls.Add(this.Liste_xlsx_présents);
+            this.Controls.Add(this.SuppressionFichierCsv);
+            this.Controls.Add(this.Supprimer_tout);
             this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.label6);
@@ -464,8 +517,13 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button Reset;
-        private System.Windows.Forms.Button SuppressionFichier;
+        private System.Windows.Forms.Button Supprimer_tout;
+        private System.Windows.Forms.Button SuppressionFichierCsv;
+        private System.Windows.Forms.ListBox Liste_xlsx_présents;
+        private System.Windows.Forms.Button SuppressionFichierXlsx;
+        private System.Windows.Forms.Label lbl_fichiers_csv_a_traiter;
+        private System.Windows.Forms.Label lbl_fichiers_csv_conservés;
+        private System.Windows.Forms.Label lbl_fichiers_xlsx;
     }
 }
 
