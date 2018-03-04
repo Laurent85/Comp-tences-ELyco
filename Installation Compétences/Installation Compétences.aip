@@ -7,18 +7,20 @@
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Release"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Release\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" Value="Compétences.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe.config" Value="Compétences.exe.config"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.xlsm" Value="Compétences.xlsm"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg" Value="E-Lyco.jpg"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico" Value="Elyco.ico"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_StJacques.png" Value="St Jacques.png"/>
     <ROW Property="AI_ThemeStyle" Value="aero" MultiBuildValue="DefaultBuild:style3blue" MsiKey="AI_ThemeStyle"/>
     <ROW Property="ALLUSERS" Value="1"/>
     <ROW Property="ARPCOMMENTS" Value="This installer database contains the logic and data required to install [|ProductName]." ValueLocId="*"/>
     <ROW Property="ARPCONTACT" Value="Laurent Manceau"/>
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
-    <ROW Property="ARPPRODUCTICON" Value="Elyco.exe" Type="8"/>
+    <ROW Property="ARPPRODUCTICON" Value="Comptences.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Collège Saint Jacques"/>
     <ROW Property="ProductCode" Value="1033:{6FBA50C0-AC52-4F41-A7DE-E5D22FE8539F} 1036:{7AB56871-0D02-44F8-B908-B39670DF424D} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
@@ -64,14 +66,16 @@
     <ROW File="ComptencesSquare150x150Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="COMPTE~2.PNG|ComptencesSquare150x150Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\Logo.png" SelfReg="false" NextFile="Store50x50Logo.scale100.png"/>
     <ROW File="ComptencesSquare44x44Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="COMPTE~1.PNG|ComptencesSquare44x44Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\SmallLogo10.png" SelfReg="false" NextFile="ComptencesSquare150x150Logo.scale100.png"/>
     <ROW File="ELyco.jpg" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ELyco.jpg&gt;" SelfReg="false" NextFile="StJacques.png"/>
+    <ROW File="Elyco.ico" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Elyco.ico&gt;" SelfReg="false"/>
     <ROW File="StJacques.png" Component_="Comptences_ContentOutput_Resources" FileName="STJACQ~2.PNG|[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_StJacques.png&gt;" SelfReg="false" NextFile="ComptencesSquare44x44Logo.scale100.png"/>
-    <ROW File="Store50x50Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="STORE5~1.PNG|Store50x50Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\StoreLogo.png" SelfReg="false"/>
+    <ROW File="Store50x50Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="STORE5~1.PNG|Store50x50Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\StoreLogo.png" SelfReg="false" NextFile="Elyco.ico"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe.config]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.xlsm" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.xlsm]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ELyco.jpg" Path="[|AI_PROPPATH_DIR_PERBUILD_ELyco.jpg]\[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Elyco.ico" Path="[|AI_PROPPATH_DIR_PERBUILD_Elyco.ico]\[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_StJacques.png" Path="[|AI_PROPPATH_DIR_PERBUILD_StJacques.png]\[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Type="2" Content="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppXCfgComponent">
@@ -242,8 +246,7 @@
     <ROW Action="SET_TARGETDIR_TO_APPDIR" Type="51" Source="TARGETDIR" Target="[APPDIR]"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiIconsComponent">
-    <ROW Name="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" SourcePath="C:\Users\Manceau\Desktop\Elyco.ico" Index="0"/>
-    <ROW Name="Elyco.exe" SourcePath="..\Compétences\Resources\Elyco.ico" Index="0"/>
+    <ROW Name="Comptences.exe" SourcePath="..\Compétences\Resources\Elyco.ico" Index="0"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiInstExSeqComponent">
     <ROW Action="AI_DOWNGRADE" Condition="AI_NEWERPRODUCTFOUND AND (UILevel &lt;&gt; 5)" Sequence="210"/>
@@ -292,9 +295,8 @@
     <ROW Registry="Version" Root="-1" Key="Software\[Manufacturer]\[ProductName]" Name="Version" Value="[ProductVersion]" Component_="ProductInformation"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiShortsComponent">
-    <ROW Shortcut="Comptences" Directory_="SHORTCUTDIR" Name="COMPÉT~1|Compétences" Component_="Comptences_PrimaryOutput" Target="[#Comptences.exe]" Hotkey="0" IconIndex="0" ShowCmd="1"/>
-    <ROW Shortcut="Domainesdecomptences" Directory_="SHORTCUTDIR" Name="DOMAIN~1|Domaines de compétences" Component_="Comptences_PrimaryOutput" Target="[#Comptences.exe]" Hotkey="0" Icon_="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" IconIndex="0" ShowCmd="1" WkDir="Comptences_Dir"/>
-    <ROW Shortcut="Domainesdecomptences_1" Directory_="DesktopFolder" Name="DOMAIN~1|Domaines de compétences" Component_="Comptences_PrimaryOutput" Target="[#Comptences.exe]" Hotkey="0" Icon_="Elyco.exe" IconIndex="0" ShowCmd="1" WkDir="Comptences_Dir"/>
+    <ROW Shortcut="Domainesdecomptences" Directory_="SHORTCUTDIR" Name="DOMAIN~1|Domaines de compétences" Component_="Comptences_PrimaryOutput" Target="[#Comptences.exe]" Hotkey="0" Icon_="Comptences.exe" IconIndex="0" ShowCmd="1" WkDir="Comptences_Dir"/>
+    <ROW Shortcut="Domainesdecomptences_1" Directory_="DesktopFolder" Name="DOMAIN~1|Domaines de compétences" Component_="Comptences_PrimaryOutput" Target="[#Comptences.exe]" Hotkey="0" Icon_="Comptences.exe" IconIndex="0" ShowCmd="1" WkDir="Comptences_Dir"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiThemeComponent">
     <ATTRIBUTE name="UsedTheme" value="classic"/>
@@ -311,10 +313,11 @@
     <ROW SearchKey="FB44691010D74C6D89B33E019630EAF6Rel" Prereq="FB44691010D74C6D89B33E019630EAF6" SearchType="9" SearchString="HKLM\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full\Release" RefContent="G378388" Order="1" Property="PreReqSearch_FB44691010D74C6D89B33E"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.VsProjectComponent">
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="PrimaryOutput" OutputFile="Comptences.exe" OutputFileShortcut="Comptences"/>
+    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="PrimaryOutput" OutputFile="Comptences.exe"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="PrimaryOutput" OutputFile="Comptences.exe.config"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Comptences.xlsm"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="ELyco.jpg"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="StJacques.png"/>
+    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Elyco.ico"/>
   </COMPONENT>
 </DOCUMENT>
