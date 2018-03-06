@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.Lancer_traitement = new System.Windows.Forms.Button();
-            this.Liste_CSV = new System.Windows.Forms.ListBox();
+            this.Liste_CSV_a_traiter = new System.Windows.Forms.ListBox();
             this.Niveau_6 = new System.Windows.Forms.ComboBox();
             this.Niveau_5 = new System.Windows.Forms.ComboBox();
             this.Niveau_4 = new System.Windows.Forms.ComboBox();
@@ -75,16 +75,16 @@
             this.Lancer_traitement.UseVisualStyleBackColor = true;
             this.Lancer_traitement.Click += new System.EventHandler(this.Lancer_traitement_Click);
             // 
-            // Liste_CSV
+            // Liste_CSV_a_traiter
             // 
-            this.Liste_CSV.AllowDrop = true;
-            this.Liste_CSV.FormattingEnabled = true;
-            this.Liste_CSV.Location = new System.Drawing.Point(12, 320);
-            this.Liste_CSV.Name = "Liste_CSV";
-            this.Liste_CSV.Size = new System.Drawing.Size(540, 212);
-            this.Liste_CSV.TabIndex = 1;
-            this.Liste_CSV.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
-            this.Liste_CSV.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
+            this.Liste_CSV_a_traiter.AllowDrop = true;
+            this.Liste_CSV_a_traiter.FormattingEnabled = true;
+            this.Liste_CSV_a_traiter.Location = new System.Drawing.Point(12, 320);
+            this.Liste_CSV_a_traiter.Name = "Liste_CSV_a_traiter";
+            this.Liste_CSV_a_traiter.Size = new System.Drawing.Size(540, 212);
+            this.Liste_CSV_a_traiter.TabIndex = 1;
+            this.Liste_CSV_a_traiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
+            this.Liste_CSV_a_traiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
             // 
             // Niveau_6
             // 
@@ -101,10 +101,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"});
+            "12"});
             this.Niveau_6.Location = new System.Drawing.Point(363, 93);
             this.Niveau_6.Name = "Niveau_6";
             this.Niveau_6.Size = new System.Drawing.Size(84, 21);
@@ -125,10 +122,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"});
+            "12"});
             this.Niveau_5.Location = new System.Drawing.Point(495, 93);
             this.Niveau_5.Name = "Niveau_5";
             this.Niveau_5.Size = new System.Drawing.Size(84, 21);
@@ -149,10 +143,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"});
+            "12"});
             this.Niveau_4.Location = new System.Drawing.Point(629, 93);
             this.Niveau_4.Name = "Niveau_4";
             this.Niveau_4.Size = new System.Drawing.Size(84, 21);
@@ -173,10 +164,7 @@
             "9",
             "10",
             "11",
-            "12",
-            "13",
-            "14",
-            "15"});
+            "12"});
             this.Niveau_3.Location = new System.Drawing.Point(748, 93);
             this.Niveau_3.Name = "Niveau_3";
             this.Niveau_3.Size = new System.Drawing.Size(84, 21);
@@ -406,6 +394,7 @@
             this.Liste_xlsx_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.Liste_xlsx_présents.Size = new System.Drawing.Size(252, 212);
             this.Liste_xlsx_présents.TabIndex = 28;
+            this.Liste_xlsx_présents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Liste_xlsx_présents_MouseDoubleClick);
             // 
             // SuppressionFichierXlsx
             // 
@@ -477,10 +466,11 @@
             this.Controls.Add(this.Niveau_4);
             this.Controls.Add(this.Niveau_5);
             this.Controls.Add(this.Niveau_6);
-            this.Controls.Add(this.Liste_CSV);
+            this.Controls.Add(this.Liste_CSV_a_traiter);
             this.Controls.Add(this.Lancer_traitement);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
@@ -493,7 +483,7 @@
         #endregion
 
         private System.Windows.Forms.Button Lancer_traitement;
-        private System.Windows.Forms.ListBox Liste_CSV;
+        private System.Windows.Forms.ListBox Liste_CSV_a_traiter;
         private System.Windows.Forms.ComboBox Niveau_6;
         private System.Windows.Forms.ComboBox Niveau_5;
         private System.Windows.Forms.ComboBox Niveau_4;
