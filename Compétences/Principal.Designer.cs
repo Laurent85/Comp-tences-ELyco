@@ -61,12 +61,15 @@
             this.lbl_fichiers_csv_a_traiter = new System.Windows.Forms.Label();
             this.lbl_fichiers_csv_conservés = new System.Windows.Forms.Label();
             this.lbl_fichiers_xlsx = new System.Windows.Forms.Label();
+            this.Supprimer_trimestre = new System.Windows.Forms.Button();
+            this.Supprimer_trimestre_xlsx = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // Lancer_traitement
             // 
+            this.Lancer_traitement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Lancer_traitement.Location = new System.Drawing.Point(443, 553);
             this.Lancer_traitement.Name = "Lancer_traitement";
             this.Lancer_traitement.Size = new System.Drawing.Size(109, 23);
@@ -78,6 +81,7 @@
             // Liste_CSV_a_traiter
             // 
             this.Liste_CSV_a_traiter.AllowDrop = true;
+            this.Liste_CSV_a_traiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.Liste_CSV_a_traiter.FormattingEnabled = true;
             this.Liste_CSV_a_traiter.Location = new System.Drawing.Point(12, 320);
             this.Liste_CSV_a_traiter.Name = "Liste_CSV_a_traiter";
@@ -88,6 +92,7 @@
             // 
             // Niveau_6
             // 
+            this.Niveau_6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Niveau_6.FormattingEnabled = true;
             this.Niveau_6.Items.AddRange(new object[] {
             "1",
@@ -109,6 +114,7 @@
             // 
             // Niveau_5
             // 
+            this.Niveau_5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Niveau_5.FormattingEnabled = true;
             this.Niveau_5.Items.AddRange(new object[] {
             "1",
@@ -130,6 +136,7 @@
             // 
             // Niveau_4
             // 
+            this.Niveau_4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Niveau_4.FormattingEnabled = true;
             this.Niveau_4.Items.AddRange(new object[] {
             "1",
@@ -151,6 +158,7 @@
             // 
             // Niveau_3
             // 
+            this.Niveau_3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Niveau_3.FormattingEnabled = true;
             this.Niveau_3.Items.AddRange(new object[] {
             "1",
@@ -172,6 +180,7 @@
             // 
             // Annee_scolaire
             // 
+            this.Annee_scolaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Annee_scolaire.FormattingEnabled = true;
             this.Annee_scolaire.Items.AddRange(new object[] {
             "2017-2018",
@@ -189,6 +198,7 @@
             // 
             // Dossier_travail
             // 
+            this.Dossier_travail.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dossier_travail.Location = new System.Drawing.Point(155, 139);
             this.Dossier_travail.Name = "Dossier_travail";
             this.Dossier_travail.Size = new System.Drawing.Size(106, 23);
@@ -199,6 +209,7 @@
             // 
             // Chemin_dossier
             // 
+            this.Chemin_dossier.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Chemin_dossier.AutoSize = true;
             this.Chemin_dossier.Location = new System.Drawing.Point(276, 144);
             this.Chemin_dossier.Name = "Chemin_dossier";
@@ -207,6 +218,7 @@
             // 
             // bouton_periode1
             // 
+            this.bouton_periode1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bouton_periode1.AutoSize = true;
             this.bouton_periode1.Location = new System.Drawing.Point(14, 556);
             this.bouton_periode1.Name = "bouton_periode1";
@@ -219,6 +231,7 @@
             // 
             // bouton_periode2
             // 
+            this.bouton_periode2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bouton_periode2.AutoSize = true;
             this.bouton_periode2.Location = new System.Drawing.Point(116, 556);
             this.bouton_periode2.Name = "bouton_periode2";
@@ -231,6 +244,7 @@
             // 
             // bouton_periode3
             // 
+            this.bouton_periode3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bouton_periode3.AutoSize = true;
             this.bouton_periode3.Location = new System.Drawing.Point(223, 556);
             this.bouton_periode3.Name = "bouton_periode3";
@@ -243,6 +257,7 @@
             // 
             // bouton_annee
             // 
+            this.bouton_annee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.bouton_annee.AutoSize = true;
             this.bouton_annee.Location = new System.Drawing.Point(342, 556);
             this.bouton_annee.Name = "bouton_annee";
@@ -255,6 +270,7 @@
             // 
             // Créer_arborescence
             // 
+            this.Créer_arborescence.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Créer_arborescence.Location = new System.Drawing.Point(155, 197);
             this.Créer_arborescence.Name = "Créer_arborescence";
             this.Créer_arborescence.Size = new System.Drawing.Size(118, 23);
@@ -265,6 +281,7 @@
             // 
             // Dossier_destination
             // 
+            this.Dossier_destination.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Dossier_destination.Location = new System.Drawing.Point(155, 168);
             this.Dossier_destination.Name = "Dossier_destination";
             this.Dossier_destination.Size = new System.Drawing.Size(106, 23);
@@ -275,6 +292,7 @@
             // 
             // Chemin_destination
             // 
+            this.Chemin_destination.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.Chemin_destination.AutoSize = true;
             this.Chemin_destination.Location = new System.Drawing.Point(273, 173);
             this.Chemin_destination.Name = "Chemin_destination";
@@ -283,15 +301,18 @@
             // 
             // Liste_csv_présents
             // 
+            this.Liste_csv_présents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Liste_csv_présents.FormattingEnabled = true;
             this.Liste_csv_présents.Location = new System.Drawing.Point(616, 320);
             this.Liste_csv_présents.Name = "Liste_csv_présents";
             this.Liste_csv_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
             this.Liste_csv_présents.Size = new System.Drawing.Size(252, 212);
             this.Liste_csv_présents.TabIndex = 17;
+            this.Liste_csv_présents.SelectedIndexChanged += new System.EventHandler(this.Selection_classe_annee);
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
@@ -303,6 +324,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(158, 74);
             this.label2.Name = "label2";
@@ -312,6 +334,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(360, 74);
             this.label3.Name = "label3";
@@ -321,6 +344,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(492, 74);
             this.label4.Name = "label4";
@@ -330,6 +354,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(626, 74);
             this.label5.Name = "label5";
@@ -339,6 +364,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(745, 74);
             this.label6.Name = "label6";
@@ -348,6 +374,7 @@
             // 
             // Supprimer_tout
             // 
+            this.Supprimer_tout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Supprimer_tout.Location = new System.Drawing.Point(1025, 91);
             this.Supprimer_tout.Name = "Supprimer_tout";
             this.Supprimer_tout.Size = new System.Drawing.Size(112, 23);
@@ -368,6 +395,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.pictureBox1.Image = global::Compétences.Properties.Resources.E_Lyco;
             this.pictureBox1.Location = new System.Drawing.Point(1025, 12);
             this.pictureBox1.Name = "pictureBox1";
@@ -378,7 +406,8 @@
             // 
             // SuppressionFichierCsv
             // 
-            this.SuppressionFichierCsv.Location = new System.Drawing.Point(771, 550);
+            this.SuppressionFichierCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuppressionFichierCsv.Location = new System.Drawing.Point(771, 553);
             this.SuppressionFichierCsv.Name = "SuppressionFichierCsv";
             this.SuppressionFichierCsv.Size = new System.Drawing.Size(97, 23);
             this.SuppressionFichierCsv.TabIndex = 27;
@@ -388,6 +417,7 @@
             // 
             // Liste_xlsx_présents
             // 
+            this.Liste_xlsx_présents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.Liste_xlsx_présents.FormattingEnabled = true;
             this.Liste_xlsx_présents.Location = new System.Drawing.Point(924, 320);
             this.Liste_xlsx_présents.Name = "Liste_xlsx_présents";
@@ -398,7 +428,8 @@
             // 
             // SuppressionFichierXlsx
             // 
-            this.SuppressionFichierXlsx.Location = new System.Drawing.Point(1079, 550);
+            this.SuppressionFichierXlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.SuppressionFichierXlsx.Location = new System.Drawing.Point(1079, 553);
             this.SuppressionFichierXlsx.Name = "SuppressionFichierXlsx";
             this.SuppressionFichierXlsx.Size = new System.Drawing.Size(97, 23);
             this.SuppressionFichierXlsx.TabIndex = 29;
@@ -408,6 +439,7 @@
             // 
             // lbl_fichiers_csv_a_traiter
             // 
+            this.lbl_fichiers_csv_a_traiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.lbl_fichiers_csv_a_traiter.AutoSize = true;
             this.lbl_fichiers_csv_a_traiter.Location = new System.Drawing.Point(60, 280);
             this.lbl_fichiers_csv_a_traiter.Name = "lbl_fichiers_csv_a_traiter";
@@ -416,6 +448,7 @@
             // 
             // lbl_fichiers_csv_conservés
             // 
+            this.lbl_fichiers_csv_conservés.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_fichiers_csv_conservés.AutoSize = true;
             this.lbl_fichiers_csv_conservés.Location = new System.Drawing.Point(613, 280);
             this.lbl_fichiers_csv_conservés.Name = "lbl_fichiers_csv_conservés";
@@ -424,11 +457,32 @@
             // 
             // lbl_fichiers_xlsx
             // 
+            this.lbl_fichiers_xlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_fichiers_xlsx.AutoSize = true;
             this.lbl_fichiers_xlsx.Location = new System.Drawing.Point(921, 280);
             this.lbl_fichiers_xlsx.Name = "lbl_fichiers_xlsx";
             this.lbl_fichiers_xlsx.Size = new System.Drawing.Size(0, 13);
             this.lbl_fichiers_xlsx.TabIndex = 32;
+            // 
+            // Supprimer_trimestre
+            // 
+            this.Supprimer_trimestre.Location = new System.Drawing.Point(616, 553);
+            this.Supprimer_trimestre.Name = "Supprimer_trimestre";
+            this.Supprimer_trimestre.Size = new System.Drawing.Size(108, 23);
+            this.Supprimer_trimestre.TabIndex = 33;
+            this.Supprimer_trimestre.Text = "Supprimer trimestre";
+            this.Supprimer_trimestre.UseVisualStyleBackColor = true;
+            this.Supprimer_trimestre.Click += new System.EventHandler(this.Supprimer_trimestre_Click);
+            // 
+            // Supprimer_trimestre_xlsx
+            // 
+            this.Supprimer_trimestre_xlsx.Location = new System.Drawing.Point(924, 553);
+            this.Supprimer_trimestre_xlsx.Name = "Supprimer_trimestre_xlsx";
+            this.Supprimer_trimestre_xlsx.Size = new System.Drawing.Size(108, 23);
+            this.Supprimer_trimestre_xlsx.TabIndex = 34;
+            this.Supprimer_trimestre_xlsx.Text = "Supprimer trimestre";
+            this.Supprimer_trimestre_xlsx.UseVisualStyleBackColor = true;
+            this.Supprimer_trimestre_xlsx.Click += new System.EventHandler(this.Supprimer_trimestre_xlsx_Click);
             // 
             // Principal
             // 
@@ -436,6 +490,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
+            this.Controls.Add(this.Supprimer_trimestre_xlsx);
+            this.Controls.Add(this.Supprimer_trimestre);
             this.Controls.Add(this.lbl_fichiers_xlsx);
             this.Controls.Add(this.lbl_fichiers_csv_conservés);
             this.Controls.Add(this.lbl_fichiers_csv_a_traiter);
@@ -514,6 +570,8 @@
         private System.Windows.Forms.Label lbl_fichiers_csv_a_traiter;
         private System.Windows.Forms.Label lbl_fichiers_csv_conservés;
         private System.Windows.Forms.Label lbl_fichiers_xlsx;
+        private System.Windows.Forms.Button Supprimer_trimestre;
+        private System.Windows.Forms.Button Supprimer_trimestre_xlsx;
     }
 }
 

@@ -1,11 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Compétences
@@ -13,6 +7,7 @@ namespace Compétences
     public partial class Message : Form
     {
         public string message = "";
+
         public Message()
 
         {
@@ -21,7 +16,12 @@ namespace Compétences
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            label1.Text = message;
+            label1.TextAlign = ContentAlignment.MiddleCenter;
+        }
+
+        private void btn_fermer_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

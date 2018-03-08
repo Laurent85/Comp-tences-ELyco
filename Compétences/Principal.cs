@@ -20,6 +20,8 @@ namespace Compétences
         private void Principal_Load(object sender, EventArgs e)
         {
             Directory.CreateDirectory("C:\\ELyco");
+            File.WriteAllText("C:\\ELyco\\ELyco_classes.txt", String.Empty);
+            File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", String.Empty);
             Vérifier_chemins_dossiers();
             RemplirListeCsvPrésents();
             RemplirListeXlsxPrésents();
@@ -56,6 +58,18 @@ namespace Compétences
                     {
                     }
                 }
+                if (!File.Exists("C:\\ELyco\\ELyco_classes.txt"))
+                {
+                    using (File.Create("C:\\ELyco\\ELyco_classes.txt"))
+                    {
+                    }
+                }
+                if (!File.Exists("C:\\ELyco\\ELyco_classes.txt"))
+                {
+                    using (File.Create("C:\\ELyco\\ELyco_classes_annee.txt"))
+                    {
+                    }
+                }
                 using (StreamWriter sw = new StreamWriter("C:\\ELyco\\ELyco_in.txt"))
                 {
                     sw.WriteLine(Chemin_dossier.Text);
@@ -64,7 +78,6 @@ namespace Compétences
             }
             else
             {
-                
             }
         }
 
@@ -92,7 +105,6 @@ namespace Compétences
             }
             else
             {
-                
             }
         }
 
@@ -122,7 +134,17 @@ namespace Compétences
             traitementMacro.RunWorkerCompleted += traitementMacro_Fini;
             traitementMacro.RunWorkerAsync();
             traitementMacro.WorkerSupportsCancellation = true;
-            Frm2.message = lbl_fichiers_csv_a_traiter.Text + "...Veuillez patienter...";
+
+            if (lbl_fichiers_csv_a_traiter.Text == "")
+            {
+                Frm2.Controls.Find("label1", true).First().Text = @"Traitement des fichiers...Veuillez patienter...";
+            }
+            else
+            {
+                Frm2.Controls.Find("label1", true).First().Text = lbl_fichiers_csv_a_traiter.Text + @"...Veuillez patienter...";
+            }
+
+            Frm2.Controls.Find("btn_fermer", true).First().Visible = false;
             Frm2.ShowDialog();
         }
 
@@ -168,8 +190,8 @@ namespace Compétences
                 File.Delete(file);
             }
 
-            Frm2.Close();
-            MessageBox.Show(@"Traitement terminé");
+            Frm2.Controls.Find("label1", true).First().Text = @"Traitement des fichiers terminé !";
+            Frm2.Controls.Find("btn_fermer", true).First().Visible = true;
         }
 
         private void bouton_periode1_CheckedChanged(object sender, EventArgs e)
@@ -204,6 +226,30 @@ namespace Compétences
             Suppression_fichiers(Chemin_destination.Text, Liste_xlsx_présents);
             lbl_fichiers_csv_conservés.Text = Compter_fichiers(Liste_csv_présents) + @" fichiers CSV présents";
             lbl_fichiers_xlsx.Text = Compter_fichiers(Liste_xlsx_présents) + @" fichiers XLSX présents";
+        }
+
+        private void Supprimer_trimestre_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Suppression_fichiers_par_trimestre(Chemin_dossier.Text, Liste_csv_présents.SelectedItem.ToString(), Liste_csv_présents);
+            }
+            catch
+            {
+                MessageBox.Show(@"Aucune période sélectionnée");
+            }
+        }
+
+        private void Supprimer_trimestre_xlsx_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                Suppression_fichiers_par_trimestre(Chemin_destination.Text, Liste_xlsx_présents.SelectedItem.ToString(), Liste_xlsx_présents);
+            }
+            catch
+            {
+                MessageBox.Show(@"Aucune période sélectionnée");
+            }
         }
 
         private void Supprimer_tout_Click(object sender, EventArgs e)
@@ -414,6 +460,18 @@ namespace Compétences
             Liste_fichiers_présents(Chemin_destination.Text, "Année" + "\\", Liste_xlsx_présents);
         }
 
+        private void Selection_classe_annee(object sender, EventArgs e)
+        {
+            File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", String.Empty);
+            foreach (var listBoxItem in Liste_csv_présents.SelectedItems)
+            {
+                if (listBoxItem.ToString().Contains("competence"))
+                {
+                    File.AppendAllText("C:\\ELyco\\ELyco_classes_annee.txt", Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
+                }
+            }
+        }
+
         private void Suppression_fichiers(string chemin, ListBox liste)
         {
             string[] files = Directory.GetFiles(chemin, "*.*", SearchOption.AllDirectories);
@@ -433,6 +491,49 @@ namespace Compétences
                 for (int i = selectedItems.Count - 1; i >= 0; i--)
                     liste.Items.Remove(selectedItems[i]);
             }
+        }
+
+        public void Suppression_fichiers_par_trimestre(string chemin, string trimestre, ListBox liste)
+        {
+            string[] files = Directory.GetFiles(chemin + trimestre + "\\", "*.*", SearchOption.AllDirectories);
+            var templiste = new ListBox();
+
+            foreach (string file in files)
+            {
+                foreach (string item in liste.Items)
+                {
+                    if (file.Contains(item) && (item.Contains("competence")))
+                    {
+                        File.Delete(file);
+                        templiste.Items.Add(item);
+                    }
+                }
+            }
+
+            string[] files1 = Directory.GetFiles(chemin, "*.*", SearchOption.AllDirectories);
+
+            foreach (string file1 in files1)
+            {
+                foreach (string item1 in templiste.Items)
+                {
+                    if (file1.Contains(item1) && (item1.Contains("competence")))
+                    {
+                        File.Delete(file1);
+                        liste.Items.Remove(item1);
+                        //templiste.Items.Remove(item1.ToString());
+                    }
+                }
+            }
+
+            EffacerListbox(Liste_CSV_a_traiter);
+            EffacerListbox(Liste_csv_présents);
+            EffacerListbox(Liste_xlsx_présents);
+            Vérifier_chemins_dossiers();
+            RemplirListeCsvPrésents();
+            RemplirListeXlsxPrésents();
+            lbl_fichiers_csv_a_traiter.Text = "";
+            lbl_fichiers_csv_conservés.Text = Compter_fichiers(Liste_csv_présents) + @" fichiers CSV présents";
+            lbl_fichiers_xlsx.Text = Compter_fichiers(Liste_xlsx_présents) + @" fichiers XLSX présents";
         }
 
         private void EffacerListbox(ListBox liste)
@@ -495,10 +596,14 @@ namespace Compétences
                 Liste_CSV_a_traiter.Items.Add(filename);
             }
 
+            File.WriteAllText("C:\\ELyco\\ELyco_classes.txt", String.Empty);
+
             foreach (var listBoxItem in Liste_CSV_a_traiter.Items)
             {
                 if (!File.Exists(Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
                     File.Copy(listBoxItem.ToString(), Chemin_dossier.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
+
+                File.AppendAllText("C:\\ELyco\\ELyco_classes.txt", Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
             }
 
             lbl_fichiers_csv_a_traiter.Text = Liste_CSV_a_traiter.Items.Count + @" classes à traiter";
