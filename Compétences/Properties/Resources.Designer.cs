@@ -63,86 +63,6 @@ namespace Compétences.Properties {
         /// <summary>
         ///   Recherche une ressource localisée de type System.Byte[].
         /// </summary>
-        public static byte[] _3A {
-            get {
-                object obj = ResourceManager.GetObject("_3A", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3A1 {
-            get {
-                object obj = ResourceManager.GetObject("_3A1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3B {
-            get {
-                object obj = ResourceManager.GetObject("_3B", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3B1 {
-            get {
-                object obj = ResourceManager.GetObject("_3B1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3C {
-            get {
-                object obj = ResourceManager.GetObject("_3C", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3C1 {
-            get {
-                object obj = ResourceManager.GetObject("_3C1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3D {
-            get {
-                object obj = ResourceManager.GetObject("_3D", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
-        public static byte[] _3D1 {
-            get {
-                object obj = ResourceManager.GetObject("_3D1", resourceCulture);
-                return ((byte[])(obj));
-            }
-        }
-        
-        /// <summary>
-        ///   Recherche une ressource localisée de type System.Byte[].
-        /// </summary>
         public static byte[] Compétences {
             get {
                 object obj = ResourceManager.GetObject("Compétences", resourceCulture);
@@ -177,6 +97,26 @@ namespace Compétences.Properties {
             get {
                 object obj = ResourceManager.GetObject("St_Jacques", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        public static byte[] Type_dnb {
+            get {
+                object obj = ResourceManager.GetObject("Type_dnb", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Recherche une ressource localisée de type System.Byte[].
+        /// </summary>
+        public static byte[] Type_dnb1 {
+            get {
+                object obj = ResourceManager.GetObject("Type_dnb1", resourceCulture);
+                return ((byte[])(obj));
             }
         }
     }

@@ -28,31 +28,31 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.btn_fermer = new System.Windows.Forms.Button();
+            this.LblMessageTraitement = new System.Windows.Forms.Label();
+            this.BtnFermerMessageTraitement = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // label1
+            // LblMessageTraitement
             // 
-            this.label1.AutoSize = true;
-            this.label1.CausesValidation = false;
-            this.label1.Location = new System.Drawing.Point(17, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(255, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Traitement des fichiers en cours...Veuillez patienter...";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.LblMessageTraitement.AutoSize = true;
+            this.LblMessageTraitement.CausesValidation = false;
+            this.LblMessageTraitement.Location = new System.Drawing.Point(17, 27);
+            this.LblMessageTraitement.Name = "LblMessageTraitement";
+            this.LblMessageTraitement.Size = new System.Drawing.Size(255, 13);
+            this.LblMessageTraitement.TabIndex = 0;
+            this.LblMessageTraitement.Text = "Traitement des fichiers en cours...Veuillez patienter...";
+            this.LblMessageTraitement.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // btn_fermer
+            // BtnFermerMessageTraitement
             // 
-            this.btn_fermer.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
-            this.btn_fermer.Location = new System.Drawing.Point(105, 55);
-            this.btn_fermer.Name = "btn_fermer";
-            this.btn_fermer.Size = new System.Drawing.Size(75, 23);
-            this.btn_fermer.TabIndex = 1;
-            this.btn_fermer.Text = "Fermer";
-            this.btn_fermer.UseVisualStyleBackColor = true;
-            this.btn_fermer.Click += new System.EventHandler(this.btn_fermer_Click);
+            this.BtnFermerMessageTraitement.ImageAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.BtnFermerMessageTraitement.Location = new System.Drawing.Point(105, 55);
+            this.BtnFermerMessageTraitement.Name = "BtnFermerMessageTraitement";
+            this.BtnFermerMessageTraitement.Size = new System.Drawing.Size(75, 23);
+            this.BtnFermerMessageTraitement.TabIndex = 1;
+            this.BtnFermerMessageTraitement.Text = "Fermer";
+            this.BtnFermerMessageTraitement.UseVisualStyleBackColor = true;
+            this.BtnFermerMessageTraitement.Click += new System.EventHandler(this.BtnFermer_Click);
             // 
             // Message
             // 
@@ -60,15 +60,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 90);
             this.ControlBox = false;
-            this.Controls.Add(this.btn_fermer);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.BtnFermerMessageTraitement);
+            this.Controls.Add(this.LblMessageTraitement);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "Message";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Information";
-            this.Load += new System.EventHandler(this.Form2_Load);
+            this.Load += new System.EventHandler(this.Message_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -76,7 +76,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btn_fermer;
+        private System.Windows.Forms.Label LblMessageTraitement;
+        private System.Windows.Forms.Button BtnFermerMessageTraitement;
     }
 }

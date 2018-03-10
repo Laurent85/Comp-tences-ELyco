@@ -130,28 +130,10 @@
   <data name="St_Jacques" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\St Jacques.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="_3A" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3a.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Type_dnb" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\type_dnb.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="_3A1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3a.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3B" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3b.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3B1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3b.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3C" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3c.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3C1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3c.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3D" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3d.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </data>
-  <data name="_3D1" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\resources\3d.xlsx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="Type_dnb1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\type_dnb.docx;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>

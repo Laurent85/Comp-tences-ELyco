@@ -4,30 +4,18 @@
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.xlsx" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.xlsx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_C.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_C.xlsx" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe" Value="..\Compétences\bin\Release"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Release"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_D.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_D.xlsx" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Release\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.docx" Value="3A.docx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.xlsx" Value="3A.xlsx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_B.docx" Value="3B.docx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_B.xlsx" Value="3B.xlsx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_C.docx" Value="3C.docx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_C.xlsx" Value="3C.xlsx"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.docx" Value="Type_dnb.docx"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_B.docx" Value="Type_dnb.xlsx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" Value="Compétences.exe"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe.config" Value="Compétences.exe.config"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.xlsm" Value="Compétences.xlsm"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_D.docx" Value="3D.docx"/>
-    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_D.xlsx" Value="3D.xlsx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg" Value="E-Lyco.jpg"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico" Value="Elyco.ico"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_StJacques.png" Value="St Jacques.png"/>
@@ -38,10 +26,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="Comptences.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Collège Saint Jacques"/>
-    <ROW Property="ProductCode" Value="1033:{35838CD6-7657-4B65-9647-151CC07E0958} 1036:{BFFCA631-01AB-4CE1-B688-400FC039E236} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{B89B101D-CEED-4CBB-85F5-0DD8EFF2D38E} 1036:{E6302EBB-4E37-445F-9A5F-05161BEDB162} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Domaines de Compétences"/>
-    <ROW Property="ProductVersion" Value="1.0.11" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.16" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{110B651E-DE8A-4788-BF44-7E05DCC2F5A8}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -76,19 +64,13 @@
     <ATTRIBUTE name="CurrentFeature" value="MainFeature"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.MsiFilesComponent">
-    <ROW File="A.docx" Component_="Comptences_ContentOutput_Resources" FileName="3A~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_A.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_A.docx&gt;" SelfReg="false" NextFile="A.xlsx"/>
-    <ROW File="A.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="3A~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_A.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_A.xlsx&gt;" SelfReg="false" NextFile="B.docx"/>
-    <ROW File="B.docx" Component_="Comptences_ContentOutput_Resources" FileName="3B~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_B.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_B.docx&gt;" SelfReg="false" NextFile="B.xlsx"/>
-    <ROW File="B.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="3B~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_B.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_B.xlsx&gt;" SelfReg="false" NextFile="C.docx"/>
-    <ROW File="C.docx" Component_="Comptences_ContentOutput_Resources" FileName="3C~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_C.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_C.docx&gt;" SelfReg="false" NextFile="C.xlsx"/>
-    <ROW File="C.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="3C~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_C.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_C.xlsx&gt;" SelfReg="false" NextFile="D.docx"/>
+    <ROW File="A.docx" Component_="Comptences_ContentOutput_Resources" FileName="3A~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_A.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_A.docx&gt;" SelfReg="false" NextFile="B.docx"/>
+    <ROW File="B.docx" Component_="Comptences_ContentOutput_Resources" FileName="3B~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_B.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_B.docx&gt;" SelfReg="false"/>
     <ROW File="Comptences.exe" Component_="Comptences_PrimaryOutput" FileName="COMPÉT~2.EXE|[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Comptences.exe&gt;" SelfReg="false" NextFile="Comptences.exe.config" DigSign="true"/>
     <ROW File="Comptences.exe.config" Component_="Comptences_PrimaryOutput" FileName="COMPÉT~2.CON|[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe.config]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Comptences.exe.config&gt;" SelfReg="false" NextFile="Comptences.xlsm"/>
     <ROW File="Comptences.xlsm" Component_="Comptences_ContentOutput_Resources" FileName="COMPÉT~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.xlsm]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Comptences.xlsm&gt;" SelfReg="false" NextFile="ELyco.jpg"/>
     <ROW File="ComptencesSquare150x150Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="COMPTE~2.PNG|ComptencesSquare150x150Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\Logo.png" SelfReg="false" NextFile="Store50x50Logo.scale100.png"/>
     <ROW File="ComptencesSquare44x44Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="COMPTE~1.PNG|ComptencesSquare44x44Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\SmallLogo10.png" SelfReg="false" NextFile="ComptencesSquare150x150Logo.scale100.png"/>
-    <ROW File="D.docx" Component_="Comptences_ContentOutput_Resources" FileName="3D~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_D.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_D.docx&gt;" SelfReg="false" NextFile="D.xlsx"/>
-    <ROW File="D.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="3D~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_D.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_D.xlsx&gt;" SelfReg="false"/>
     <ROW File="ELyco.jpg" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ELyco.jpg&gt;" SelfReg="false" NextFile="StJacques.png"/>
     <ROW File="Elyco.ico" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Elyco.ico&gt;" SelfReg="false" NextFile="A.docx"/>
     <ROW File="StJacques.png" Component_="Comptences_ContentOutput_Resources" FileName="STJACQ~2.PNG|[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_StJacques.png&gt;" SelfReg="false" NextFile="ComptencesSquare44x44Logo.scale100.png"/>
@@ -96,16 +78,10 @@
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_A.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_A.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_A.docx]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_A.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_A.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_A.xlsx]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_B.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_B.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_B.docx]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_B.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_B.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_B.xlsx]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_C.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_C.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_C.docx]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_C.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_C.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_C.xlsx]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.exe" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.exe]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.exe.config" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe.config]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Comptences.xlsm" Path="[|AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm]\[|AI_PROPPATH_FILENAME_PERBUILD_Comptences.xlsm]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_D.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_D.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_D.docx]" Type="2" Content="0"/>
-    <ROW Name="AI_APPPATH_PERBUILD_D.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_D.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_D.xlsx]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_ELyco.jpg" Path="[|AI_PROPPATH_DIR_PERBUILD_ELyco.jpg]\[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Elyco.ico" Path="[|AI_PROPPATH_DIR_PERBUILD_Elyco.ico]\[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_StJacques.png" Path="[|AI_PROPPATH_DIR_PERBUILD_StJacques.png]\[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Type="2" Content="0"/>
@@ -169,7 +145,7 @@
     <ROW XmlAttribute="ShortcutPath_4" XmlElement="DesktopApp_4" Name="ShortcutPath" Flags="0" Order="0" Value="%USERPROFILE%\Desktop\Domaines de compétences.lnk"/>
     <ROW XmlAttribute="Square150x150Logo" XmlElement="VisualElements" Name="Square150x150Logo" Flags="0" Order="0" FileId="ComptencesSquare150x150Logo.scale100.png"/>
     <ROW XmlAttribute="Square44x44Logo" XmlElement="VisualElements" Name="Square44x44Logo" Flags="0" Order="0" FileId="ComptencesSquare44x44Logo.scale100.png"/>
-    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.11.0"/>
+    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.16.0"/>
     <ROW XmlAttribute="WorkingDirectory" XmlElement="Application" Name="WorkingDirectory" Flags="0" Order="0" Value="APPDIR\Compétences"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.GenericXmlElementComponent">
@@ -352,12 +328,6 @@
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="StJacques.png"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Elyco.ico"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="A.docx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="A.xlsx"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="B.docx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="B.xlsx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="C.docx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="C.xlsx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="D.docx"/>
-    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="D.xlsx"/>
   </COMPONENT>
 </DOCUMENT>

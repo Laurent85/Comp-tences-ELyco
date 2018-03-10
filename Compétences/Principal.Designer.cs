@@ -29,72 +29,72 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
-            this.Lancer_traitement = new System.Windows.Forms.Button();
-            this.Liste_CSV_a_traiter = new System.Windows.Forms.ListBox();
-            this.Niveau_6 = new System.Windows.Forms.ComboBox();
-            this.Niveau_5 = new System.Windows.Forms.ComboBox();
-            this.Niveau_4 = new System.Windows.Forms.ComboBox();
-            this.Niveau_3 = new System.Windows.Forms.ComboBox();
-            this.Annee_scolaire = new System.Windows.Forms.ComboBox();
-            this.Dossier_travail = new System.Windows.Forms.Button();
-            this.Chemin_dossier = new System.Windows.Forms.Label();
-            this.bouton_periode1 = new System.Windows.Forms.RadioButton();
-            this.bouton_periode2 = new System.Windows.Forms.RadioButton();
-            this.bouton_periode3 = new System.Windows.Forms.RadioButton();
-            this.bouton_annee = new System.Windows.Forms.RadioButton();
-            this.Créer_arborescence = new System.Windows.Forms.Button();
-            this.Dossier_destination = new System.Windows.Forms.Button();
-            this.Chemin_destination = new System.Windows.Forms.Label();
-            this.Liste_csv_présents = new System.Windows.Forms.ListBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.BtnLancerTraitement = new System.Windows.Forms.Button();
+            this.ListBoxCsvATraiter = new System.Windows.Forms.ListBox();
+            this.ComboNiveau6 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau5 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau4 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau3 = new System.Windows.Forms.ComboBox();
+            this.ComboAnnéeScolaire = new System.Windows.Forms.ComboBox();
+            this.BtnDossierCsv = new System.Windows.Forms.Button();
+            this.LblCheminDossierCsv = new System.Windows.Forms.Label();
+            this.RadioBtnPériode1 = new System.Windows.Forms.RadioButton();
+            this.RadioBtnPériode2 = new System.Windows.Forms.RadioButton();
+            this.RadioBtnPériode3 = new System.Windows.Forms.RadioButton();
+            this.RadioBtnAnnée = new System.Windows.Forms.RadioButton();
+            this.BtnCréationArborescence = new System.Windows.Forms.Button();
+            this.BtnDossierXlsx = new System.Windows.Forms.Button();
+            this.LblCheminDossierXlsx = new System.Windows.Forms.Label();
+            this.ListeBoxCsvPrésents = new System.Windows.Forms.ListBox();
+            this.LblTitre = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
-            this.Supprimer_tout = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.SuppressionFichierCsv = new System.Windows.Forms.Button();
-            this.Liste_xlsx_présents = new System.Windows.Forms.ListBox();
-            this.SuppressionFichierXlsx = new System.Windows.Forms.Button();
-            this.lbl_fichiers_csv_a_traiter = new System.Windows.Forms.Label();
-            this.lbl_fichiers_csv_conservés = new System.Windows.Forms.Label();
-            this.lbl_fichiers_xlsx = new System.Windows.Forms.Label();
-            this.Supprimer_trimestre = new System.Windows.Forms.Button();
-            this.Supprimer_trimestre_xlsx = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.BtnSuppressionBases = new System.Windows.Forms.Button();
+            this.PictureStJacques = new System.Windows.Forms.PictureBox();
+            this.PictureELyco = new System.Windows.Forms.PictureBox();
+            this.BtnSuppressionFichierCsv = new System.Windows.Forms.Button();
+            this.ListeBoxXlsxPrésents = new System.Windows.Forms.ListBox();
+            this.BtnSuppressionFichierXlsx = new System.Windows.Forms.Button();
+            this.LblFichiersCsvATraiter = new System.Windows.Forms.Label();
+            this.LblFichiersCsvPrésents = new System.Windows.Forms.Label();
+            this.LblFichiersXlsxPrésents = new System.Windows.Forms.Label();
+            this.BtnGénérerPublipostageDnb = new System.Windows.Forms.Button();
+            this.BtnGénérerfichiersExcelDnb = new System.Windows.Forms.Button();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).BeginInit();
             this.SuspendLayout();
             // 
-            // Lancer_traitement
+            // BtnLancerTraitement
             // 
-            this.Lancer_traitement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Lancer_traitement.Location = new System.Drawing.Point(443, 553);
-            this.Lancer_traitement.Name = "Lancer_traitement";
-            this.Lancer_traitement.Size = new System.Drawing.Size(109, 23);
-            this.Lancer_traitement.TabIndex = 0;
-            this.Lancer_traitement.Text = "Lancer le traitement";
-            this.Lancer_traitement.UseVisualStyleBackColor = true;
-            this.Lancer_traitement.Click += new System.EventHandler(this.Lancer_traitement_Click);
+            this.BtnLancerTraitement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.BtnLancerTraitement.Location = new System.Drawing.Point(443, 553);
+            this.BtnLancerTraitement.Name = "BtnLancerTraitement";
+            this.BtnLancerTraitement.Size = new System.Drawing.Size(109, 23);
+            this.BtnLancerTraitement.TabIndex = 0;
+            this.BtnLancerTraitement.Text = "Lancer le traitement";
+            this.BtnLancerTraitement.UseVisualStyleBackColor = true;
+            this.BtnLancerTraitement.Click += new System.EventHandler(this.Lancer_traitement_Click);
             // 
-            // Liste_CSV_a_traiter
+            // ListBoxCsvATraiter
             // 
-            this.Liste_CSV_a_traiter.AllowDrop = true;
-            this.Liste_CSV_a_traiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.Liste_CSV_a_traiter.FormattingEnabled = true;
-            this.Liste_CSV_a_traiter.Location = new System.Drawing.Point(12, 320);
-            this.Liste_CSV_a_traiter.Name = "Liste_CSV_a_traiter";
-            this.Liste_CSV_a_traiter.Size = new System.Drawing.Size(540, 212);
-            this.Liste_CSV_a_traiter.TabIndex = 1;
-            this.Liste_CSV_a_traiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
-            this.Liste_CSV_a_traiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
+            this.ListBoxCsvATraiter.AllowDrop = true;
+            this.ListBoxCsvATraiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.ListBoxCsvATraiter.FormattingEnabled = true;
+            this.ListBoxCsvATraiter.Location = new System.Drawing.Point(12, 320);
+            this.ListBoxCsvATraiter.Name = "ListBoxCsvATraiter";
+            this.ListBoxCsvATraiter.Size = new System.Drawing.Size(540, 212);
+            this.ListBoxCsvATraiter.TabIndex = 1;
+            this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
+            this.ListBoxCsvATraiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
             // 
-            // Niveau_6
+            // ComboNiveau6
             // 
-            this.Niveau_6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Niveau_6.FormattingEnabled = true;
-            this.Niveau_6.Items.AddRange(new object[] {
+            this.ComboNiveau6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau6.FormattingEnabled = true;
+            this.ComboNiveau6.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -107,16 +107,16 @@
             "10",
             "11",
             "12"});
-            this.Niveau_6.Location = new System.Drawing.Point(363, 93);
-            this.Niveau_6.Name = "Niveau_6";
-            this.Niveau_6.Size = new System.Drawing.Size(84, 21);
-            this.Niveau_6.TabIndex = 2;
+            this.ComboNiveau6.Location = new System.Drawing.Point(363, 93);
+            this.ComboNiveau6.Name = "ComboNiveau6";
+            this.ComboNiveau6.Size = new System.Drawing.Size(84, 21);
+            this.ComboNiveau6.TabIndex = 2;
             // 
-            // Niveau_5
+            // ComboNiveau5
             // 
-            this.Niveau_5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Niveau_5.FormattingEnabled = true;
-            this.Niveau_5.Items.AddRange(new object[] {
+            this.ComboNiveau5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau5.FormattingEnabled = true;
+            this.ComboNiveau5.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -129,16 +129,16 @@
             "10",
             "11",
             "12"});
-            this.Niveau_5.Location = new System.Drawing.Point(495, 93);
-            this.Niveau_5.Name = "Niveau_5";
-            this.Niveau_5.Size = new System.Drawing.Size(84, 21);
-            this.Niveau_5.TabIndex = 3;
+            this.ComboNiveau5.Location = new System.Drawing.Point(495, 93);
+            this.ComboNiveau5.Name = "ComboNiveau5";
+            this.ComboNiveau5.Size = new System.Drawing.Size(84, 21);
+            this.ComboNiveau5.TabIndex = 3;
             // 
-            // Niveau_4
+            // ComboNiveau4
             // 
-            this.Niveau_4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Niveau_4.FormattingEnabled = true;
-            this.Niveau_4.Items.AddRange(new object[] {
+            this.ComboNiveau4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau4.FormattingEnabled = true;
+            this.ComboNiveau4.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -151,16 +151,16 @@
             "10",
             "11",
             "12"});
-            this.Niveau_4.Location = new System.Drawing.Point(629, 93);
-            this.Niveau_4.Name = "Niveau_4";
-            this.Niveau_4.Size = new System.Drawing.Size(84, 21);
-            this.Niveau_4.TabIndex = 4;
+            this.ComboNiveau4.Location = new System.Drawing.Point(629, 93);
+            this.ComboNiveau4.Name = "ComboNiveau4";
+            this.ComboNiveau4.Size = new System.Drawing.Size(84, 21);
+            this.ComboNiveau4.TabIndex = 4;
             // 
-            // Niveau_3
+            // ComboNiveau3
             // 
-            this.Niveau_3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Niveau_3.FormattingEnabled = true;
-            this.Niveau_3.Items.AddRange(new object[] {
+            this.ComboNiveau3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau3.FormattingEnabled = true;
+            this.ComboNiveau3.Items.AddRange(new object[] {
             "1",
             "2",
             "3",
@@ -173,16 +173,16 @@
             "10",
             "11",
             "12"});
-            this.Niveau_3.Location = new System.Drawing.Point(748, 93);
-            this.Niveau_3.Name = "Niveau_3";
-            this.Niveau_3.Size = new System.Drawing.Size(84, 21);
-            this.Niveau_3.TabIndex = 5;
+            this.ComboNiveau3.Location = new System.Drawing.Point(748, 93);
+            this.ComboNiveau3.Name = "ComboNiveau3";
+            this.ComboNiveau3.Size = new System.Drawing.Size(84, 21);
+            this.ComboNiveau3.TabIndex = 5;
             // 
-            // Annee_scolaire
+            // ComboAnnéeScolaire
             // 
-            this.Annee_scolaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Annee_scolaire.FormattingEnabled = true;
-            this.Annee_scolaire.Items.AddRange(new object[] {
+            this.ComboAnnéeScolaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboAnnéeScolaire.FormattingEnabled = true;
+            this.ComboAnnéeScolaire.Items.AddRange(new object[] {
             "2017-2018",
             "2018-2019",
             "2019-2020",
@@ -191,136 +191,136 @@
             "2022-2023",
             "2023-2024",
             "2024-2025"});
-            this.Annee_scolaire.Location = new System.Drawing.Point(155, 93);
-            this.Annee_scolaire.Name = "Annee_scolaire";
-            this.Annee_scolaire.Size = new System.Drawing.Size(94, 21);
-            this.Annee_scolaire.TabIndex = 6;
+            this.ComboAnnéeScolaire.Location = new System.Drawing.Point(155, 93);
+            this.ComboAnnéeScolaire.Name = "ComboAnnéeScolaire";
+            this.ComboAnnéeScolaire.Size = new System.Drawing.Size(94, 21);
+            this.ComboAnnéeScolaire.TabIndex = 6;
             // 
-            // Dossier_travail
+            // BtnDossierCsv
             // 
-            this.Dossier_travail.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Dossier_travail.Location = new System.Drawing.Point(155, 139);
-            this.Dossier_travail.Name = "Dossier_travail";
-            this.Dossier_travail.Size = new System.Drawing.Size(106, 23);
-            this.Dossier_travail.TabIndex = 7;
-            this.Dossier_travail.Text = "Dossier des csv";
-            this.Dossier_travail.UseVisualStyleBackColor = true;
-            this.Dossier_travail.Click += new System.EventHandler(this.Dossier_travail_Click);
+            this.BtnDossierCsv.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnDossierCsv.Location = new System.Drawing.Point(155, 139);
+            this.BtnDossierCsv.Name = "BtnDossierCsv";
+            this.BtnDossierCsv.Size = new System.Drawing.Size(106, 23);
+            this.BtnDossierCsv.TabIndex = 7;
+            this.BtnDossierCsv.Text = "Dossier des csv";
+            this.BtnDossierCsv.UseVisualStyleBackColor = true;
+            this.BtnDossierCsv.Click += new System.EventHandler(this.Dossier_travail_Click);
             // 
-            // Chemin_dossier
+            // LblCheminDossierCsv
             // 
-            this.Chemin_dossier.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Chemin_dossier.AutoSize = true;
-            this.Chemin_dossier.Location = new System.Drawing.Point(276, 144);
-            this.Chemin_dossier.Name = "Chemin_dossier";
-            this.Chemin_dossier.Size = new System.Drawing.Size(0, 13);
-            this.Chemin_dossier.TabIndex = 8;
+            this.LblCheminDossierCsv.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblCheminDossierCsv.AutoSize = true;
+            this.LblCheminDossierCsv.Location = new System.Drawing.Point(276, 144);
+            this.LblCheminDossierCsv.Name = "LblCheminDossierCsv";
+            this.LblCheminDossierCsv.Size = new System.Drawing.Size(0, 13);
+            this.LblCheminDossierCsv.TabIndex = 8;
             // 
-            // bouton_periode1
+            // RadioBtnPériode1
             // 
-            this.bouton_periode1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bouton_periode1.AutoSize = true;
-            this.bouton_periode1.Location = new System.Drawing.Point(14, 556);
-            this.bouton_periode1.Name = "bouton_periode1";
-            this.bouton_periode1.Size = new System.Drawing.Size(84, 17);
-            this.bouton_periode1.TabIndex = 10;
-            this.bouton_periode1.TabStop = true;
-            this.bouton_periode1.Text = "1ère période";
-            this.bouton_periode1.UseVisualStyleBackColor = true;
-            this.bouton_periode1.CheckedChanged += new System.EventHandler(this.bouton_periode1_CheckedChanged);
+            this.RadioBtnPériode1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RadioBtnPériode1.AutoSize = true;
+            this.RadioBtnPériode1.Location = new System.Drawing.Point(14, 556);
+            this.RadioBtnPériode1.Name = "RadioBtnPériode1";
+            this.RadioBtnPériode1.Size = new System.Drawing.Size(84, 17);
+            this.RadioBtnPériode1.TabIndex = 10;
+            this.RadioBtnPériode1.TabStop = true;
+            this.RadioBtnPériode1.Text = "1ère période";
+            this.RadioBtnPériode1.UseVisualStyleBackColor = true;
+            this.RadioBtnPériode1.CheckedChanged += new System.EventHandler(this.bouton_periode1_CheckedChanged);
             // 
-            // bouton_periode2
+            // RadioBtnPériode2
             // 
-            this.bouton_periode2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bouton_periode2.AutoSize = true;
-            this.bouton_periode2.Location = new System.Drawing.Point(116, 556);
-            this.bouton_periode2.Name = "bouton_periode2";
-            this.bouton_periode2.Size = new System.Drawing.Size(89, 17);
-            this.bouton_periode2.TabIndex = 11;
-            this.bouton_periode2.TabStop = true;
-            this.bouton_periode2.Text = "2ème période";
-            this.bouton_periode2.UseVisualStyleBackColor = true;
-            this.bouton_periode2.CheckedChanged += new System.EventHandler(this.bouton_periode2_CheckedChanged);
+            this.RadioBtnPériode2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RadioBtnPériode2.AutoSize = true;
+            this.RadioBtnPériode2.Location = new System.Drawing.Point(116, 556);
+            this.RadioBtnPériode2.Name = "RadioBtnPériode2";
+            this.RadioBtnPériode2.Size = new System.Drawing.Size(89, 17);
+            this.RadioBtnPériode2.TabIndex = 11;
+            this.RadioBtnPériode2.TabStop = true;
+            this.RadioBtnPériode2.Text = "2ème période";
+            this.RadioBtnPériode2.UseVisualStyleBackColor = true;
+            this.RadioBtnPériode2.CheckedChanged += new System.EventHandler(this.bouton_periode2_CheckedChanged);
             // 
-            // bouton_periode3
+            // RadioBtnPériode3
             // 
-            this.bouton_periode3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bouton_periode3.AutoSize = true;
-            this.bouton_periode3.Location = new System.Drawing.Point(223, 556);
-            this.bouton_periode3.Name = "bouton_periode3";
-            this.bouton_periode3.Size = new System.Drawing.Size(89, 17);
-            this.bouton_periode3.TabIndex = 12;
-            this.bouton_periode3.TabStop = true;
-            this.bouton_periode3.Text = "3ème période";
-            this.bouton_periode3.UseVisualStyleBackColor = true;
-            this.bouton_periode3.CheckedChanged += new System.EventHandler(this.bouton_periode3_CheckedChanged);
+            this.RadioBtnPériode3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RadioBtnPériode3.AutoSize = true;
+            this.RadioBtnPériode3.Location = new System.Drawing.Point(223, 556);
+            this.RadioBtnPériode3.Name = "RadioBtnPériode3";
+            this.RadioBtnPériode3.Size = new System.Drawing.Size(89, 17);
+            this.RadioBtnPériode3.TabIndex = 12;
+            this.RadioBtnPériode3.TabStop = true;
+            this.RadioBtnPériode3.Text = "3ème période";
+            this.RadioBtnPériode3.UseVisualStyleBackColor = true;
+            this.RadioBtnPériode3.CheckedChanged += new System.EventHandler(this.bouton_periode3_CheckedChanged);
             // 
-            // bouton_annee
+            // RadioBtnAnnée
             // 
-            this.bouton_annee.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.bouton_annee.AutoSize = true;
-            this.bouton_annee.Location = new System.Drawing.Point(342, 556);
-            this.bouton_annee.Name = "bouton_annee";
-            this.bouton_annee.Size = new System.Drawing.Size(56, 17);
-            this.bouton_annee.TabIndex = 13;
-            this.bouton_annee.TabStop = true;
-            this.bouton_annee.Text = "Année";
-            this.bouton_annee.UseVisualStyleBackColor = true;
-            this.bouton_annee.CheckedChanged += new System.EventHandler(this.bouton_annee_CheckedChanged);
+            this.RadioBtnAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.RadioBtnAnnée.AutoSize = true;
+            this.RadioBtnAnnée.Location = new System.Drawing.Point(342, 556);
+            this.RadioBtnAnnée.Name = "RadioBtnAnnée";
+            this.RadioBtnAnnée.Size = new System.Drawing.Size(56, 17);
+            this.RadioBtnAnnée.TabIndex = 13;
+            this.RadioBtnAnnée.TabStop = true;
+            this.RadioBtnAnnée.Text = "Année";
+            this.RadioBtnAnnée.UseVisualStyleBackColor = true;
+            this.RadioBtnAnnée.CheckedChanged += new System.EventHandler(this.bouton_annee_CheckedChanged);
             // 
-            // Créer_arborescence
+            // BtnCréationArborescence
             // 
-            this.Créer_arborescence.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Créer_arborescence.Location = new System.Drawing.Point(155, 197);
-            this.Créer_arborescence.Name = "Créer_arborescence";
-            this.Créer_arborescence.Size = new System.Drawing.Size(118, 23);
-            this.Créer_arborescence.TabIndex = 9;
-            this.Créer_arborescence.Text = "Créer l\'arborescence";
-            this.Créer_arborescence.UseVisualStyleBackColor = true;
-            this.Créer_arborescence.Click += new System.EventHandler(this.Créer_arborescence_Click);
+            this.BtnCréationArborescence.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnCréationArborescence.Location = new System.Drawing.Point(155, 197);
+            this.BtnCréationArborescence.Name = "BtnCréationArborescence";
+            this.BtnCréationArborescence.Size = new System.Drawing.Size(118, 23);
+            this.BtnCréationArborescence.TabIndex = 9;
+            this.BtnCréationArborescence.Text = "Créer l\'arborescence";
+            this.BtnCréationArborescence.UseVisualStyleBackColor = true;
+            this.BtnCréationArborescence.Click += new System.EventHandler(this.Créer_arborescence_Click);
             // 
-            // Dossier_destination
+            // BtnDossierXlsx
             // 
-            this.Dossier_destination.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Dossier_destination.Location = new System.Drawing.Point(155, 168);
-            this.Dossier_destination.Name = "Dossier_destination";
-            this.Dossier_destination.Size = new System.Drawing.Size(106, 23);
-            this.Dossier_destination.TabIndex = 14;
-            this.Dossier_destination.Text = "Dossier des xlsx";
-            this.Dossier_destination.UseVisualStyleBackColor = true;
-            this.Dossier_destination.Click += new System.EventHandler(this.Dossier_destination_Click);
+            this.BtnDossierXlsx.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.BtnDossierXlsx.Location = new System.Drawing.Point(155, 168);
+            this.BtnDossierXlsx.Name = "BtnDossierXlsx";
+            this.BtnDossierXlsx.Size = new System.Drawing.Size(106, 23);
+            this.BtnDossierXlsx.TabIndex = 14;
+            this.BtnDossierXlsx.Text = "Dossier des xlsx";
+            this.BtnDossierXlsx.UseVisualStyleBackColor = true;
+            this.BtnDossierXlsx.Click += new System.EventHandler(this.Dossier_destination_Click);
             // 
-            // Chemin_destination
+            // LblCheminDossierXlsx
             // 
-            this.Chemin_destination.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.Chemin_destination.AutoSize = true;
-            this.Chemin_destination.Location = new System.Drawing.Point(273, 173);
-            this.Chemin_destination.Name = "Chemin_destination";
-            this.Chemin_destination.Size = new System.Drawing.Size(0, 13);
-            this.Chemin_destination.TabIndex = 15;
+            this.LblCheminDossierXlsx.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblCheminDossierXlsx.AutoSize = true;
+            this.LblCheminDossierXlsx.Location = new System.Drawing.Point(273, 173);
+            this.LblCheminDossierXlsx.Name = "LblCheminDossierXlsx";
+            this.LblCheminDossierXlsx.Size = new System.Drawing.Size(0, 13);
+            this.LblCheminDossierXlsx.TabIndex = 15;
             // 
-            // Liste_csv_présents
+            // ListeBoxCsvPrésents
             // 
-            this.Liste_csv_présents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Liste_csv_présents.FormattingEnabled = true;
-            this.Liste_csv_présents.Location = new System.Drawing.Point(616, 320);
-            this.Liste_csv_présents.Name = "Liste_csv_présents";
-            this.Liste_csv_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Liste_csv_présents.Size = new System.Drawing.Size(252, 212);
-            this.Liste_csv_présents.TabIndex = 17;
-            this.Liste_csv_présents.SelectedIndexChanged += new System.EventHandler(this.Selection_classe_annee);
+            this.ListeBoxCsvPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListeBoxCsvPrésents.FormattingEnabled = true;
+            this.ListeBoxCsvPrésents.Location = new System.Drawing.Point(616, 320);
+            this.ListeBoxCsvPrésents.Name = "ListeBoxCsvPrésents";
+            this.ListeBoxCsvPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListeBoxCsvPrésents.Size = new System.Drawing.Size(252, 212);
+            this.ListeBoxCsvPrésents.TabIndex = 17;
+            this.ListeBoxCsvPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionClasseTraitementAnnée);
             // 
-            // label1
+            // LblTitre
             // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(270, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(498, 35);
-            this.label1.TabIndex = 18;
-            this.label1.Text = "Traitement des domaines de compétences";
+            this.LblTitre.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblTitre.AutoSize = true;
+            this.LblTitre.Font = new System.Drawing.Font("Comic Sans MS", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblTitre.ForeColor = System.Drawing.Color.Blue;
+            this.LblTitre.Location = new System.Drawing.Point(270, 9);
+            this.LblTitre.Name = "LblTitre";
+            this.LblTitre.Size = new System.Drawing.Size(498, 35);
+            this.LblTitre.TabIndex = 18;
+            this.LblTitre.Text = "Traitement des domaines de compétences";
             // 
             // label2
             // 
@@ -372,117 +372,118 @@
             this.label6.TabIndex = 23;
             this.label6.Text = "Classes de 3ème";
             // 
-            // Supprimer_tout
+            // BtnSuppressionBases
             // 
-            this.Supprimer_tout.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.Supprimer_tout.Location = new System.Drawing.Point(1025, 91);
-            this.Supprimer_tout.Name = "Supprimer_tout";
-            this.Supprimer_tout.Size = new System.Drawing.Size(112, 23);
-            this.Supprimer_tout.TabIndex = 26;
-            this.Supprimer_tout.Text = "Supprimer les bases";
-            this.Supprimer_tout.UseVisualStyleBackColor = true;
-            this.Supprimer_tout.Click += new System.EventHandler(this.Supprimer_tout_Click);
+            this.BtnSuppressionBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSuppressionBases.Location = new System.Drawing.Point(1025, 91);
+            this.BtnSuppressionBases.Name = "BtnSuppressionBases";
+            this.BtnSuppressionBases.Size = new System.Drawing.Size(112, 23);
+            this.BtnSuppressionBases.TabIndex = 26;
+            this.BtnSuppressionBases.Text = "Supprimer les bases";
+            this.BtnSuppressionBases.UseVisualStyleBackColor = true;
+            this.BtnSuppressionBases.Click += new System.EventHandler(this.SuppressionBases_Click);
             // 
-            // pictureBox2
+            // PictureStJacques
             // 
-            this.pictureBox2.Image = global::Compétences.Properties.Resources.St_Jacques;
-            this.pictureBox2.Location = new System.Drawing.Point(14, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(94, 55);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 25;
-            this.pictureBox2.TabStop = false;
+            this.PictureStJacques.Image = global::Compétences.Properties.Resources.St_Jacques;
+            this.PictureStJacques.Location = new System.Drawing.Point(14, 9);
+            this.PictureStJacques.Name = "PictureStJacques";
+            this.PictureStJacques.Size = new System.Drawing.Size(94, 55);
+            this.PictureStJacques.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureStJacques.TabIndex = 25;
+            this.PictureStJacques.TabStop = false;
             // 
-            // pictureBox1
+            // PictureELyco
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = global::Compétences.Properties.Resources.E_Lyco;
-            this.pictureBox1.Location = new System.Drawing.Point(1025, 12);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(151, 56);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 24;
-            this.pictureBox1.TabStop = false;
+            this.PictureELyco.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.PictureELyco.Image = global::Compétences.Properties.Resources.E_Lyco;
+            this.PictureELyco.Location = new System.Drawing.Point(1025, 12);
+            this.PictureELyco.Name = "PictureELyco";
+            this.PictureELyco.Size = new System.Drawing.Size(151, 56);
+            this.PictureELyco.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.PictureELyco.TabIndex = 24;
+            this.PictureELyco.TabStop = false;
             // 
-            // SuppressionFichierCsv
+            // BtnSuppressionFichierCsv
             // 
-            this.SuppressionFichierCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuppressionFichierCsv.Location = new System.Drawing.Point(771, 553);
-            this.SuppressionFichierCsv.Name = "SuppressionFichierCsv";
-            this.SuppressionFichierCsv.Size = new System.Drawing.Size(97, 23);
-            this.SuppressionFichierCsv.TabIndex = 27;
-            this.SuppressionFichierCsv.Text = "Supprimer fichier";
-            this.SuppressionFichierCsv.UseVisualStyleBackColor = true;
-            this.SuppressionFichierCsv.Click += new System.EventHandler(this.SuppressionFichierCsv_Click);
+            this.BtnSuppressionFichierCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSuppressionFichierCsv.Location = new System.Drawing.Point(771, 553);
+            this.BtnSuppressionFichierCsv.Name = "BtnSuppressionFichierCsv";
+            this.BtnSuppressionFichierCsv.Size = new System.Drawing.Size(97, 23);
+            this.BtnSuppressionFichierCsv.TabIndex = 27;
+            this.BtnSuppressionFichierCsv.Text = "Supprimer fichier";
+            this.BtnSuppressionFichierCsv.UseVisualStyleBackColor = true;
+            this.BtnSuppressionFichierCsv.Click += new System.EventHandler(this.SuppressionFichierCsv_Click);
             // 
-            // Liste_xlsx_présents
+            // ListeBoxXlsxPrésents
             // 
-            this.Liste_xlsx_présents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.Liste_xlsx_présents.FormattingEnabled = true;
-            this.Liste_xlsx_présents.Location = new System.Drawing.Point(924, 320);
-            this.Liste_xlsx_présents.Name = "Liste_xlsx_présents";
-            this.Liste_xlsx_présents.SelectionMode = System.Windows.Forms.SelectionMode.MultiSimple;
-            this.Liste_xlsx_présents.Size = new System.Drawing.Size(252, 212);
-            this.Liste_xlsx_présents.TabIndex = 28;
-            this.Liste_xlsx_présents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.Liste_xlsx_présents_MouseDoubleClick);
+            this.ListeBoxXlsxPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListeBoxXlsxPrésents.FormattingEnabled = true;
+            this.ListeBoxXlsxPrésents.Location = new System.Drawing.Point(924, 320);
+            this.ListeBoxXlsxPrésents.Name = "ListeBoxXlsxPrésents";
+            this.ListeBoxXlsxPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListeBoxXlsxPrésents.Size = new System.Drawing.Size(252, 212);
+            this.ListeBoxXlsxPrésents.TabIndex = 28;
+            this.ListeBoxXlsxPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionFichierXlsx);
+            this.ListeBoxXlsxPrésents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OuvrirFichierXlsx_MouseDoubleClick);
             // 
-            // SuppressionFichierXlsx
+            // BtnSuppressionFichierXlsx
             // 
-            this.SuppressionFichierXlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.SuppressionFichierXlsx.Location = new System.Drawing.Point(1079, 553);
-            this.SuppressionFichierXlsx.Name = "SuppressionFichierXlsx";
-            this.SuppressionFichierXlsx.Size = new System.Drawing.Size(97, 23);
-            this.SuppressionFichierXlsx.TabIndex = 29;
-            this.SuppressionFichierXlsx.Text = "Supprimer fichier";
-            this.SuppressionFichierXlsx.UseVisualStyleBackColor = true;
-            this.SuppressionFichierXlsx.Click += new System.EventHandler(this.SuppressionFichierXlsx_Click);
+            this.BtnSuppressionFichierXlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSuppressionFichierXlsx.Location = new System.Drawing.Point(1079, 553);
+            this.BtnSuppressionFichierXlsx.Name = "BtnSuppressionFichierXlsx";
+            this.BtnSuppressionFichierXlsx.Size = new System.Drawing.Size(97, 23);
+            this.BtnSuppressionFichierXlsx.TabIndex = 29;
+            this.BtnSuppressionFichierXlsx.Text = "Supprimer fichier";
+            this.BtnSuppressionFichierXlsx.UseVisualStyleBackColor = true;
+            this.BtnSuppressionFichierXlsx.Click += new System.EventHandler(this.SuppressionFichierXlsx_Click);
             // 
-            // lbl_fichiers_csv_a_traiter
+            // LblFichiersCsvATraiter
             // 
-            this.lbl_fichiers_csv_a_traiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.lbl_fichiers_csv_a_traiter.AutoSize = true;
-            this.lbl_fichiers_csv_a_traiter.Location = new System.Drawing.Point(60, 280);
-            this.lbl_fichiers_csv_a_traiter.Name = "lbl_fichiers_csv_a_traiter";
-            this.lbl_fichiers_csv_a_traiter.Size = new System.Drawing.Size(0, 13);
-            this.lbl_fichiers_csv_a_traiter.TabIndex = 30;
+            this.LblFichiersCsvATraiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.LblFichiersCsvATraiter.AutoSize = true;
+            this.LblFichiersCsvATraiter.Location = new System.Drawing.Point(60, 280);
+            this.LblFichiersCsvATraiter.Name = "LblFichiersCsvATraiter";
+            this.LblFichiersCsvATraiter.Size = new System.Drawing.Size(0, 13);
+            this.LblFichiersCsvATraiter.TabIndex = 30;
             // 
-            // lbl_fichiers_csv_conservés
+            // LblFichiersCsvPrésents
             // 
-            this.lbl_fichiers_csv_conservés.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_fichiers_csv_conservés.AutoSize = true;
-            this.lbl_fichiers_csv_conservés.Location = new System.Drawing.Point(613, 280);
-            this.lbl_fichiers_csv_conservés.Name = "lbl_fichiers_csv_conservés";
-            this.lbl_fichiers_csv_conservés.Size = new System.Drawing.Size(0, 13);
-            this.lbl_fichiers_csv_conservés.TabIndex = 31;
+            this.LblFichiersCsvPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblFichiersCsvPrésents.AutoSize = true;
+            this.LblFichiersCsvPrésents.Location = new System.Drawing.Point(613, 280);
+            this.LblFichiersCsvPrésents.Name = "LblFichiersCsvPrésents";
+            this.LblFichiersCsvPrésents.Size = new System.Drawing.Size(0, 13);
+            this.LblFichiersCsvPrésents.TabIndex = 31;
             // 
-            // lbl_fichiers_xlsx
+            // LblFichiersXlsxPrésents
             // 
-            this.lbl_fichiers_xlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_fichiers_xlsx.AutoSize = true;
-            this.lbl_fichiers_xlsx.Location = new System.Drawing.Point(921, 280);
-            this.lbl_fichiers_xlsx.Name = "lbl_fichiers_xlsx";
-            this.lbl_fichiers_xlsx.Size = new System.Drawing.Size(0, 13);
-            this.lbl_fichiers_xlsx.TabIndex = 32;
+            this.LblFichiersXlsxPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.LblFichiersXlsxPrésents.AutoSize = true;
+            this.LblFichiersXlsxPrésents.Location = new System.Drawing.Point(921, 280);
+            this.LblFichiersXlsxPrésents.Name = "LblFichiersXlsxPrésents";
+            this.LblFichiersXlsxPrésents.Size = new System.Drawing.Size(0, 13);
+            this.LblFichiersXlsxPrésents.TabIndex = 32;
             // 
-            // Supprimer_trimestre
+            // BtnGénérerPublipostageDnb
             // 
-            this.Supprimer_trimestre.Location = new System.Drawing.Point(616, 553);
-            this.Supprimer_trimestre.Name = "Supprimer_trimestre";
-            this.Supprimer_trimestre.Size = new System.Drawing.Size(108, 23);
-            this.Supprimer_trimestre.TabIndex = 33;
-            this.Supprimer_trimestre.Text = "Supprimer trimestre";
-            this.Supprimer_trimestre.UseVisualStyleBackColor = true;
-            this.Supprimer_trimestre.Click += new System.EventHandler(this.Supprimer_trimestre_Click);
+            this.BtnGénérerPublipostageDnb.Location = new System.Drawing.Point(1025, 226);
+            this.BtnGénérerPublipostageDnb.Name = "BtnGénérerPublipostageDnb";
+            this.BtnGénérerPublipostageDnb.Size = new System.Drawing.Size(151, 23);
+            this.BtnGénérerPublipostageDnb.TabIndex = 35;
+            this.BtnGénérerPublipostageDnb.Text = "Générer publipostage DNB";
+            this.BtnGénérerPublipostageDnb.UseVisualStyleBackColor = true;
+            this.BtnGénérerPublipostageDnb.Click += new System.EventHandler(this.LancerTraitementDnb_Click);
             // 
-            // Supprimer_trimestre_xlsx
+            // BtnGénérerfichiersExcelDnb
             // 
-            this.Supprimer_trimestre_xlsx.Location = new System.Drawing.Point(924, 553);
-            this.Supprimer_trimestre_xlsx.Name = "Supprimer_trimestre_xlsx";
-            this.Supprimer_trimestre_xlsx.Size = new System.Drawing.Size(108, 23);
-            this.Supprimer_trimestre_xlsx.TabIndex = 34;
-            this.Supprimer_trimestre_xlsx.Text = "Supprimer trimestre";
-            this.Supprimer_trimestre_xlsx.UseVisualStyleBackColor = true;
-            this.Supprimer_trimestre_xlsx.Click += new System.EventHandler(this.Supprimer_trimestre_xlsx_Click);
+            this.BtnGénérerfichiersExcelDnb.Location = new System.Drawing.Point(1025, 197);
+            this.BtnGénérerfichiersExcelDnb.Name = "BtnGénérerfichiersExcelDnb";
+            this.BtnGénérerfichiersExcelDnb.Size = new System.Drawing.Size(151, 23);
+            this.BtnGénérerfichiersExcelDnb.TabIndex = 36;
+            this.BtnGénérerfichiersExcelDnb.Text = "Générer fichiers Excel DNB";
+            this.BtnGénérerfichiersExcelDnb.UseVisualStyleBackColor = true;
+            this.BtnGénérerfichiersExcelDnb.Click += new System.EventHandler(this.BtnGénérerfichiersExcelDnb_Click);
             // 
             // Principal
             // 
@@ -490,47 +491,47 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
-            this.Controls.Add(this.Supprimer_trimestre_xlsx);
-            this.Controls.Add(this.Supprimer_trimestre);
-            this.Controls.Add(this.lbl_fichiers_xlsx);
-            this.Controls.Add(this.lbl_fichiers_csv_conservés);
-            this.Controls.Add(this.lbl_fichiers_csv_a_traiter);
-            this.Controls.Add(this.SuppressionFichierXlsx);
-            this.Controls.Add(this.Liste_xlsx_présents);
-            this.Controls.Add(this.SuppressionFichierCsv);
-            this.Controls.Add(this.Supprimer_tout);
-            this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.BtnGénérerfichiersExcelDnb);
+            this.Controls.Add(this.BtnGénérerPublipostageDnb);
+            this.Controls.Add(this.LblFichiersXlsxPrésents);
+            this.Controls.Add(this.LblFichiersCsvPrésents);
+            this.Controls.Add(this.LblFichiersCsvATraiter);
+            this.Controls.Add(this.BtnSuppressionFichierXlsx);
+            this.Controls.Add(this.ListeBoxXlsxPrésents);
+            this.Controls.Add(this.BtnSuppressionFichierCsv);
+            this.Controls.Add(this.BtnSuppressionBases);
+            this.Controls.Add(this.PictureStJacques);
+            this.Controls.Add(this.PictureELyco);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Liste_csv_présents);
-            this.Controls.Add(this.Chemin_destination);
-            this.Controls.Add(this.Dossier_destination);
-            this.Controls.Add(this.bouton_annee);
-            this.Controls.Add(this.bouton_periode3);
-            this.Controls.Add(this.bouton_periode2);
-            this.Controls.Add(this.bouton_periode1);
-            this.Controls.Add(this.Créer_arborescence);
-            this.Controls.Add(this.Chemin_dossier);
-            this.Controls.Add(this.Dossier_travail);
-            this.Controls.Add(this.Annee_scolaire);
-            this.Controls.Add(this.Niveau_3);
-            this.Controls.Add(this.Niveau_4);
-            this.Controls.Add(this.Niveau_5);
-            this.Controls.Add(this.Niveau_6);
-            this.Controls.Add(this.Liste_CSV_a_traiter);
-            this.Controls.Add(this.Lancer_traitement);
+            this.Controls.Add(this.LblTitre);
+            this.Controls.Add(this.ListeBoxCsvPrésents);
+            this.Controls.Add(this.LblCheminDossierXlsx);
+            this.Controls.Add(this.BtnDossierXlsx);
+            this.Controls.Add(this.RadioBtnAnnée);
+            this.Controls.Add(this.RadioBtnPériode3);
+            this.Controls.Add(this.RadioBtnPériode2);
+            this.Controls.Add(this.RadioBtnPériode1);
+            this.Controls.Add(this.BtnCréationArborescence);
+            this.Controls.Add(this.LblCheminDossierCsv);
+            this.Controls.Add(this.BtnDossierCsv);
+            this.Controls.Add(this.ComboAnnéeScolaire);
+            this.Controls.Add(this.ComboNiveau3);
+            this.Controls.Add(this.ComboNiveau4);
+            this.Controls.Add(this.ComboNiveau5);
+            this.Controls.Add(this.ComboNiveau6);
+            this.Controls.Add(this.ListBoxCsvATraiter);
+            this.Controls.Add(this.BtnLancerTraitement);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -538,40 +539,40 @@
 
         #endregion
 
-        private System.Windows.Forms.Button Lancer_traitement;
-        private System.Windows.Forms.ListBox Liste_CSV_a_traiter;
-        private System.Windows.Forms.ComboBox Niveau_6;
-        private System.Windows.Forms.ComboBox Niveau_5;
-        private System.Windows.Forms.ComboBox Niveau_4;
-        private System.Windows.Forms.ComboBox Niveau_3;
-        private System.Windows.Forms.ComboBox Annee_scolaire;
-        private System.Windows.Forms.Button Dossier_travail;
-        private System.Windows.Forms.Label Chemin_dossier;
-        private System.Windows.Forms.RadioButton bouton_periode1;
-        private System.Windows.Forms.RadioButton bouton_periode2;
-        private System.Windows.Forms.RadioButton bouton_periode3;
-        private System.Windows.Forms.RadioButton bouton_annee;
-        private System.Windows.Forms.Button Créer_arborescence;
-        private System.Windows.Forms.Button Dossier_destination;
-        private System.Windows.Forms.Label Chemin_destination;
-        private System.Windows.Forms.ListBox Liste_csv_présents;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button BtnLancerTraitement;
+        private System.Windows.Forms.ListBox ListBoxCsvATraiter;
+        private System.Windows.Forms.ComboBox ComboNiveau6;
+        private System.Windows.Forms.ComboBox ComboNiveau5;
+        private System.Windows.Forms.ComboBox ComboNiveau4;
+        private System.Windows.Forms.ComboBox ComboNiveau3;
+        private System.Windows.Forms.ComboBox ComboAnnéeScolaire;
+        private System.Windows.Forms.Button BtnDossierCsv;
+        private System.Windows.Forms.Label LblCheminDossierCsv;
+        private System.Windows.Forms.RadioButton RadioBtnPériode1;
+        private System.Windows.Forms.RadioButton RadioBtnPériode2;
+        private System.Windows.Forms.RadioButton RadioBtnPériode3;
+        private System.Windows.Forms.RadioButton RadioBtnAnnée;
+        private System.Windows.Forms.Button BtnCréationArborescence;
+        private System.Windows.Forms.Button BtnDossierXlsx;
+        private System.Windows.Forms.Label LblCheminDossierXlsx;
+        private System.Windows.Forms.ListBox ListeBoxCsvPrésents;
+        private System.Windows.Forms.Label LblTitre;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button Supprimer_tout;
-        private System.Windows.Forms.Button SuppressionFichierCsv;
-        private System.Windows.Forms.ListBox Liste_xlsx_présents;
-        private System.Windows.Forms.Button SuppressionFichierXlsx;
-        private System.Windows.Forms.Label lbl_fichiers_csv_a_traiter;
-        private System.Windows.Forms.Label lbl_fichiers_csv_conservés;
-        private System.Windows.Forms.Label lbl_fichiers_xlsx;
-        private System.Windows.Forms.Button Supprimer_trimestre;
-        private System.Windows.Forms.Button Supprimer_trimestre_xlsx;
+        private System.Windows.Forms.PictureBox PictureELyco;
+        private System.Windows.Forms.PictureBox PictureStJacques;
+        private System.Windows.Forms.Button BtnSuppressionBases;
+        private System.Windows.Forms.Button BtnSuppressionFichierCsv;
+        private System.Windows.Forms.ListBox ListeBoxXlsxPrésents;
+        private System.Windows.Forms.Button BtnSuppressionFichierXlsx;
+        private System.Windows.Forms.Label LblFichiersCsvATraiter;
+        private System.Windows.Forms.Label LblFichiersCsvPrésents;
+        private System.Windows.Forms.Label LblFichiersXlsxPrésents;
+        private System.Windows.Forms.Button BtnGénérerPublipostageDnb;
+        private System.Windows.Forms.Button BtnGénérerfichiersExcelDnb;
     }
 }
 

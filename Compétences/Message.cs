@@ -6,20 +6,18 @@ namespace Compétences
 {
     public partial class Message : Form
     {
-        public string message = "";
-
         public Message()
 
         {
             InitializeComponent();
         }
 
-        private void Form2_Load(object sender, EventArgs e)
+        private void Message_Load(object sender, EventArgs e)
         {
-            label1.TextAlign = ContentAlignment.MiddleCenter;
+            LblMessageTraitement.TextAlign = ContentAlignment.MiddleCenter;
         }
 
-        private void btn_fermer_Click(object sender, EventArgs e)
+        private void BtnFermer_Click(object sender, EventArgs e)
         {
             this.Close();
         }
