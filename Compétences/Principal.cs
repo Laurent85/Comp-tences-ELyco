@@ -30,7 +30,14 @@ namespace Compétences
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", String.Empty);
             BtnLancerTraitement.Enabled = false;
             RafraichirListbox();
-            
+            foreach (var listBoxItem in ListBoxCsvATraiter.Items)
+            {
+                if (!File.Exists(LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
+                    File.Copy(listBoxItem.ToString(), LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
+
+                File.AppendAllText("C:\\ELyco\\ELyco_classes.txt", Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
+            }
+
             try
             {
                 ComboAnnéeScolaire.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(2).Take(3).First();
@@ -131,8 +138,10 @@ namespace Compétences
             Changer_ligne_fichier_txt(ComboNiveau3.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 7);
         }
 
-        public void Lancer_traitement_Click(object sender, EventArgs e)
+        public void LancerTraitementCsv_Click(object sender, EventArgs e)
         {
+            VérifierDoublonClasseCsv(DétectionPériode());
+
             BackgroundWorker traitementMacro = new BackgroundWorker();
             traitementMacro.DoWork += TraitementMacroLancement;
             traitementMacro.RunWorkerCompleted += TraitementMacroFini;
@@ -250,14 +259,14 @@ namespace Compétences
 
         private void SuppressionFichierCsv_Click(object sender, EventArgs e)
         {
-            SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListeBoxCsvPrésents);
+            SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListeBoxCsvPrésents, SearchOption.AllDirectories, ListeBoxCsvPrésents.SelectedItem.ToString());
             LblFichiersCsvPrésents.Text = CompterFichiersXlsx(ListeBoxCsvPrésents) + @" fichiers CSV présents";
             LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListeBoxXlsxPrésents) + @" fichiers XLSX présents";
         }
 
         private void SuppressionFichierXlsx_Click(object sender, EventArgs e)
         {
-            SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListeBoxXlsxPrésents);
+            SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListeBoxXlsxPrésents, SearchOption.AllDirectories, ListeBoxXlsxPrésents.SelectedItem.ToString());
             LblFichiersCsvPrésents.Text = CompterFichiersXlsx(ListeBoxCsvPrésents) + @" fichiers CSV présents";
             LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListeBoxXlsxPrésents) + @" fichiers XLSX présents";
         }
@@ -269,7 +278,7 @@ namespace Compétences
             {
                 try
                 {
-                    SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListeBoxCsvPrésents);
+                    SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListeBoxCsvPrésents, SearchOption.AllDirectories, ListeBoxCsvPrésents.SelectedItem.ToString());
                 }
                 catch
                 {
@@ -277,7 +286,7 @@ namespace Compétences
                 }
                 try
                 {
-                    SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListeBoxXlsxPrésents);
+                    SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListeBoxXlsxPrésents, SearchOption.AllDirectories, ListeBoxXlsxPrésents.SelectedItem.ToString());
                 }
                 catch
                 {
@@ -415,10 +424,13 @@ namespace Compétences
 
                 DirectoryInfo[] subdirectoryInfo = directoryInfo.GetDirectories();
 
-                foreach (DirectoryInfo subDirectory in subdirectoryInfo)
-
+                if (liste != ListBoxCsvATraiter)
                 {
-                    Liste_fichiers_présents(subDirectory.FullName, "", liste);
+                    foreach (DirectoryInfo subDirectory in subdirectoryInfo)
+
+                    {
+                        Liste_fichiers_présents(subDirectory.FullName, "", liste);
+                    }
                 }
 
                 foreach (FileInfo file in fileInfo)
@@ -446,12 +458,12 @@ namespace Compétences
             return countXlsx;
         }
 
-        private int CompterFichiersDocx(ListBox listbox)
+        private int CompterFichiersDnb(ListBox listbox)
         {
             int countDocx = 0;
             foreach (var item in listbox.Items)
             {
-                if (item.ToString().Contains("docx")) countDocx++;
+                if (item.ToString().Contains("DNB-")) countDocx++;
             }
             return countDocx;
         }
@@ -498,6 +510,11 @@ namespace Compétences
             Liste_fichiers_présents(LblCheminDossierXlsx.Text, "DNB" + "\\", ListeBoxXlsxPrésents);
         }
 
+        private void RemplirListeCsvATraiter()
+        {
+            Liste_fichiers_présents(LblCheminDossierCsv.Text, "", ListBoxCsvATraiter);
+        }
+
         private void RafraichirListbox()
         {
             EffacerListbox(ListBoxCsvATraiter);
@@ -506,9 +523,10 @@ namespace Compétences
             Vérifier_chemins_dossiers();
             RemplirListeCsvPrésents();
             RemplirListeXlsxPrésents();
-            LblFichiersCsvATraiter.Text = "";
+            RemplirListeCsvATraiter();
+            LblFichiersCsvATraiter.Text = ListBoxCsvATraiter.Items.Count + @" classes à traiter";
             LblFichiersCsvPrésents.Text = CompterFichiersXlsx(ListeBoxCsvPrésents) + @" fichiers CSV";
-            LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListeBoxXlsxPrésents) + @" fichiers XLSX et " + CompterFichiersDocx(ListeBoxXlsxPrésents) + @" fichiers DNB";
+            LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListeBoxXlsxPrésents) + @" fichiers XLSX et " + CompterFichiersDnb(ListeBoxXlsxPrésents) + @" fichiers DNB";
         }
 
         private void SelectionClasseTraitementAnnée(object sender, EventArgs e)
@@ -523,27 +541,28 @@ namespace Compétences
             }
         }
 
-        private void SelectionFichierXlsx(object sender, EventArgs e)
+        private void SelectionFichierDnb(object sender, EventArgs e)
         {
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", String.Empty);
             foreach (var listBoxItem in ListeBoxXlsxPrésents.SelectedItems)
             {
-                if (listBoxItem.ToString().Contains("Annee-competence"))
+                if (listBoxItem.ToString().Contains("DNB-"))
                 {
-                    File.AppendAllText("C:\\ELyco\\ELyco_classes_dnb.txt", Path.GetFileName(listBoxItem.ToString()).Substring(17, 2) + Environment.NewLine);
+                    File.AppendAllText("C:\\ELyco\\ELyco_classes_dnb.txt", Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
                 }
             }
         }
 
-        private void SuppressionFichiersIndividuels(string chemin, ListBox liste)
+        private void SuppressionFichiersIndividuels(string chemin, ListBox liste, SearchOption chercher, string fichier)
         {
-            string[] files = Directory.GetFiles(chemin, "*.*", SearchOption.AllDirectories);
+            string[] files = Directory.GetFiles(chemin, "*.*", chercher);
 
             foreach (string file in files)
             {
+                // ReSharper disable once UnusedVariable
                 foreach (var selecteditem in liste.SelectedItems)
                 {
-                    if (file.Contains(selecteditem.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
+                    if (file.Contains(fichier) && (file.Contains("competence") || file.Contains("DNB-")))
                         File.Delete(file);
                 }
             }
@@ -552,6 +571,7 @@ namespace Compétences
             if (liste.SelectedIndex != -1)
             {
                 for (int i = selectedItems.Count - 1; i >= 0; i--)
+
                     if (selectedItems.Contains("competence") || selectedItems.Contains("DNB-"))
                     {
                         liste.Items.Remove(selectedItems[i]);
@@ -696,7 +716,7 @@ namespace Compétences
 
                 del.Delete();
 
-                destworkBook.SaveAs(LblCheminDossierXlsx.Text + "DNB\\DNB-" + classe + ".xlsx");
+                destworkBook.SaveAs(LblCheminDossierXlsx.Text + "DNB\\DNB-" + classe + "_" + DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
                 srcworkBook.Close();
                 destworkBook.Close();
             }
@@ -722,7 +742,7 @@ namespace Compétences
                 File.AppendAllText("C:\\ELyco\\ELyco_classes.txt", Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
             }
 
-            LblFichiersCsvATraiter.Text = ListBoxCsvATraiter.Items.Count + @" classes à traiter";
+            RafraichirListbox();
         }
 
         private void Drag_Enter(object sender, DragEventArgs e)
@@ -731,6 +751,61 @@ namespace Compétences
             {
                 e.Effect = DragDropEffects.All;
             }
+        }
+
+        private void VérifierDoublonClasseCsv(string période)
+        {
+            ListBox templist = new ListBox();
+            foreach (var t in ListBoxCsvATraiter.Items)
+
+            {
+                string classe = Path.GetFileName(t.ToString()).Substring(25, 2);
+
+                foreach (string s in Directory.GetFiles(LblCheminDossierCsv.Text + "\\" + période + "\\" + classe + "\\", "*.csv").Select(Path.GetFileName))
+                {
+                    string classe1 = s.Substring(25, 2);
+
+                    if (classe == classe1)
+                    {
+                        MessageBox.Show(@"Il existe déjà un fichier pour la classe " + classe1 + @" dans le dossier '" + période + @"'");
+                        templist.Items.Add(classe);
+                        File.Delete(LblCheminDossierCsv.Text + "\\" + s);
+                    }
+                }
+            }
+
+            foreach (var v in templist.Items)
+            {
+                ListBoxCsvATraiter.Items.Remove(v);
+            }
+
+            RafraichirListbox();
+        }
+
+        public void NettoyageFichiersCsvATraiter()
+        {
+            foreach (string s in Directory.GetFiles(LblCheminDossierCsv.Text + "\\", "*.csv").Select(Path.GetFileName))
+            {
+                File.Delete(LblCheminDossierCsv.Text + "\\" + s);
+            }
+        }
+
+        private string DétectionPériode()
+        {
+            string périodeSelect = null;
+            foreach (RadioButton période in PanelTrimestre.Controls)
+            {
+                if (période.Checked)
+                {
+                    périodeSelect = période.Text;
+                }
+            }
+            return périodeSelect;
+        }
+
+        private void BtnSuppressionFichierCsvATraiter_Click(object sender, EventArgs e)
+        {
+            SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListBoxCsvATraiter, SearchOption.TopDirectoryOnly, ListBoxCsvATraiter.SelectedItem.ToString().Substring(ListBoxCsvATraiter.SelectedItem.ToString().LastIndexOf('\\') + 1));
         }
     }
 }
