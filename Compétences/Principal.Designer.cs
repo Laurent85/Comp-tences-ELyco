@@ -45,18 +45,18 @@
             this.BtnCréationArborescence = new System.Windows.Forms.Button();
             this.BtnDossierXlsx = new System.Windows.Forms.Button();
             this.LblCheminDossierXlsx = new System.Windows.Forms.Label();
-            this.ListeBoxCsvPrésents = new System.Windows.Forms.ListBox();
+            this.ListBoxCsvPrésents = new System.Windows.Forms.ListBox();
             this.LblTitre = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.LblAnnéeScolaire = new System.Windows.Forms.Label();
+            this.LblNiveau6 = new System.Windows.Forms.Label();
+            this.LblNiveau5 = new System.Windows.Forms.Label();
+            this.LblNiveau4 = new System.Windows.Forms.Label();
+            this.LblNiveau3 = new System.Windows.Forms.Label();
             this.BtnSuppressionBases = new System.Windows.Forms.Button();
             this.PictureStJacques = new System.Windows.Forms.PictureBox();
             this.PictureELyco = new System.Windows.Forms.PictureBox();
             this.BtnSuppressionFichierCsv = new System.Windows.Forms.Button();
-            this.ListeBoxXlsxPrésents = new System.Windows.Forms.ListBox();
+            this.ListBoxXlsxPrésents = new System.Windows.Forms.ListBox();
             this.BtnSuppressionFichierXlsx = new System.Windows.Forms.Button();
             this.LblFichiersCsvATraiter = new System.Windows.Forms.Label();
             this.LblFichiersCsvPrésents = new System.Windows.Forms.Label();
@@ -306,16 +306,16 @@
             this.LblCheminDossierXlsx.Size = new System.Drawing.Size(0, 13);
             this.LblCheminDossierXlsx.TabIndex = 15;
             // 
-            // ListeBoxCsvPrésents
+            // ListBoxCsvPrésents
             // 
-            this.ListeBoxCsvPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListeBoxCsvPrésents.FormattingEnabled = true;
-            this.ListeBoxCsvPrésents.Location = new System.Drawing.Point(613, 283);
-            this.ListeBoxCsvPrésents.Name = "ListeBoxCsvPrésents";
-            this.ListeBoxCsvPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ListeBoxCsvPrésents.Size = new System.Drawing.Size(252, 212);
-            this.ListeBoxCsvPrésents.TabIndex = 17;
-            this.ListeBoxCsvPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionClasseTraitementAnnée);
+            this.ListBoxCsvPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListBoxCsvPrésents.FormattingEnabled = true;
+            this.ListBoxCsvPrésents.Location = new System.Drawing.Point(613, 283);
+            this.ListBoxCsvPrésents.Name = "ListBoxCsvPrésents";
+            this.ListBoxCsvPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListBoxCsvPrésents.Size = new System.Drawing.Size(252, 212);
+            this.ListBoxCsvPrésents.TabIndex = 17;
+            this.ListBoxCsvPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionClasseTraitementAnnée);
             // 
             // LblTitre
             // 
@@ -329,65 +329,65 @@
             this.LblTitre.TabIndex = 18;
             this.LblTitre.Text = "Traitement des domaines de compétences";
             // 
-            // label2
+            // LblAnnéeScolaire
             // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label2.Location = new System.Drawing.Point(169, 74);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(91, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Année scolaire";
+            this.LblAnnéeScolaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblAnnéeScolaire.AutoSize = true;
+            this.LblAnnéeScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblAnnéeScolaire.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LblAnnéeScolaire.Location = new System.Drawing.Point(169, 74);
+            this.LblAnnéeScolaire.Name = "LblAnnéeScolaire";
+            this.LblAnnéeScolaire.Size = new System.Drawing.Size(91, 13);
+            this.LblAnnéeScolaire.TabIndex = 19;
+            this.LblAnnéeScolaire.Text = "Année scolaire";
             // 
-            // label3
+            // LblNiveau6
             // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label3.Location = new System.Drawing.Point(340, 74);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(102, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Classes de 6ème";
+            this.LblNiveau6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblNiveau6.AutoSize = true;
+            this.LblNiveau6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNiveau6.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LblNiveau6.Location = new System.Drawing.Point(340, 74);
+            this.LblNiveau6.Name = "LblNiveau6";
+            this.LblNiveau6.Size = new System.Drawing.Size(102, 13);
+            this.LblNiveau6.TabIndex = 20;
+            this.LblNiveau6.Text = "Classes de 6ème";
             // 
-            // label4
+            // LblNiveau5
             // 
-            this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label4.Location = new System.Drawing.Point(472, 74);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Classes de 5ème";
+            this.LblNiveau5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblNiveau5.AutoSize = true;
+            this.LblNiveau5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNiveau5.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LblNiveau5.Location = new System.Drawing.Point(472, 74);
+            this.LblNiveau5.Name = "LblNiveau5";
+            this.LblNiveau5.Size = new System.Drawing.Size(102, 13);
+            this.LblNiveau5.TabIndex = 21;
+            this.LblNiveau5.Text = "Classes de 5ème";
             // 
-            // label5
+            // LblNiveau4
             // 
-            this.label5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label5.Location = new System.Drawing.Point(606, 74);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 13);
-            this.label5.TabIndex = 22;
-            this.label5.Text = "Classes de 4ème";
+            this.LblNiveau4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblNiveau4.AutoSize = true;
+            this.LblNiveau4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNiveau4.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LblNiveau4.Location = new System.Drawing.Point(606, 74);
+            this.LblNiveau4.Name = "LblNiveau4";
+            this.LblNiveau4.Size = new System.Drawing.Size(102, 13);
+            this.LblNiveau4.TabIndex = 22;
+            this.LblNiveau4.Text = "Classes de 4ème";
             // 
-            // label6
+            // LblNiveau3
             // 
-            this.label6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.label6.Location = new System.Drawing.Point(725, 74);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(102, 13);
-            this.label6.TabIndex = 23;
-            this.label6.Text = "Classes de 3ème";
+            this.LblNiveau3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.LblNiveau3.AutoSize = true;
+            this.LblNiveau3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LblNiveau3.ForeColor = System.Drawing.Color.RoyalBlue;
+            this.LblNiveau3.Location = new System.Drawing.Point(725, 74);
+            this.LblNiveau3.Name = "LblNiveau3";
+            this.LblNiveau3.Size = new System.Drawing.Size(102, 13);
+            this.LblNiveau3.TabIndex = 23;
+            this.LblNiveau3.Text = "Classes de 3ème";
             // 
             // BtnSuppressionBases
             // 
@@ -432,17 +432,17 @@
             this.BtnSuppressionFichierCsv.UseVisualStyleBackColor = true;
             this.BtnSuppressionFichierCsv.Click += new System.EventHandler(this.SuppressionFichierCsv_Click);
             // 
-            // ListeBoxXlsxPrésents
+            // ListBoxXlsxPrésents
             // 
-            this.ListeBoxXlsxPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.ListeBoxXlsxPrésents.FormattingEnabled = true;
-            this.ListeBoxXlsxPrésents.Location = new System.Drawing.Point(921, 283);
-            this.ListeBoxXlsxPrésents.Name = "ListeBoxXlsxPrésents";
-            this.ListeBoxXlsxPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
-            this.ListeBoxXlsxPrésents.Size = new System.Drawing.Size(255, 212);
-            this.ListeBoxXlsxPrésents.TabIndex = 28;
-            this.ListeBoxXlsxPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionFichierDnb);
-            this.ListeBoxXlsxPrésents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OuvrirFichierXlsx_MouseDoubleClick);
+            this.ListBoxXlsxPrésents.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.ListBoxXlsxPrésents.FormattingEnabled = true;
+            this.ListBoxXlsxPrésents.Location = new System.Drawing.Point(921, 283);
+            this.ListBoxXlsxPrésents.Name = "ListBoxXlsxPrésents";
+            this.ListBoxXlsxPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
+            this.ListBoxXlsxPrésents.Size = new System.Drawing.Size(255, 212);
+            this.ListBoxXlsxPrésents.TabIndex = 28;
+            this.ListBoxXlsxPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionFichierDnb);
+            this.ListBoxXlsxPrésents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OuvrirFichierXlsx_MouseDoubleClick);
             // 
             // BtnSuppressionFichierXlsx
             // 
@@ -563,18 +563,18 @@
             this.Controls.Add(this.LblFichiersCsvPrésents);
             this.Controls.Add(this.LblFichiersCsvATraiter);
             this.Controls.Add(this.BtnSuppressionFichierXlsx);
-            this.Controls.Add(this.ListeBoxXlsxPrésents);
+            this.Controls.Add(this.ListBoxXlsxPrésents);
             this.Controls.Add(this.BtnSuppressionFichierCsv);
             this.Controls.Add(this.BtnSuppressionBases);
             this.Controls.Add(this.PictureStJacques);
             this.Controls.Add(this.PictureELyco);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.LblNiveau3);
+            this.Controls.Add(this.LblNiveau4);
+            this.Controls.Add(this.LblNiveau5);
+            this.Controls.Add(this.LblNiveau6);
+            this.Controls.Add(this.LblAnnéeScolaire);
             this.Controls.Add(this.LblTitre);
-            this.Controls.Add(this.ListeBoxCsvPrésents);
+            this.Controls.Add(this.ListBoxCsvPrésents);
             this.Controls.Add(this.LblCheminDossierXlsx);
             this.Controls.Add(this.BtnDossierXlsx);
             this.Controls.Add(this.BtnCréationArborescence);
@@ -619,18 +619,18 @@
         private System.Windows.Forms.Button BtnCréationArborescence;
         private System.Windows.Forms.Button BtnDossierXlsx;
         private System.Windows.Forms.Label LblCheminDossierXlsx;
-        private System.Windows.Forms.ListBox ListeBoxCsvPrésents;
+        private System.Windows.Forms.ListBox ListBoxCsvPrésents;
         private System.Windows.Forms.Label LblTitre;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label LblAnnéeScolaire;
+        private System.Windows.Forms.Label LblNiveau6;
+        private System.Windows.Forms.Label LblNiveau5;
+        private System.Windows.Forms.Label LblNiveau4;
+        private System.Windows.Forms.Label LblNiveau3;
         private System.Windows.Forms.PictureBox PictureELyco;
         private System.Windows.Forms.PictureBox PictureStJacques;
         private System.Windows.Forms.Button BtnSuppressionBases;
         private System.Windows.Forms.Button BtnSuppressionFichierCsv;
-        private System.Windows.Forms.ListBox ListeBoxXlsxPrésents;
+        private System.Windows.Forms.ListBox ListBoxXlsxPrésents;
         private System.Windows.Forms.Button BtnSuppressionFichierXlsx;
         private System.Windows.Forms.Label LblFichiersCsvATraiter;
         private System.Windows.Forms.Label LblFichiersCsvPrésents;
