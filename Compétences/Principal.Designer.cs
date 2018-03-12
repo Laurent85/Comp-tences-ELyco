@@ -90,6 +90,7 @@
             this.ListBoxCsvATraiter.FormattingEnabled = true;
             this.ListBoxCsvATraiter.Location = new System.Drawing.Point(9, 283);
             this.ListBoxCsvATraiter.Name = "ListBoxCsvATraiter";
+            this.ListBoxCsvATraiter.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBoxCsvATraiter.Size = new System.Drawing.Size(540, 212);
             this.ListBoxCsvATraiter.TabIndex = 1;
             this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
@@ -592,6 +593,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);
+            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SupprimerSélectionsListbox);
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).EndInit();
             this.PanelTrimestre.ResumeLayout(false);
