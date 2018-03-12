@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Compétences.Properties;
+using Microsoft.Office.Interop.Excel;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -6,8 +8,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Compétences.Properties;
-using Microsoft.Office.Interop.Excel;
 using Application = Microsoft.Office.Interop.Excel.Application;
 using ListBox = System.Windows.Forms.ListBox;
 
@@ -29,7 +29,11 @@ namespace Compétences
             File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", string.Empty);
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
             BtnLancerTraitement.Enabled = false;
+            BtnSuppressionFichierCsvATraiter.Enabled = false;
+            BtnSuppressionFichierCsv.Enabled = false;
+            BtnGénérerPublipostageDnb.Enabled = false;
             RafraichirListbox();
+
             foreach (var listBoxItem in ListBoxCsvATraiter.Items)
             {
                 if (!File.Exists(LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
@@ -218,26 +222,6 @@ namespace Compétences
             Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = true;
         }
 
-        private void bouton_periode1_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnLancerTraitement.Enabled = true;
-        }
-
-        private void bouton_periode2_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnLancerTraitement.Enabled = true;
-        }
-
-        private void bouton_periode3_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnLancerTraitement.Enabled = true;
-        }
-
-        private void bouton_annee_CheckedChanged(object sender, EventArgs e)
-        {
-            BtnLancerTraitement.Enabled = true;
-        }
-
         private void BtnGénérerfichiersExcelDnb_Click(object sender, EventArgs e)
         {
             GénérerFichiersXlsxDnb();
@@ -340,9 +324,9 @@ namespace Compétences
             var files = Directory.GetFiles(chemin, "*.*", chercher);
 
             foreach (var file in files)
-            foreach (var item in liste.SelectedItems)
-                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
-                    File.Delete(file);
+                foreach (var item in liste.SelectedItems)
+                    if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
+                        File.Delete(file);
             var selectedItems = liste.SelectedItems;
 
             if (liste.SelectedIndex != -1)
@@ -388,7 +372,7 @@ namespace Compétences
         {
             var classe = 'A';
 
-            var combo = (ComboBox) Controls.Find(string.Format("ComboNiveau" + niveau), false).FirstOrDefault();
+            var combo = (ComboBox)Controls.Find(string.Format("ComboNiveau" + niveau), false).FirstOrDefault();
             if (combo != null)
                 for (var i = 1; i <= int.Parse(combo.Items[combo.SelectedIndex].ToString()); i++)
                 {
@@ -427,7 +411,7 @@ namespace Compétences
                 var classe = Path.GetFileName(t.ToString()).Substring(25, 2);
 
                 foreach (var s in Directory
-                    .GetFiles(LblCheminDossierCsv.Text + "\\" + période + "\\" + classe + "\\", "*.csv")
+                    .GetFiles(LblCheminDossierCsv.Text + période + "\\" + classe + "\\", "*.csv")
                     .Select(Path.GetFileName))
                 {
                     var classe1 = s.Substring(25, 2);
@@ -436,16 +420,21 @@ namespace Compétences
                     {
                         MessageBox.Show(@"Il existe déjà un fichier pour la classe " + classe1 + @" dans le dossier '" +
                                         période + @"'");
-                        templist.Items.Add(classe);
-                        File.Delete(LblCheminDossierCsv.Text + "\\" + s);
+                        templist.Items.Add(t);
+                        File.Delete(LblCheminDossierCsv.Text + t);
                     }
                 }
             }
 
             foreach (var v in templist.Items)
+            {
                 ListBoxCsvATraiter.Items.Remove(v);
+            }
 
-            RafraichirListbox();
+            EffacerListbox(ListBoxCsvATraiter);
+            Vérifier_chemins_dossiers();
+            RemplirListeCsvATraiter();
+            LblFichiersCsvATraiter.Text = ListBoxCsvATraiter.Items.Count + @" classes à traiter";
         }
 
         private static void Changer_ligne_fichier_txt(string newText, string fileName, int lineToEdit)
@@ -561,6 +550,7 @@ namespace Compétences
             LblFichiersCsvPrésents.Text = CompterFichiersXlsx(ListBoxCsvPrésents) + @" fichiers CSV";
             LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListBoxXlsxPrésents) + @" fichiers XLSX et " +
                                            CompterFichiersDnb(ListBoxXlsxPrésents) + @" fichiers DNB";
+            DétectionPériodeSélectionnée(new object(),new EventArgs());
         }
 
         private void SelectionClasseTraitementAnnée(object sender, EventArgs e)
@@ -568,8 +558,17 @@ namespace Compétences
             File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", string.Empty);
             foreach (var listBoxItem in ListBoxCsvPrésents.SelectedItems)
                 if (listBoxItem.ToString().Contains("competence"))
+                {
                     File.AppendAllText("C:\\ELyco\\ELyco_classes_annee.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
+                    BtnSuppressionFichierCsv.Enabled = true;
+                }
+            DétectionPériodeSélectionnée(new object(), new EventArgs());
+            if (ListBoxCsvPrésents.SelectedItems.Count != 0 && ListBoxCsvPrésents.SelectedItem.ToString().Contains("competence"))
+            {
+                BtnSuppressionFichierCsv.Enabled = true;
+            }
+            else BtnSuppressionFichierCsv.Enabled = false;
         }
 
         private void SelectionFichierDnb(object sender, EventArgs e)
@@ -577,8 +576,15 @@ namespace Compétences
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
             foreach (var listBoxItem in ListBoxXlsxPrésents.SelectedItems)
                 if (listBoxItem.ToString().Contains("DNB-"))
+                {
                     File.AppendAllText("C:\\ELyco\\ELyco_classes_dnb.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
+                    BtnGénérerPublipostageDnb.Enabled = true;
+                }
+                else
+                {
+                    BtnGénérerPublipostageDnb.Enabled = false;
+                }
         }
 
         private string DétectionPériode()
@@ -611,13 +617,11 @@ namespace Compétences
             //~~> Define your Excel Objects
             var xlApp = new Application();
 
-            Workbook xlWorkBook;
-
             var sPath = Path.GetTempFileName();
             File.WriteAllBytes(sPath, Resources.Compétences);
 
             //~~> Start Excel and open the workbook.
-            xlWorkBook = xlApp.Workbooks.Open(sPath);
+            var xlWorkBook = xlApp.Workbooks.Open(sPath);
 
             //~~> Run the macros by supplying the necessary arguments
             xlApp.Run(macro);
@@ -677,12 +681,12 @@ namespace Compétences
 
                 var srcPath = LblCheminDossierXlsx.Text + "Année\\" + fichier;
                 var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
+                var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
 
                 var destPath = strPath;
                 var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
-                var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
+                var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
+                var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
 
                 var range = srcworkSheet.Range["A2:A50"];
                 var cnt = -3;
@@ -724,7 +728,7 @@ namespace Compétences
 
         private void Drag(object sender, DragEventArgs e)
         {
-            var fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+            var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (var file in fileList)
             {
                 var filename = Path.GetFullPath(file);
@@ -752,11 +756,32 @@ namespace Compétences
                 e.Effect = DragDropEffects.All;
         }
 
-        private void SupprimerSélectionsListbox(object sender, MouseEventArgs e)
+        private void SupprimerSélectionsListbox(object sender, EventArgs e)
         {
             ListBoxCsvATraiter.ClearSelected();
             ListBoxCsvPrésents.ClearSelected();
             ListBoxXlsxPrésents.ClearSelected();
+        }
+
+        private void DétectionPériodeSélectionnée(object sender, EventArgs e)
+        {
+            DétectionPériode();
+            if ((DétectionPériode() != null && DétectionPériode().Contains("période") && ListBoxCsvATraiter.Items.Count != 0) || (DétectionPériode() != null && DétectionPériode().Contains("Année") && ListBoxCsvPrésents.SelectedItems.Count != 0 && ListBoxCsvPrésents.SelectedItem.ToString().Contains("competence")))
+            {
+                BtnLancerTraitement.Enabled = true;
+            }
+            
+            else BtnLancerTraitement.Enabled = false;
+        }
+
+        private void SélectionFichierCsvATraiter(object sender, EventArgs e)
+        {
+            if (ListBoxCsvATraiter.SelectedItems.Count != 0)
+            {
+                BtnSuppressionFichierCsvATraiter.Enabled = true;
+            }
+            else BtnSuppressionFichierCsvATraiter.Enabled = false;
+
         }
     }
 }

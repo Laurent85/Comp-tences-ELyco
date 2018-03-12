@@ -75,7 +75,7 @@
             // BtnLancerTraitement
             // 
             this.BtnLancerTraitement.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.BtnLancerTraitement.Location = new System.Drawing.Point(440, 559);
+            this.BtnLancerTraitement.Location = new System.Drawing.Point(440, 557);
             this.BtnLancerTraitement.Name = "BtnLancerTraitement";
             this.BtnLancerTraitement.Size = new System.Drawing.Size(109, 23);
             this.BtnLancerTraitement.TabIndex = 0;
@@ -93,6 +93,7 @@
             this.ListBoxCsvATraiter.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBoxCsvATraiter.Size = new System.Drawing.Size(540, 212);
             this.ListBoxCsvATraiter.TabIndex = 1;
+            this.ListBoxCsvATraiter.SelectedIndexChanged += new System.EventHandler(this.SélectionFichierCsvATraiter);
             this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
             this.ListBoxCsvATraiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
             // 
@@ -234,7 +235,7 @@
             this.RadioBtnPériode1.TabStop = true;
             this.RadioBtnPériode1.Text = "1ère période";
             this.RadioBtnPériode1.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode1.CheckedChanged += new System.EventHandler(this.bouton_periode1_CheckedChanged);
+            this.RadioBtnPériode1.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
             // 
             // RadioBtnPériode2
             // 
@@ -247,7 +248,8 @@
             this.RadioBtnPériode2.TabStop = true;
             this.RadioBtnPériode2.Text = "2ème période";
             this.RadioBtnPériode2.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode2.CheckedChanged += new System.EventHandler(this.bouton_periode2_CheckedChanged);
+            this.RadioBtnPériode2.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnPériode2.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
             // 
             // RadioBtnPériode3
             // 
@@ -260,20 +262,22 @@
             this.RadioBtnPériode3.TabStop = true;
             this.RadioBtnPériode3.Text = "3ème période";
             this.RadioBtnPériode3.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode3.CheckedChanged += new System.EventHandler(this.bouton_periode3_CheckedChanged);
+            this.RadioBtnPériode3.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnPériode3.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
             // 
             // RadioBtnAnnée
             // 
             this.RadioBtnAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.RadioBtnAnnée.AutoSize = true;
-            this.RadioBtnAnnée.Location = new System.Drawing.Point(333, 1);
+            this.RadioBtnAnnée.Location = new System.Drawing.Point(322, 1);
             this.RadioBtnAnnée.Name = "RadioBtnAnnée";
             this.RadioBtnAnnée.Size = new System.Drawing.Size(56, 17);
             this.RadioBtnAnnée.TabIndex = 13;
             this.RadioBtnAnnée.TabStop = true;
             this.RadioBtnAnnée.Text = "Année";
             this.RadioBtnAnnée.UseVisualStyleBackColor = true;
-            this.RadioBtnAnnée.CheckedChanged += new System.EventHandler(this.bouton_annee_CheckedChanged);
+            this.RadioBtnAnnée.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnAnnée.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
             // 
             // BtnCréationArborescence
             // 
@@ -488,7 +492,7 @@
             // 
             // BtnGénérerPublipostageDnb
             // 
-            this.BtnGénérerPublipostageDnb.Location = new System.Drawing.Point(921, 559);
+            this.BtnGénérerPublipostageDnb.Location = new System.Drawing.Point(921, 557);
             this.BtnGénérerPublipostageDnb.Name = "BtnGénérerPublipostageDnb";
             this.BtnGénérerPublipostageDnb.Size = new System.Drawing.Size(151, 23);
             this.BtnGénérerPublipostageDnb.TabIndex = 35;
@@ -545,7 +549,7 @@
             this.PanelTrimestre.Controls.Add(this.RadioBtnAnnée);
             this.PanelTrimestre.Location = new System.Drawing.Point(9, 559);
             this.PanelTrimestre.Name = "PanelTrimestre";
-            this.PanelTrimestre.Size = new System.Drawing.Size(417, 23);
+            this.PanelTrimestre.Size = new System.Drawing.Size(425, 23);
             this.PanelTrimestre.TabIndex = 40;
             // 
             // Principal
@@ -593,7 +597,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conversion des compétences sur E-Lyco";
             this.Load += new System.EventHandler(this.Principal_Load);
-            this.MouseClick += new System.Windows.Forms.MouseEventHandler(this.SupprimerSélectionsListbox);
+            this.Click += new System.EventHandler(this.SupprimerSélectionsListbox);
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).EndInit();
             this.PanelTrimestre.ResumeLayout(false);
