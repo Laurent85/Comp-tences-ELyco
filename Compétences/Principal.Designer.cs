@@ -81,7 +81,7 @@
             this.BtnLancerTraitement.TabIndex = 0;
             this.BtnLancerTraitement.Text = "Lancer le traitement";
             this.BtnLancerTraitement.UseVisualStyleBackColor = true;
-            this.BtnLancerTraitement.Click += new System.EventHandler(this.LancerTraitementCsv_Click);
+            this.BtnLancerTraitement.Click += new System.EventHandler(this.BtnTraitementCsv);
             // 
             // ListBoxCsvATraiter
             // 
@@ -94,8 +94,8 @@
             this.ListBoxCsvATraiter.Size = new System.Drawing.Size(540, 212);
             this.ListBoxCsvATraiter.TabIndex = 1;
             this.ListBoxCsvATraiter.SelectedIndexChanged += new System.EventHandler(this.SélectionFichierCsvATraiter);
-            this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.Drag);
-            this.ListBoxCsvATraiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.Drag_Enter);
+            this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.GlisserDéplacerCsvAtraiter);
+            this.ListBoxCsvATraiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.GlisserValiderCsvAtraiter);
             // 
             // ComboNiveau6
             // 
@@ -212,7 +212,7 @@
             this.BtnDossierCsv.TabIndex = 7;
             this.BtnDossierCsv.Text = "Dossier des csv";
             this.BtnDossierCsv.UseVisualStyleBackColor = true;
-            this.BtnDossierCsv.Click += new System.EventHandler(this.Dossier_travail_Click);
+            this.BtnDossierCsv.Click += new System.EventHandler(this.BtnCheminCsv);
             // 
             // LblCheminDossierCsv
             // 
@@ -235,7 +235,7 @@
             this.RadioBtnPériode1.TabStop = true;
             this.RadioBtnPériode1.Text = "1ère période";
             this.RadioBtnPériode1.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode1.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnPériode1.CheckedChanged += new System.EventHandler(this.SélectionPériode);
             // 
             // RadioBtnPériode2
             // 
@@ -248,8 +248,8 @@
             this.RadioBtnPériode2.TabStop = true;
             this.RadioBtnPériode2.Text = "2ème période";
             this.RadioBtnPériode2.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode2.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
-            this.RadioBtnPériode2.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnPériode2.CheckedChanged += new System.EventHandler(this.SélectionPériode);
+            this.RadioBtnPériode2.ParentChanged += new System.EventHandler(this.SélectionPériode);
             // 
             // RadioBtnPériode3
             // 
@@ -262,8 +262,8 @@
             this.RadioBtnPériode3.TabStop = true;
             this.RadioBtnPériode3.Text = "3ème période";
             this.RadioBtnPériode3.UseVisualStyleBackColor = true;
-            this.RadioBtnPériode3.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
-            this.RadioBtnPériode3.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnPériode3.CheckedChanged += new System.EventHandler(this.SélectionPériode);
+            this.RadioBtnPériode3.ParentChanged += new System.EventHandler(this.SélectionPériode);
             // 
             // RadioBtnAnnée
             // 
@@ -276,8 +276,8 @@
             this.RadioBtnAnnée.TabStop = true;
             this.RadioBtnAnnée.Text = "Année";
             this.RadioBtnAnnée.UseVisualStyleBackColor = true;
-            this.RadioBtnAnnée.CheckedChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
-            this.RadioBtnAnnée.ParentChanged += new System.EventHandler(this.DétectionPériodeSélectionnée);
+            this.RadioBtnAnnée.CheckedChanged += new System.EventHandler(this.SélectionPériode);
+            this.RadioBtnAnnée.ParentChanged += new System.EventHandler(this.SélectionPériode);
             // 
             // BtnCréationArborescence
             // 
@@ -288,7 +288,7 @@
             this.BtnCréationArborescence.TabIndex = 9;
             this.BtnCréationArborescence.Text = "Créer l\'arborescence";
             this.BtnCréationArborescence.UseVisualStyleBackColor = true;
-            this.BtnCréationArborescence.Click += new System.EventHandler(this.Créer_arborescence_Click);
+            this.BtnCréationArborescence.Click += new System.EventHandler(this.BtnCréerArborescence);
             // 
             // BtnDossierXlsx
             // 
@@ -299,7 +299,7 @@
             this.BtnDossierXlsx.TabIndex = 14;
             this.BtnDossierXlsx.Text = "Dossier des xlsx";
             this.BtnDossierXlsx.UseVisualStyleBackColor = true;
-            this.BtnDossierXlsx.Click += new System.EventHandler(this.Dossier_destination_Click);
+            this.BtnDossierXlsx.Click += new System.EventHandler(this.BtnCheminXlsx);
             // 
             // LblCheminDossierXlsx
             // 
@@ -320,7 +320,7 @@
             this.ListBoxCsvPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBoxCsvPrésents.Size = new System.Drawing.Size(252, 212);
             this.ListBoxCsvPrésents.TabIndex = 17;
-            this.ListBoxCsvPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionClasseTraitementAnnée);
+            this.ListBoxCsvPrésents.SelectedIndexChanged += new System.EventHandler(this.SélectionFichierCsvPrésent);
             // 
             // LblTitre
             // 
@@ -403,7 +403,7 @@
             this.BtnSuppressionBases.TabIndex = 26;
             this.BtnSuppressionBases.Text = "Supprimer les bases";
             this.BtnSuppressionBases.UseVisualStyleBackColor = true;
-            this.BtnSuppressionBases.Click += new System.EventHandler(this.SuppressionBases_Click);
+            this.BtnSuppressionBases.Click += new System.EventHandler(this.BtnSuppressionBases_Click);
             // 
             // PictureStJacques
             // 
@@ -435,7 +435,7 @@
             this.BtnSuppressionFichierCsv.TabIndex = 27;
             this.BtnSuppressionFichierCsv.Text = "Supprimer fichier";
             this.BtnSuppressionFichierCsv.UseVisualStyleBackColor = true;
-            this.BtnSuppressionFichierCsv.Click += new System.EventHandler(this.SuppressionFichierCsv_Click);
+            this.BtnSuppressionFichierCsv.Click += new System.EventHandler(this.BtnSuppressionFichierCsv_Click);
             // 
             // ListBoxXlsxPrésents
             // 
@@ -446,8 +446,8 @@
             this.ListBoxXlsxPrésents.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.ListBoxXlsxPrésents.Size = new System.Drawing.Size(255, 212);
             this.ListBoxXlsxPrésents.TabIndex = 28;
-            this.ListBoxXlsxPrésents.SelectedIndexChanged += new System.EventHandler(this.SelectionFichierDnb);
-            this.ListBoxXlsxPrésents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OuvrirFichierXlsx_MouseDoubleClick);
+            this.ListBoxXlsxPrésents.SelectedIndexChanged += new System.EventHandler(this.SélectionFichierXlsxDocxPrésent);
+            this.ListBoxXlsxPrésents.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.OuvrirFichierXlsxDocx);
             // 
             // BtnSuppressionFichierXlsx
             // 
@@ -458,7 +458,7 @@
             this.BtnSuppressionFichierXlsx.TabIndex = 29;
             this.BtnSuppressionFichierXlsx.Text = "Supprimer fichier";
             this.BtnSuppressionFichierXlsx.UseVisualStyleBackColor = true;
-            this.BtnSuppressionFichierXlsx.Click += new System.EventHandler(this.SuppressionFichierXlsx_Click);
+            this.BtnSuppressionFichierXlsx.Click += new System.EventHandler(this.BtnSuppressionFichierXlsx_Click);
             // 
             // LblFichiersCsvATraiter
             // 
@@ -498,7 +498,7 @@
             this.BtnGénérerPublipostageDnb.TabIndex = 35;
             this.BtnGénérerPublipostageDnb.Text = "Générer publipostage DNB";
             this.BtnGénérerPublipostageDnb.UseVisualStyleBackColor = true;
-            this.BtnGénérerPublipostageDnb.Click += new System.EventHandler(this.LancerTraitementDnb_Click);
+            this.BtnGénérerPublipostageDnb.Click += new System.EventHandler(this.BtnTraitementDnb);
             // 
             // BtnGénérerfichiersExcelDnb
             // 
@@ -539,7 +539,7 @@
             this.BtnSuppressionFichierCsvATraiter.TabIndex = 39;
             this.BtnSuppressionFichierCsvATraiter.Text = "Supprimer fichier";
             this.BtnSuppressionFichierCsvATraiter.UseVisualStyleBackColor = true;
-            this.BtnSuppressionFichierCsvATraiter.Click += new System.EventHandler(this.BtnSuppressionFichierCsvATraiter_Click);
+            this.BtnSuppressionFichierCsvATraiter.Click += new System.EventHandler(this.BtnSuppressionFichierCsvAtraiter);
             // 
             // PanelTrimestre
             // 
@@ -596,8 +596,8 @@
             this.Name = "Principal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Conversion des compétences sur E-Lyco";
-            this.Load += new System.EventHandler(this.Principal_Load);
-            this.Click += new System.EventHandler(this.SupprimerSélectionsListbox);
+            this.Load += new System.EventHandler(this.OuvertureLogiciel);
+            this.Click += new System.EventHandler(this.SuppressionSélectionsListbox);
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).EndInit();
             this.PanelTrimestre.ResumeLayout(false);
