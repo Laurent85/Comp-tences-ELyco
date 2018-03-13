@@ -31,6 +31,8 @@ namespace Compétences
             BtnLancerTraitement.Enabled = false;
             BtnSuppressionFichierCsvATraiter.Enabled = false;
             BtnSuppressionFichierCsv.Enabled = false;
+            BtnSuppressionFichierXlsx.Enabled = false;
+            BtnGénérerfichiersExcelDnb.Enabled = false;
             BtnGénérerPublipostageDnb.Enabled = false;
             RafraichirListbox();
 
@@ -200,12 +202,8 @@ namespace Compétences
             traitementMacro.RunWorkerAsync();
             traitementMacro.WorkerSupportsCancellation = true;
 
-            if (LblFichiersCsvATraiter.Text == "")
-                Frm2.Controls.Find("LblMessageTraitement", true).First().Text =
-                    @"Traitement des fichiers...Veuillez patienter...";
-            else
-                Frm2.Controls.Find("LblMessageTraitement", true).First().Text =
-                    LblFichiersCsvATraiter.Text + @"...Veuillez patienter...";
+            Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxXlsxPrésents.SelectedItems.Count +
+                @" classes à traiter...Veuillez patienter...";
 
             Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
             Frm2.ShowDialog();
@@ -225,18 +223,18 @@ namespace Compétences
 
         private void BtnGénérerfichiersExcelDnb_Click(object sender, EventArgs e)
         {
-            //var traitementMacro = new BackgroundWorker();
-            //traitementMacro.DoWork += DébutGénérerfichiersExcelDnb;
-            //traitementMacro.RunWorkerCompleted += FinGénérerfichiersExcelDnb;
-            //traitementMacro.RunWorkerAsync();
-            //traitementMacro.WorkerSupportsCancellation = true;
+            var traitementMacro = new BackgroundWorker();
+            traitementMacro.DoWork += DébutGénérerfichiersExcelDnb;
+            traitementMacro.RunWorkerCompleted += FinGénérerfichiersExcelDnb;
+            traitementMacro.RunWorkerAsync();
+            traitementMacro.WorkerSupportsCancellation = true;
 
-            //Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxXlsxPrésents.SelectedItems.Count +
-            //    @" classes à traiter...Veuillez patienter...";
+            Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxXlsxPrésents.SelectedItems.Count +
+                @" classes à traiter...Veuillez patienter...";
 
-            //Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
-            //Frm2.ShowDialog();
-            GénérerFichiersXlsxDnb();
+            Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
+            Frm2.ShowDialog();
+            //GénérerFichiersXlsxDnb();
         }
 
         private void DébutGénérerfichiersExcelDnb(object sender, DoWorkEventArgs e)
@@ -246,7 +244,11 @@ namespace Compétences
 
         private void FinGénérerfichiersExcelDnb(object sender, RunWorkerCompletedEventArgs e)
         {
-            RafraichirListbox();
+            EffacerListbox(ListBoxXlsxPrésents);
+            VérifierCheminsDossiers();
+            RemplirListeXlsxPrésents();
+            LblFichiersXlsxPrésents.Text = CompterFichiersXlsx(ListBoxXlsxPrésents) + @" fichiers XLSX et " +
+                                           CompterFichiersDnb(ListBoxXlsxPrésents) + @" fichiers DNB";
             Frm2.Controls.Find("LblMessageTraitement", true).First().Text = @"Traitement des fichiers terminé !";
             Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = true;
         }
@@ -394,17 +396,70 @@ namespace Compétences
         private void SélectionFichierXlsxDocxPrésent(object sender, EventArgs e)
         {
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
+            var listeDnbXlsx = new ListBox();
+            var listeDocxXlsx = new ListBox();
+            var listeAnnéeXlsx = new ListBox();
+            var listeSélection = new ListBox();
             foreach (var listBoxItem in ListBoxXlsxPrésents.SelectedItems)
-                if (listBoxItem.ToString().Contains("DNB-"))
+            {
+                listeSélection.Items.Add(listBoxItem.ToString());
+                if (listBoxItem.ToString().Contains("DNB-") && listBoxItem.ToString().Contains("xlsx"))
                 {
                     File.AppendAllText("C:\\ELyco\\ELyco_classes_dnb.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
+                    listeDnbXlsx.Items.Add(listBoxItem.ToString());
+                }
+                if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx"))
+                {
+                    listeDocxXlsx.Items.Add(listBoxItem.ToString());
+                }
+                if (listBoxItem.ToString().Contains("Annee"))
+                {
+                    listeAnnéeXlsx.Items.Add(listBoxItem.ToString());
+                }
+            }
+
+            foreach (var item in listeSélection.Items)
+            {
+                if (listeDnbXlsx.Items.Contains(item))
+                {
                     BtnGénérerPublipostageDnb.Enabled = true;
+                }
+                else { BtnGénérerPublipostageDnb.Enabled = false; break; }
+            }
+
+            foreach (var item in listeSélection.Items)
+            {
+                if (listeDocxXlsx.Items.Contains(item))
+                {
+                    BtnSuppressionFichierXlsx.Enabled = true;
                 }
                 else
                 {
-                    BtnGénérerPublipostageDnb.Enabled = false;
+                    BtnSuppressionFichierXlsx.Enabled = false;
+                    break;
                 }
+            }
+            foreach (var item in listeSélection.Items)
+            {
+                if (listeAnnéeXlsx.Items.Contains(item))
+                {
+                    BtnGénérerfichiersExcelDnb.Enabled = true;
+                }
+                else
+                {
+                    BtnGénérerfichiersExcelDnb.Enabled = false;
+                    break;
+                }
+            }
+
+            if (ListBoxXlsxPrésents.SelectedItems.Count == 0)
+
+            {
+                BtnGénérerfichiersExcelDnb.Enabled = false;
+                BtnGénérerPublipostageDnb.Enabled = false;
+                BtnSuppressionFichierXlsx.Enabled = false;
+            }
         }
 
         private void SélectionPériode(object sender, EventArgs e)
@@ -725,75 +780,78 @@ namespace Compétences
             {
                 var classe = Path.GetFileNameWithoutExtension(file).Substring(17);
                 var fichier = Path.GetFileName(file);
-                if (ListBoxXlsxPrésents.SelectedItem.ToString() == fichier)
+                foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
                 {
-                    var strPath = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.xlsx";
-                    if (File.Exists(strPath)) File.Delete(strPath);
-                    var assembly = Assembly.GetExecutingAssembly();
-                    //In the next line you should provide      NameSpace.FileName.Extension that you have embedded
-                    var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
-                    var output = File.Open(strPath, FileMode.CreateNew);
-                    CopieFichierTypeDnb(input, output);
-                    input?.Dispose();
-                    output.Dispose();
+                    if (fichierSélectionné.ToString() == fichier)
+                    {
+                        var strPath = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.xlsx";
+                        if (File.Exists(strPath)) File.Delete(strPath);
+                        var assembly = Assembly.GetExecutingAssembly();
+                        //In the next line you should provide      NameSpace.FileName.Extension that you have embedded
+                        var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
+                        var output = File.Open(strPath, FileMode.CreateNew);
+                        CopieFichierTypeDnb(input, output);
+                        input?.Dispose();
+                        output.Dispose();
 
-                    var strPath1 = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.docx";
-                    if (File.Exists(strPath1)) File.Delete(strPath1);
-                    var assembly1 = Assembly.GetExecutingAssembly();
-                    var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
-                    var output1 = File.Open(strPath1, FileMode.CreateNew);
-                    CopieFichierTypeDnb(input1, output1);
-                    input1?.Dispose();
-                    output1.Dispose();
+                        var strPath1 = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.docx";
+                        if (File.Exists(strPath1)) File.Delete(strPath1);
+                        var assembly1 = Assembly.GetExecutingAssembly();
+                        var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
+                        var output1 = File.Open(strPath1, FileMode.CreateNew);
+                        CopieFichierTypeDnb(input1, output1);
+                        input1?.Dispose();
+                        output1.Dispose();
 
-                    var excelApplication = new Application();
+                        var excelApplication = new Application();
 
-                    var srcPath = LblCheminDossierXlsx.Text + "Année\\" + fichier;
-                    var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                    var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
+                        var srcPath = LblCheminDossierXlsx.Text + "Année\\" + fichier;
+                        var srcworkBook = excelApplication.Workbooks.Open(srcPath);
+                        var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
 
-                    var destPath = strPath;
-                    var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                    var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
-                    var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
+                        var destPath = strPath;
+                        var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
+                        var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
+                        var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
 
-                    var range = srcworkSheet.Range["A2:A50"];
-                    var cnt = -3;
+                        var range = srcworkSheet.Range["A2:A50"];
+                        var cnt = -3;
 
-                    foreach (Range element in range.Cells)
+                        foreach (Range element in range.Cells)
 
-                        if (element.Value2 != null)
-                            cnt = cnt + 1;
+                            if (element.Value2 != null)
+                                cnt = cnt + 1;
 
-                    var from = srcworkSheet.Range["B1:J" + (cnt + 1)];
-                    var to = destworkSheet.Range["AI1"];
+                        var from = srcworkSheet.Range["B1:J" + (cnt + 1)];
+                        var to = destworkSheet.Range["AI1"];
 
-                    var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)];
-                    var to1 = destworkSheet.Range["A2"];
+                        var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)];
+                        var to1 = destworkSheet.Range["A2"];
 
-                    var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)];
-                    var to2 = destworkSheet2.Range["A2"];
+                        var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)];
+                        var to2 = destworkSheet2.Range["A2"];
 
-                    from.Copy(to);
-                    from1.Copy(to1);
-                    from2.Copy(to2);
+                        from.Copy(to);
+                        from1.Copy(to1);
+                        from2.Copy(to2);
 
-                    var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)];
-                    cells1.Value = classe;
+                        var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)];
+                        cells1.Value = classe;
 
-                    var cells = destworkSheet.Range["A" + (cnt + 2) + ":AG50"];
+                        var cells = destworkSheet.Range["A" + (cnt + 2) + ":AG50"];
 
-                    var del = cells.EntireRow;
+                        var del = cells.EntireRow;
 
-                    del.Delete();
+                        del.Delete();
 
-                    destworkBook.SaveAs(LblCheminDossierXlsx.Text + "DNB\\DNB-" + classe + "_" +
-                                        DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
-                    srcworkBook.Close();
-                    destworkBook.Close();
+                        destworkBook.SaveAs(LblCheminDossierXlsx.Text + "DNB\\DNB-" + classe + "_" +
+                                            DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                        srcworkBook.Close();
+                        destworkBook.Close();
+                    }
                 }
             }
-            RafraichirListbox();
+            //RafraichirListbox();
         }
     }
 }
