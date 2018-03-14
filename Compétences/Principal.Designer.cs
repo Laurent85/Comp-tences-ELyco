@@ -530,6 +530,7 @@
             this.BtnRestaurerBases.TabIndex = 38;
             this.BtnRestaurerBases.Text = "Restaurer les bases";
             this.BtnRestaurerBases.UseVisualStyleBackColor = true;
+            this.BtnRestaurerBases.Click += new System.EventHandler(this.BtnRestaurerBases_Click);
             // 
             // BtnSuppressionFichierCsvATraiter
             // 

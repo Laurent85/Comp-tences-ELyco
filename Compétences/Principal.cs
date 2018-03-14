@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
@@ -24,12 +25,12 @@ namespace Compétences
 
         private void OuvertureLogiciel(object sender, EventArgs e)
         {
-            Directory.CreateDirectory("C:\\ELyco");
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            Directory.CreateDirectory(folder + "\\ELyco");
-            File.WriteAllText("C:\\ELyco\\ELyco_classes.txt", string.Empty);
-            File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", string.Empty);
-            File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
+            Directory.CreateDirectory(@"C:\ELyco");
+            var folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            Directory.CreateDirectory(folder + @"\ELyco");
+            File.WriteAllText(@"C:\ELyco\ELyco_classes.txt", string.Empty);
+            File.WriteAllText(@"C:\ELyco\ELyco_classes_annee.txt", string.Empty);
+            File.WriteAllText(@"C:\ELyco\ELyco_classes_dnb.txt", string.Empty);
             BtnLancerTraitement.Enabled = false;
             BtnSuppressionFichierCsvATraiter.Enabled = false;
             BtnSuppressionFichierCsv.Enabled = false;
@@ -40,21 +41,21 @@ namespace Compétences
 
             foreach (var listBoxItem in ListBoxCsvATraiter.Items)
             {
-                if (!File.Exists(LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
+                if (!File.Exists(LblCheminDossierCsv.Text + @"\" + Path.GetFileName(listBoxItem.ToString())))
                     File.Copy(listBoxItem.ToString(),
-                        LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
+                        LblCheminDossierCsv.Text + @"\" + Path.GetFileName(listBoxItem.ToString()));
 
-                File.AppendAllText("C:\\ELyco\\ELyco_classes.txt",
+                File.AppendAllText(@"C:\ELyco\ELyco_classes.txt",
                     Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
             }
 
             try
             {
-                ComboAnnéeScolaire.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(2).Take(3).First();
-                ComboNiveau6.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(3).Take(4).First();
-                ComboNiveau5.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(4).Take(5).First();
-                ComboNiveau4.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(5).Take(6).First();
-                ComboNiveau3.Text = File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(6).Take(7).First();
+                ComboAnnéeScolaire.Text = File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(2).Take(3).First();
+                ComboNiveau6.Text = File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(3).Take(4).First();
+                ComboNiveau5.Text = File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(4).Take(5).First();
+                ComboNiveau4.Text = File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(5).Take(6).First();
+                ComboNiveau3.Text = File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(6).Take(7).First();
             }
             catch (Exception)
             {
@@ -68,30 +69,30 @@ namespace Compétences
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var folder = dlg.SelectedPath + "\\ELyco_CSV\\" + ComboAnnéeScolaire.SelectedItem;
+                var folder = dlg.SelectedPath + @"\ELyco_CSV\" + ComboAnnéeScolaire.SelectedItem;
                 LblCheminDossierCsv.Text = folder;
-                Directory.CreateDirectory("C:\\ELyco");
+                Directory.CreateDirectory(@"C:\ELyco");
 
-                if (!File.Exists("C:\\ELyco\\ELyco_in.txt"))
-                    using (File.Create("C:\\ELyco\\ELyco_in.txt"))
+                if (!File.Exists(@"C:\ELyco\ELyco_in.txt"))
+                    using (File.Create(@"C:\ELyco\ELyco_in.txt"))
                     {
                     }
-                if (!File.Exists("C:\\ELyco\\ELyco_classes.txt"))
-                    using (File.Create("C:\\ELyco\\ELyco_classes.txt"))
+                if (!File.Exists(@"C:\ELyco\ELyco_classes.txt"))
+                    using (File.Create(@"C:\ELyco\ELyco_classes.txt"))
                     {
                     }
-                if (!File.Exists("C:\\ELyco\\ELyco_classes_annee.txt"))
-                    using (File.Create("C:\\ELyco\\ELyco_classes_annee.txt"))
+                if (!File.Exists(@"C:\ELyco\ELyco_classes_annee.txt"))
+                    using (File.Create(@"C:\ELyco\ELyco_classes_annee.txt"))
                     {
                     }
-                if (!File.Exists("C:\\ELyco\\ELyco_classes_dnb.txt"))
-                    using (File.Create("C:\\ELyco\\ELyco_classes_dnb.txt"))
+                if (!File.Exists(@"C:\ELyco\ELyco_classes_dnb.txt"))
+                    using (File.Create(@"C:\ELyco\ELyco_classes_dnb.txt"))
                     {
                     }
-                using (var sw = new StreamWriter("C:\\ELyco\\ELyco_in.txt"))
+                using (var sw = new StreamWriter(@"C:\ELyco\ELyco_in.txt"))
                 {
                     sw.WriteLine(LblCheminDossierCsv.Text);
-                    sw.WriteLine(dlg.SelectedPath + "\\ELyco_CSV" + "\n");
+                    sw.WriteLine(dlg.SelectedPath + @"\ELyco_CSV" + "\n");
                 }
             }
         }
@@ -102,18 +103,18 @@ namespace Compétences
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var folder = dlg.SelectedPath + "\\ELyco_Competences\\" + ComboAnnéeScolaire.SelectedItem;
+                var folder = dlg.SelectedPath + @"\ELyco_Competences\" + ComboAnnéeScolaire.SelectedItem;
                 LblCheminDossierXlsx.Text = folder;
-                Directory.CreateDirectory("C:\\ELyco");
+                Directory.CreateDirectory(@"C:\ELyco");
 
-                if (!File.Exists("C:\\ELyco\\ELyco_out.txt"))
-                    using (File.Create("C:\\ELyco\\ELyco_out.txt"))
+                if (!File.Exists(@"C:\ELyco\ELyco_out.txt"))
+                    using (File.Create(@"C:\ELyco\ELyco_out.txt"))
                     {
                     }
-                using (var sw = new StreamWriter("C:\\ELyco\\ELyco_out.txt"))
+                using (var sw = new StreamWriter(@"C:\ELyco\ELyco_out.txt"))
                 {
                     sw.WriteLine(LblCheminDossierXlsx.Text);
-                    sw.WriteLine(dlg.SelectedPath + "\\ELyco_Competences");
+                    sw.WriteLine(dlg.SelectedPath + @"\ELyco_Competences");
                 }
             }
         }
@@ -125,17 +126,17 @@ namespace Compétences
             CréationArborescence("4");
             CréationArborescence("3");
 
-            Directory.CreateDirectory(LblCheminDossierXlsx.Text + "\\" + "1ère période");
-            Directory.CreateDirectory(LblCheminDossierXlsx.Text + "\\" + "2ème période");
-            Directory.CreateDirectory(LblCheminDossierXlsx.Text + "\\" + "3ème période");
-            Directory.CreateDirectory(LblCheminDossierXlsx.Text + "\\" + "Année");
-            Directory.CreateDirectory(LblCheminDossierXlsx.Text + "\\" + "DNB");
+            Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "1ère période");
+            Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "2ème période");
+            Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "3ème période");
+            Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "Année");
+            Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "DNB");
 
-            ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 3);
-            ChangerLigneFichierTxt(ComboNiveau6.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 4);
-            ChangerLigneFichierTxt(ComboNiveau5.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 5);
-            ChangerLigneFichierTxt(ComboNiveau4.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 6);
-            ChangerLigneFichierTxt(ComboNiveau3.SelectedItem + "\n", "C:\\ELyco\\ELyco_in.txt", 7);
+            ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem + "\n", @"C:\ELyco\ELyco_in.txt", 3);
+            ChangerLigneFichierTxt(ComboNiveau6.SelectedItem + "\n", @"C:\ELyco\ELyco_in.txt", 4);
+            ChangerLigneFichierTxt(ComboNiveau5.SelectedItem + "\n", @"C:\ELyco\ELyco_in.txt", 5);
+            ChangerLigneFichierTxt(ComboNiveau4.SelectedItem + "\n", @"C:\ELyco\ELyco_in.txt", 6);
+            ChangerLigneFichierTxt(ComboNiveau3.SelectedItem + "\n", @"C:\ELyco\ELyco_in.txt", 7);
         }
 
         private void BtnTraitementCsv(object sender, EventArgs e)
@@ -300,7 +301,7 @@ namespace Compétences
                 }
                 try
                 {
-                    Directory.Delete(File.ReadLines("C:\\ELyco\\ELyco_in.txt").Skip(1).Take(1).First(), true);
+                    Directory.Delete(File.ReadLines(@"C:\ELyco\ELyco_in.txt").Skip(1).Take(1).First(), true);
                 }
                 catch
                 {
@@ -308,7 +309,7 @@ namespace Compétences
                 }
                 try
                 {
-                    Directory.Delete(File.ReadLines("C:\\ELyco\\ELyco_out.txt").Skip(1).Take(1).First(), true);
+                    Directory.Delete(File.ReadLines(@"C:\ELyco\ELyco_out.txt").Skip(1).Take(1).First(), true);
                 }
                 catch (Exception)
                 {
@@ -347,6 +348,48 @@ namespace Compétences
             }
         }
 
+        private void BtnSauvegarderBases_Click(object sender, EventArgs e)
+        {
+            var dossierDest = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            var cheminCsv = File.ReadLines(@"c:\ELyco\ELyco_in.txt").Skip(1).Take(1).First();
+            var cheminCompétences = File.ReadLines(@"c:\ELyco\ELyco_out.txt").Skip(1).Take(1).First();
+
+            SuppressionFichiersSauvegarde(dossierDest + @"\ELyco\" + DateTime.Now.ToString("dd-MM-yyyy"));
+
+            Directory.CreateDirectory(dossierDest + @"\ELyco\" + DateTime.Now.ToString("dd-MM-yyyy"));
+            ZipFile.CreateFromDirectory(@"c:\ELyco",
+                dossierDest + @"\ELyco\" + DateTime.Now.ToString("dd-MM-yyyy") + @"\ELyco.zip");
+            ZipFile.CreateFromDirectory(cheminCsv,
+                dossierDest + @"\ELyco\" + DateTime.Now.ToString("dd-MM-yyyy") + @"\ELyco_CSV.zip");
+            ZipFile.CreateFromDirectory(cheminCompétences,
+                dossierDest + @"\ELyco\" + DateTime.Now.ToString("dd-MM-yyyy") + @"\ELyco_Competences.zip");
+        }
+
+        private void BtnRestaurerBases_Click(object sender, EventArgs e)
+        {
+            SuppressionFichiersSauvegarde(File.ReadLines(@"c:\ELyco\ELyco_in.txt").Skip(1).Take(1).First());
+            SuppressionFichiersSauvegarde(File.ReadLines(@"c:\ELyco\ELyco_out.txt").Skip(1).Take(1).First());
+            SuppressionFichiersSauvegarde(@"C:\ELyco");
+
+
+            var dlg = new FolderBrowserDialog
+            {
+                RootFolder = Environment.SpecialFolder.ApplicationData,
+                SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ELyco\"
+            };
+            SendKeys.Send("{TAB}{TAB}{RIGHT}");
+
+            if (dlg.ShowDialog() == DialogResult.OK)
+            {
+                var sauvegardeSélectionnée = dlg.SelectedPath;
+                ZipFile.ExtractToDirectory(sauvegardeSélectionnée + @"\ELyco.zip", @"c:\ELyco");
+                ZipFile.ExtractToDirectory(sauvegardeSélectionnée + @"\ELyco_CSV.zip",
+                    File.ReadLines(@"c:\ELyco\ELyco_in.txt").Skip(1).Take(1).First());
+                ZipFile.ExtractToDirectory(sauvegardeSélectionnée + @"\ELyco_Competences.zip",
+                    File.ReadLines(@"c:\ELyco\ELyco_out.txt").Skip(1).Take(1).First());
+            }
+        }
+
         private void SuppressionSélectionsListbox(object sender, EventArgs e)
         {
             ListBoxCsvATraiter.ClearSelected();
@@ -356,11 +399,11 @@ namespace Compétences
 
         private void OuvrirFichierXlsxDocx(object sender, MouseEventArgs e)
         {
-            var fichierP1 = LblCheminDossierXlsx.Text + "1ère période\\" + ListBoxXlsxPrésents.SelectedItem;
-            var fichierP2 = LblCheminDossierXlsx.Text + "2ème période\\" + ListBoxXlsxPrésents.SelectedItem;
-            var fichierP3 = LblCheminDossierXlsx.Text + "3ème période\\" + ListBoxXlsxPrésents.SelectedItem;
-            var fichierAnnee = LblCheminDossierXlsx.Text + "Année\\" + ListBoxXlsxPrésents.SelectedItem;
-            var fichierDnb = LblCheminDossierXlsx.Text + "DNB\\" + ListBoxXlsxPrésents.SelectedItem;
+            var fichierP1 = LblCheminDossierXlsx.Text + @"1ère période\" + ListBoxXlsxPrésents.SelectedItem;
+            var fichierP2 = LblCheminDossierXlsx.Text + @"2ème période\" + ListBoxXlsxPrésents.SelectedItem;
+            var fichierP3 = LblCheminDossierXlsx.Text + @"3ème période\" + ListBoxXlsxPrésents.SelectedItem;
+            var fichierAnnee = LblCheminDossierXlsx.Text + @"Année\" + ListBoxXlsxPrésents.SelectedItem;
+            var fichierDnb = LblCheminDossierXlsx.Text + @"DNB\" + ListBoxXlsxPrésents.SelectedItem;
             if (File.Exists(fichierP1))
                 Process.Start(fichierP1);
             if (File.Exists(fichierP2))
@@ -380,11 +423,11 @@ namespace Compétences
 
         private void SélectionFichierCsvPrésent(object sender, EventArgs e)
         {
-            File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", string.Empty);
+            File.WriteAllText(@"C:\ELyco\ELyco_classes_annee.txt", string.Empty);
             foreach (var listBoxItem in ListBoxCsvPrésents.SelectedItems)
                 if (listBoxItem.ToString().Contains("competence"))
                 {
-                    File.AppendAllText("C:\\ELyco\\ELyco_classes_annee.txt",
+                    File.AppendAllText(@"C:\ELyco\ELyco_classes_annee.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
                     BtnSuppressionFichierCsv.Enabled = true;
                 }
@@ -397,7 +440,7 @@ namespace Compétences
 
         private void SélectionFichierXlsxDocxPrésent(object sender, EventArgs e)
         {
-            File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
+            File.WriteAllText(@"C:\ELyco\ELyco_classes_dnb.txt", string.Empty);
             var listeDnbXlsx = new ListBox();
             var listeDocxXlsx = new ListBox();
             var listeAnnéeXlsx = new ListBox();
@@ -407,7 +450,7 @@ namespace Compétences
                 listeSélection.Items.Add(listBoxItem.ToString());
                 if (listBoxItem.ToString().Contains("DNB-") && listBoxItem.ToString().Contains("xlsx"))
                 {
-                    File.AppendAllText("C:\\ELyco\\ELyco_classes_dnb.txt",
+                    File.AppendAllText(@"C:\ELyco\ELyco_classes_dnb.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
                     listeDnbXlsx.Items.Add(listBoxItem.ToString());
                 }
@@ -478,15 +521,15 @@ namespace Compétences
                 ListBoxCsvATraiter.Items.Add(filename);
             }
 
-            File.WriteAllText("C:\\ELyco\\ELyco_classes.txt", string.Empty);
+            File.WriteAllText(@"C:\ELyco\ELyco_classes.txt", string.Empty);
 
             foreach (var listBoxItem in ListBoxCsvATraiter.Items)
             {
-                if (!File.Exists(LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString())))
+                if (!File.Exists(LblCheminDossierCsv.Text + @"\" + Path.GetFileName(listBoxItem.ToString())))
                     File.Copy(listBoxItem.ToString(),
-                        LblCheminDossierCsv.Text + "\\" + Path.GetFileName(listBoxItem.ToString()));
+                        LblCheminDossierCsv.Text + @"\" + Path.GetFileName(listBoxItem.ToString()));
 
-                File.AppendAllText("C:\\ELyco\\ELyco_classes.txt",
+                File.AppendAllText(@"C:\ELyco\ELyco_classes.txt",
                     Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
             }
 
@@ -517,6 +560,16 @@ namespace Compétences
             RafraichirListbox();
         }
 
+        private void SuppressionFichiersSauvegarde(string chemin)
+        {
+            var dossier = new DirectoryInfo(chemin);
+
+            foreach (var file in dossier.GetFiles())
+                file.Delete();
+            foreach (var dir in dossier.GetDirectories())
+                dir.Delete(true);
+        }
+
         private void EffacerListbox(ListBox liste)
         {
             for (var i = liste.Items.Count - 1; i >= 0; i--)
@@ -531,27 +584,27 @@ namespace Compétences
             if (combo != null)
                 for (var i = 1; i <= int.Parse(combo.Items[combo.SelectedIndex].ToString()); i++)
                 {
-                    Directory.CreateDirectory(LblCheminDossierCsv.Text + "\\" + "1ère période" + "\\" + niveau +
+                    Directory.CreateDirectory(LblCheminDossierCsv.Text + @"\" + "1ère période" + @"\" + niveau +
                                               classe);
-                    Directory.CreateDirectory(LblCheminDossierCsv.Text + "\\" + "2ème période" + "\\" + niveau +
+                    Directory.CreateDirectory(LblCheminDossierCsv.Text + @"\" + "2ème période" + @"\" + niveau +
                                               classe);
-                    Directory.CreateDirectory(LblCheminDossierCsv.Text + "\\" + "3ème période" + "\\" + niveau +
+                    Directory.CreateDirectory(LblCheminDossierCsv.Text + @"\" + "3ème période" + @"\" + niveau +
                                               classe);
-                    Directory.CreateDirectory(LblCheminDossierCsv.Text + "\\" + "Année" + "\\" + niveau + classe);
-                    Directory.CreateDirectory(LblCheminDossierCsv.Text + "\\" + niveau + classe);
+                    Directory.CreateDirectory(LblCheminDossierCsv.Text + @"\" + "Année" + @"\" + niveau + classe);
+                    Directory.CreateDirectory(LblCheminDossierCsv.Text + @"\" + niveau + classe);
                     classe++; // c1 is 'B' now
                 }
         }
 
         private void VérifierCheminsDossiers()
         {
-            if (File.Exists("C:\\ELyco\\ELyco_in.txt"))
-                using (TextReader tr = new StreamReader("C:\\ELyco\\ELyco_in.txt"))
+            if (File.Exists(@"C:\ELyco\ELyco_in.txt"))
+                using (TextReader tr = new StreamReader(@"C:\ELyco\ELyco_in.txt"))
                 {
                     LblCheminDossierCsv.Text = tr.ReadLine() + @"\";
                 }
-            if (File.Exists("C:\\ELyco\\ELyco_out.txt"))
-                using (TextReader tr1 = new StreamReader("C:\\ELyco\\ELyco_out.txt"))
+            if (File.Exists(@"C:\ELyco\ELyco_out.txt"))
+                using (TextReader tr1 = new StreamReader(@"C:\ELyco\ELyco_out.txt"))
                 {
                     LblCheminDossierXlsx.Text = tr1.ReadLine() + @"\";
                 }
@@ -566,7 +619,7 @@ namespace Compétences
                 var classe = Path.GetFileName(t.ToString()).Substring(25, 2);
 
                 foreach (var s in Directory
-                    .GetFiles(LblCheminDossierCsv.Text + période + "\\" + classe + "\\", "*.csv")
+                    .GetFiles(LblCheminDossierCsv.Text + période + @"\" + classe + @"\", "*.csv")
                     .Select(Path.GetFileName))
                 {
                     var classe1 = s.Substring(25, 2);
@@ -627,6 +680,99 @@ namespace Compétences
             }
         }
 
+        private void CopieFichiersTypeDnb(Stream input, Stream output)
+        {
+            var buffer = new byte[32768];
+            while (true)
+            {
+                var read = input.Read(buffer, 0, buffer.Length);
+                if (read <= 0)
+                    return;
+                output.Write(buffer, 0, read);
+            }
+        }
+
+        private void GénérerFichiersXlsxDnb()
+        {
+            var fichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"Année\");
+
+            foreach (var file in fichiers)
+            {
+                var classe = Path.GetFileNameWithoutExtension(file).Substring(17);
+                var fichier = Path.GetFileName(file);
+                foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
+                    if (fichierSélectionné.ToString() == fichier)
+                    {
+                        var strPath = LblCheminDossierXlsx.Text + @"DNB\" + "Type_dnb.xlsx";
+                        if (File.Exists(strPath)) File.Delete(strPath);
+                        var assembly = Assembly.GetExecutingAssembly();
+                        //In the next line you should provide      NameSpace.FileName.Extension that you have embedded
+                        var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
+                        var output = File.Open(strPath, FileMode.CreateNew);
+                        CopieFichiersTypeDnb(input, output);
+                        input?.Dispose();
+                        output.Dispose();
+
+                        var strPath1 = LblCheminDossierXlsx.Text + @"DNB\" + "Type_dnb.docx";
+                        if (File.Exists(strPath1)) File.Delete(strPath1);
+                        var assembly1 = Assembly.GetExecutingAssembly();
+                        var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
+                        var output1 = File.Open(strPath1, FileMode.CreateNew);
+                        CopieFichiersTypeDnb(input1, output1);
+                        input1?.Dispose();
+                        output1.Dispose();
+
+                        var excelApplication = new Application();
+
+                        var srcPath = LblCheminDossierXlsx.Text + @"Année\" + fichier;
+                        var srcworkBook = excelApplication.Workbooks.Open(srcPath);
+                        var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
+
+                        var destPath = strPath;
+                        var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
+                        var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
+                        var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
+
+                        var range = srcworkSheet.Range["A2:A50"];
+                        var cnt = -3;
+
+                        foreach (Range element in range.Cells)
+
+                            if (element.Value2 != null)
+                                cnt = cnt + 1;
+
+                        var from = srcworkSheet.Range["B1:J" + (cnt + 1)]; //Copie tableau compétences
+                        var to = destworkSheet.Range["AI1"]; //à modifier
+
+                        var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers récapitilatif
+                        var to1 = destworkSheet.Range["A2"];
+
+                        var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers épreuves écrites
+                        var to2 = destworkSheet2.Range["A2"];
+
+                        from.Copy(to);
+                        from1.Copy(to1);
+                        from2.Copy(to2);
+
+                        var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)]; //Copie classe vers récapitulatif
+                        cells1.Value = classe;
+
+                        var cells = destworkSheet.Range[
+                            "A" + (cnt + 2) + ":A500"]; //Nettoyage bas tableau récapitulatif
+
+                        var del = cells.EntireRow;
+
+                        del.Delete();
+
+                        destworkBook.SaveAs(LblCheminDossierXlsx.Text + @"DNB\DNB-" + classe + "_" +
+                                            DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
+                        srcworkBook.Close();
+                        destworkBook.Close();
+                    }
+            }
+            //RafraichirListbox();
+        }
+
         private int CompterFichiersXlsx(ListBox listbox)
         {
             var countXlsx = 0;
@@ -647,42 +793,42 @@ namespace Compétences
         {
             ListBoxCsvPrésents.Items.Add("1ère période");
             ListBoxCsvPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierCsv.Text, "1ère période" + "\\", ListBoxCsvPrésents);
+            ListeFichiersPrésents(LblCheminDossierCsv.Text, "1ère période" + @"\", ListBoxCsvPrésents);
             ListBoxCsvPrésents.Items.Add("");
             ListBoxCsvPrésents.Items.Add("2ème période");
             ListBoxCsvPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierCsv.Text, "2ème période" + "\\", ListBoxCsvPrésents);
+            ListeFichiersPrésents(LblCheminDossierCsv.Text, "2ème période" + @"\", ListBoxCsvPrésents);
             ListBoxCsvPrésents.Items.Add("");
             ListBoxCsvPrésents.Items.Add("3ème période");
             ListBoxCsvPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierCsv.Text, "3ème période" + "\\", ListBoxCsvPrésents);
+            ListeFichiersPrésents(LblCheminDossierCsv.Text, "3ème période" + @"\", ListBoxCsvPrésents);
             ListBoxCsvPrésents.Items.Add("");
             ListBoxCsvPrésents.Items.Add("Année");
             ListBoxCsvPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierCsv.Text, "Année" + "\\", ListBoxCsvPrésents);
+            ListeFichiersPrésents(LblCheminDossierCsv.Text, "Année" + @"\", ListBoxCsvPrésents);
         }
 
         private void RemplirListeXlsxPrésents()
         {
             ListBoxXlsxPrésents.Items.Add("1ère période");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "1ère période" + "\\", ListBoxXlsxPrésents);
+            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "1ère période" + @"\", ListBoxXlsxPrésents);
             ListBoxXlsxPrésents.Items.Add("");
             ListBoxXlsxPrésents.Items.Add("2ème période");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "2ème période" + "\\", ListBoxXlsxPrésents);
+            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "2ème période" + @"\", ListBoxXlsxPrésents);
             ListBoxXlsxPrésents.Items.Add("");
             ListBoxXlsxPrésents.Items.Add("3ème période");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "3ème période" + "\\", ListBoxXlsxPrésents);
+            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "3ème période" + @"\", ListBoxXlsxPrésents);
             ListBoxXlsxPrésents.Items.Add("");
             ListBoxXlsxPrésents.Items.Add("Année");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "Année" + "\\", ListBoxXlsxPrésents);
+            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "Année" + @"\", ListBoxXlsxPrésents);
             ListBoxXlsxPrésents.Items.Add("");
             ListBoxXlsxPrésents.Items.Add("DNB");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
-            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "DNB" + "\\", ListBoxXlsxPrésents);
+            ListeFichiersPrésents(LblCheminDossierXlsx.Text, "DNB" + @"\", ListBoxXlsxPrésents);
         }
 
         private void RemplirListeCsvATraiter()
@@ -754,106 +900,6 @@ namespace Compétences
             //~~> Clean Up
             SupprimerObjets(xlApp);
             SupprimerObjets(xlWorkBook);
-        }
-
-        private void CopieFichierTypeDnb(Stream input, Stream output)
-        {
-            var buffer = new byte[32768];
-            while (true)
-            {
-                var read = input.Read(buffer, 0, buffer.Length);
-                if (read <= 0)
-                    return;
-                output.Write(buffer, 0, read);
-            }
-        }
-
-        private void GénérerFichiersXlsxDnb()
-        {
-            var fichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + "Année\\");
-
-            foreach (var file in fichiers)
-            {
-                var classe = Path.GetFileNameWithoutExtension(file).Substring(17);
-                var fichier = Path.GetFileName(file);
-                foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
-                    if (fichierSélectionné.ToString() == fichier)
-                    {
-                        var strPath = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.xlsx";
-                        if (File.Exists(strPath)) File.Delete(strPath);
-                        var assembly = Assembly.GetExecutingAssembly();
-                        //In the next line you should provide      NameSpace.FileName.Extension that you have embedded
-                        var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
-                        var output = File.Open(strPath, FileMode.CreateNew);
-                        CopieFichierTypeDnb(input, output);
-                        input?.Dispose();
-                        output.Dispose();
-
-                        var strPath1 = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.docx";
-                        if (File.Exists(strPath1)) File.Delete(strPath1);
-                        var assembly1 = Assembly.GetExecutingAssembly();
-                        var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
-                        var output1 = File.Open(strPath1, FileMode.CreateNew);
-                        CopieFichierTypeDnb(input1, output1);
-                        input1?.Dispose();
-                        output1.Dispose();
-
-                        var excelApplication = new Application();
-
-                        var srcPath = LblCheminDossierXlsx.Text + "Année\\" + fichier;
-                        var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                        var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
-
-                        var destPath = strPath;
-                        var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                        var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
-                        var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
-
-                        var range = srcworkSheet.Range["A2:A50"];
-                        var cnt = -3;
-
-                        foreach (Range element in range.Cells)
-
-                            if (element.Value2 != null)
-                                cnt = cnt + 1;
-
-                        var from = srcworkSheet.Range["B1:J" + (cnt + 1)]; //Copie tableau compétences
-                        var to = destworkSheet.Range["AI1"]; //à modifier
-
-                        var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers récapitilatif
-                        var to1 = destworkSheet.Range["A2"];
-
-                        var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers épreuves écrites
-                        var to2 = destworkSheet2.Range["A2"];
-
-                        from.Copy(to);
-                        from1.Copy(to1);
-                        from2.Copy(to2);
-
-                        var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)]; //Copie classe vers récapitulatif
-                        cells1.Value = classe;
-
-                        var cells = destworkSheet.Range[
-                            "A" + (cnt + 2) + ":A500"]; //Nettoyage bas tableau récapitulatif
-
-                        var del = cells.EntireRow;
-
-                        del.Delete();
-
-                        destworkBook.SaveAs(LblCheminDossierXlsx.Text + "DNB\\DNB-" + classe + "_" +
-                                            DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
-                        srcworkBook.Close();
-                        destworkBook.Close();
-                    }
-            }
-            //RafraichirListbox();
-        }
-
-        private void BtnSauvegarderBases_Click(object sender, EventArgs e)
-        {
-            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
-            Directory.CreateDirectory(folder + "\\ELyco\\" + DateTime.Now.ToString("dd-MM-yyyy"));
-            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory("c:\\ELyco", folder + "\\ELyco\\" + DateTime.Now.ToString("dd-MM-yyyy"));
         }
     }
 }
