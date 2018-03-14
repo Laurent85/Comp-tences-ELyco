@@ -519,6 +519,7 @@
             this.BtnSauvegarderBases.TabIndex = 37;
             this.BtnSauvegarderBases.Text = "Sauvegarder les bases";
             this.BtnSauvegarderBases.UseVisualStyleBackColor = true;
+            this.BtnSauvegarderBases.Click += new System.EventHandler(this.BtnSauvegarderBases_Click);
             // 
             // BtnRestaurerBases
             // 

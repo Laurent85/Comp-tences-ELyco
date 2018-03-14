@@ -1,6 +1,4 @@
-﻿using Compétences.Properties;
-using Microsoft.Office.Interop.Excel;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -8,6 +6,8 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
+using Compétences.Properties;
+using Microsoft.Office.Interop.Excel;
 using Application = Microsoft.Office.Interop.Excel.Application;
 using ListBox = System.Windows.Forms.ListBox;
 
@@ -25,6 +25,8 @@ namespace Compétences
         private void OuvertureLogiciel(object sender, EventArgs e)
         {
             Directory.CreateDirectory("C:\\ELyco");
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            Directory.CreateDirectory(folder + "\\ELyco");
             File.WriteAllText("C:\\ELyco\\ELyco_classes.txt", string.Empty);
             File.WriteAllText("C:\\ELyco\\ELyco_classes_annee.txt", string.Empty);
             File.WriteAllText("C:\\ELyco\\ELyco_classes_dnb.txt", string.Empty);
@@ -149,7 +151,7 @@ namespace Compétences
             if (LblFichiersCsvATraiter.Text == @"0 classes à traiter")
 
                 Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxCsvPrésents.SelectedItems.Count +
-                    @" classes à traiter...Veuillez patienter...";
+                                                                                @" classes à traiter...Veuillez patienter...";
             else
                 Frm2.Controls.Find("LblMessageTraitement", true).First().Text =
                     LblFichiersCsvATraiter.Text + @"...Veuillez patienter...";
@@ -203,7 +205,7 @@ namespace Compétences
             traitementMacro.WorkerSupportsCancellation = true;
 
             Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxXlsxPrésents.SelectedItems.Count +
-                @" classes à traiter...Veuillez patienter...";
+                                                                            @" classes à traiter...Veuillez patienter...";
 
             Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
             Frm2.ShowDialog();
@@ -230,7 +232,7 @@ namespace Compétences
             traitementMacro.WorkerSupportsCancellation = true;
 
             Frm2.Controls.Find("LblMessageTraitement", true).First().Text = ListBoxXlsxPrésents.SelectedItems.Count +
-                @" classes à traiter...Veuillez patienter...";
+                                                                            @" classes à traiter...Veuillez patienter...";
 
             Frm2.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
             Frm2.ShowDialog();
@@ -410,26 +412,23 @@ namespace Compétences
                     listeDnbXlsx.Items.Add(listBoxItem.ToString());
                 }
                 if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx"))
-                {
                     listeDocxXlsx.Items.Add(listBoxItem.ToString());
-                }
                 if (listBoxItem.ToString().Contains("Annee"))
-                {
                     listeAnnéeXlsx.Items.Add(listBoxItem.ToString());
-                }
             }
 
             foreach (var item in listeSélection.Items)
-            {
                 if (listeDnbXlsx.Items.Contains(item))
                 {
                     BtnGénérerPublipostageDnb.Enabled = true;
                 }
-                else { BtnGénérerPublipostageDnb.Enabled = false; break; }
-            }
+                else
+                {
+                    BtnGénérerPublipostageDnb.Enabled = false;
+                    break;
+                }
 
             foreach (var item in listeSélection.Items)
-            {
                 if (listeDocxXlsx.Items.Contains(item))
                 {
                     BtnSuppressionFichierXlsx.Enabled = true;
@@ -439,9 +438,7 @@ namespace Compétences
                     BtnSuppressionFichierXlsx.Enabled = false;
                     break;
                 }
-            }
             foreach (var item in listeSélection.Items)
-            {
                 if (listeAnnéeXlsx.Items.Contains(item))
                 {
                     BtnGénérerfichiersExcelDnb.Enabled = true;
@@ -451,7 +448,6 @@ namespace Compétences
                     BtnGénérerfichiersExcelDnb.Enabled = false;
                     break;
                 }
-            }
 
             if (ListBoxXlsxPrésents.SelectedItems.Count == 0)
 
@@ -475,7 +471,7 @@ namespace Compétences
 
         private void GlisserDéplacerCsvAtraiter(object sender, DragEventArgs e)
         {
-            var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            var fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
             foreach (var file in fileList)
             {
                 var filename = Path.GetFullPath(file);
@@ -508,9 +504,9 @@ namespace Compétences
             var files = Directory.GetFiles(chemin, "*.*", chercher);
 
             foreach (var file in files)
-                foreach (var item in liste.SelectedItems)
-                    if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
-                        File.Delete(file);
+            foreach (var item in liste.SelectedItems)
+                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
+                    File.Delete(file);
             var selectedItems = liste.SelectedItems;
 
             if (liste.SelectedIndex != -1)
@@ -531,7 +527,7 @@ namespace Compétences
         {
             var classe = 'A';
 
-            var combo = (ComboBox)Controls.Find(string.Format("ComboNiveau" + niveau), false).FirstOrDefault();
+            var combo = (ComboBox) Controls.Find(string.Format("ComboNiveau" + niveau), false).FirstOrDefault();
             if (combo != null)
                 for (var i = 1; i <= int.Parse(combo.Items[combo.SelectedIndex].ToString()); i++)
                 {
@@ -781,7 +777,6 @@ namespace Compétences
                 var classe = Path.GetFileNameWithoutExtension(file).Substring(17);
                 var fichier = Path.GetFileName(file);
                 foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
-                {
                     if (fichierSélectionné.ToString() == fichier)
                     {
                         var strPath = LblCheminDossierXlsx.Text + "DNB\\" + "Type_dnb.xlsx";
@@ -807,12 +802,12 @@ namespace Compétences
 
                         var srcPath = LblCheminDossierXlsx.Text + "Année\\" + fichier;
                         var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                        var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
+                        var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
 
                         var destPath = strPath;
                         var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                        var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
-                        var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
+                        var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
+                        var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
 
                         var range = srcworkSheet.Range["A2:A50"];
                         var cnt = -3;
@@ -822,23 +817,24 @@ namespace Compétences
                             if (element.Value2 != null)
                                 cnt = cnt + 1;
 
-                        var from = srcworkSheet.Range["B1:J" + (cnt + 1)];
-                        var to = destworkSheet.Range["AI1"];
+                        var from = srcworkSheet.Range["B1:J" + (cnt + 1)]; //Copie tableau compétences
+                        var to = destworkSheet.Range["AI1"]; //à modifier
 
-                        var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)];
+                        var from1 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers récapitilatif
                         var to1 = destworkSheet.Range["A2"];
 
-                        var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)];
+                        var from2 = srcworkSheet.Range["A2:A" + (cnt + 1)]; //Copie noms vers épreuves écrites
                         var to2 = destworkSheet2.Range["A2"];
 
                         from.Copy(to);
                         from1.Copy(to1);
                         from2.Copy(to2);
 
-                        var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)];
+                        var cells1 = destworkSheet.Range["B2:B" + (cnt + 1)]; //Copie classe vers récapitulatif
                         cells1.Value = classe;
 
-                        var cells = destworkSheet.Range["A" + (cnt + 2) + ":AG50"];
+                        var cells = destworkSheet.Range[
+                            "A" + (cnt + 2) + ":A500"]; //Nettoyage bas tableau récapitulatif
 
                         var del = cells.EntireRow;
 
@@ -849,9 +845,15 @@ namespace Compétences
                         srcworkBook.Close();
                         destworkBook.Close();
                     }
-                }
             }
             //RafraichirListbox();
+        }
+
+        private void BtnSauvegarderBases_Click(object sender, EventArgs e)
+        {
+            string folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            Directory.CreateDirectory(folder + "\\ELyco\\" + DateTime.Now.ToString("dd-MM-yyyy"));
+            Microsoft.VisualBasic.FileIO.FileSystem.CopyDirectory("c:\\ELyco", folder + "\\ELyco\\" + DateTime.Now.ToString("dd-MM-yyyy"));
         }
     }
 }
