@@ -366,7 +366,8 @@ namespace Compétences
             var date = DateTime.Now.ToString("dd-MM-yyyy_hh'h'mm");
             var dossierDest = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ELyco\Backup\";
             var cheminCsv = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(1).First();
-            var cheminCompétences = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(1).First();
+            var cheminCompétences =
+                File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(1).First();
 
             if (!Directory.Exists(dossierDest + date))
             {
