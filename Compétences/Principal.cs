@@ -363,7 +363,7 @@ namespace Compétences
 
         private void BtnSauvegarderBases_Click(object sender, EventArgs e)
         {
-            var date = DateTime.Now.ToString("dd-MM-yyyy_hh'h'mm");
+            var date = DateTime.Now.ToString("dd-MM-yyyy_HH'h'mm");
             var dossierDest = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + @"\ELyco\Backup\";
             var cheminCsv = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(1).First();
             var cheminCompétences =
