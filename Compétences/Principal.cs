@@ -808,7 +808,6 @@ namespace Compétences
                         destworkBook.Close();
                     }
             }
-           
         }
 
         private int CompterFichiersPrésents(ListBox listbox)
@@ -827,6 +826,11 @@ namespace Compétences
             return countDocx;
         }
 
+        private void RemplirListeCsvATraiter()
+        {
+            ListeFichiersPrésents(LblCheminDossierCsv.Text, "", ListBoxCsvATraiter);
+        }
+
         private void RemplirListeCsvPrésents()
         {
             foreach (RadioButton période in PanelTrimestre.Controls)
@@ -835,7 +839,6 @@ namespace Compétences
                 ListBoxCsvPrésents.Items.Add("-----------------------------------");
                 ListeFichiersPrésents(LblCheminDossierCsv.Text, période.Text + @"\", ListBoxCsvPrésents);
                 ListBoxCsvPrésents.Items.Add("");
-                
             }
         }
 
@@ -847,16 +850,10 @@ namespace Compétences
                 ListBoxXlsxPrésents.Items.Add("-----------------------------------");
                 ListeFichiersPrésents(LblCheminDossierXlsx.Text, période.Text + @"\", ListBoxXlsxPrésents);
                 ListBoxXlsxPrésents.Items.Add("");
-
             }
             ListBoxXlsxPrésents.Items.Add("DNB");
             ListBoxXlsxPrésents.Items.Add("-----------------------------------");
             ListeFichiersPrésents(LblCheminDossierXlsx.Text, "DNB" + @"\", ListBoxXlsxPrésents);
-        }
-
-        private void RemplirListeCsvATraiter()
-        {
-            ListeFichiersPrésents(LblCheminDossierCsv.Text, "", ListBoxCsvATraiter);
         }
 
         private void RafraichirListbox()
