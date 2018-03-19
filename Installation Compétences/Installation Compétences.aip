@@ -3,14 +3,14 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe" Value="..\Compétences\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Release\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.docx" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.docx" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe" Value="..\Compétences\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.docx" Value="Type_dnb.docx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_B.docx" Value="Type_dnb.xlsx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" Value="Compétences.exe"/>
@@ -26,10 +26,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="Comptences.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Collège Saint Jacques"/>
-    <ROW Property="ProductCode" Value="1033:{2F8574A2-9D58-4492-910D-15CF7DBAC714} 1036:{BF70CBA8-03C6-4EE7-A0C6-DF971835E14B} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{050E9562-B1F3-436C-8E92-95DFF481CF1C} 1036:{B39F55D2-744E-4DCF-B985-4B25CD43558E} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Domaines de Compétences"/>
-    <ROW Property="ProductVersion" Value="1.0.20" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.21" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{110B651E-DE8A-4788-BF44-7E05DCC2F5A8}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -141,7 +141,7 @@
     <ROW XmlAttribute="ShortcutPath_4" XmlElement="DesktopApp_4" Name="ShortcutPath" Flags="0" Order="0" Value="%USERPROFILE%\Desktop\Domaines de compétences.lnk"/>
     <ROW XmlAttribute="Square150x150Logo" XmlElement="VisualElements" Name="Square150x150Logo" Flags="0" Order="0" FileId="ComptencesSquare150x150Logo.scale100.png"/>
     <ROW XmlAttribute="Square44x44Logo" XmlElement="VisualElements" Name="Square44x44Logo" Flags="0" Order="0" FileId="ComptencesSquare44x44Logo.scale100.png"/>
-    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.20.0"/>
+    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.21.0"/>
     <ROW XmlAttribute="WorkingDirectory" XmlElement="Application" Name="WorkingDirectory" Flags="0" Order="0" Value="APPDIR\Compétences"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.GenericXmlElementComponent">
