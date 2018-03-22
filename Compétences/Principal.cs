@@ -505,7 +505,7 @@ namespace Compétences
                         Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
                     listeDnbXlsx.Items.Add(listBoxItem.ToString());
                 }
-                if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx"))
+                if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx") || listBoxItem.ToString().Contains("pdf"))
                     listeDocxXlsx.Items.Add(listBoxItem.ToString());
                 if (listBoxItem.ToString().Contains("Annee"))
                     listeAnnéeXlsx.Items.Add(listBoxItem.ToString());
