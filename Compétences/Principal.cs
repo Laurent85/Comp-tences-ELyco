@@ -1,5 +1,6 @@
 ﻿using Compétences.Properties;
 using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
 using System;
 using System.ComponentModel;
 using System.Diagnostics;
@@ -224,6 +225,21 @@ namespace Compétences
         private void DébutMacroDnb(object sender, DoWorkEventArgs e)
         {
             ExécuterMacro("Publipostage.Publipostage");
+
+            foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
+            {
+                if (fichierSélectionné.ToString().Contains("xlsx"))
+                {
+                    Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+                    var strPath = LblCheminDossierXlsx.Text + @"DNB\" + fichierSélectionné;
+                    var nomFichier = Path.GetFileNameWithoutExtension(strPath);
+                    Document wordDocument = appWord.Documents.Open(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".docx");
+                    wordDocument.ExportAsFixedFormat(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".pdf", WdExportFormat.wdExportFormatPDF, false);
+                    appWord.Documents.Close();
+                    appWord.Quit();
+                    GC.Collect();
+                }
+            }
         }
 
         private void FinMacroDnb(object sender, RunWorkerCompletedEventArgs e)
@@ -774,7 +790,7 @@ namespace Compétences
                         var range = srcworkSheet.Range["A2:A50"];
                         var cnt = -3;
 
-                        foreach (Range element in range.Cells)
+                        foreach (Microsoft.Office.Interop.Excel.Range element in range.Cells)
 
                             if (element.Value2 != null)
                                 cnt = cnt + 1;
