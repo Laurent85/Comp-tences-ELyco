@@ -173,21 +173,25 @@ namespace Compétences
             {
                 ExécuterMacro("Deplacer_P1.Deplacer_P1");
                 ExécuterMacro("Compétences_par_lot_P1.Compétences_par_lot_P1");
+                ConvertirXlsxEnPdf("1ère période");
             }
             if (RadioBtnPériode2.Checked)
             {
                 ExécuterMacro("Deplacer_P2.Deplacer_P2");
                 ExécuterMacro("Compétences_par_lot_P2.Compétences_par_lot_P2");
+                ConvertirXlsxEnPdf("2ème période");
             }
             if (RadioBtnPériode3.Checked)
             {
                 ExécuterMacro("Deplacer_P3.Deplacer_P3");
                 ExécuterMacro("Compétences_par_lot_P3.Compétences_par_lot_P3");
+                ConvertirXlsxEnPdf("3ème période");
             }
             if (RadioBtnAnnée.Checked)
             {
                 ExécuterMacro("Fusionner.Fusionner");
                 ExécuterMacro("Compétences_par_lot_Année.Compétences_par_lot_Année");
+                ConvertirXlsxEnPdf("Année");
             }
         }
 
@@ -234,10 +238,19 @@ namespace Compétences
                     var strPath = LblCheminDossierXlsx.Text + @"DNB\" + fichierSélectionné;
                     var nomFichier = Path.GetFileNameWithoutExtension(strPath);
                     Document wordDocument = appWord.Documents.Open(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".docx");
-                    wordDocument.ExportAsFixedFormat(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".pdf", WdExportFormat.wdExportFormatPDF, false);
+                    wordDocument.ExportAsFixedFormat(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".pdf", WdExportFormat.wdExportFormatPDF);
                     appWord.Documents.Close();
                     appWord.Quit();
                     GC.Collect();
+                }
+            }
+
+            var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"DNB\");
+            foreach (var fichier1 in tousLesFichiers)
+            {
+                if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
+                {
+                    File.SetAttributes(fichier1, FileAttributes.Hidden);
                 }
             }
         }
@@ -480,6 +493,8 @@ namespace Compétences
                 {
                     File.AppendAllText(CheminElyco + @"\ELyco\Config\ELyco_classes_annee.txt",
                         Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
+                    File.AppendAllText(CheminElyco + @"\ELyco\Config\ELyco_classes.txt",
+                        Path.GetFileName(listBoxItem.ToString()).Substring(25, 2) + Environment.NewLine);
                     BtnSuppressionFichierCsv.Enabled = true;
                 }
             SélectionPériode(new object(), new EventArgs());
@@ -556,8 +571,7 @@ namespace Compétences
         {
             DétectionPériode();
             if (DétectionPériode() != null && DétectionPériode().Contains("période") &&
-                ListBoxCsvATraiter.Items.Count != 0 || DétectionPériode() != null &&
-                DétectionPériode().Contains("Année") && ListBoxCsvPrésents.SelectedItems.Count != 0 &&
+                ListBoxCsvATraiter.Items.Count != 0 || DétectionPériode() != null && ListBoxCsvPrésents.SelectedItems.Count != 0 &&
                 ListBoxCsvPrésents.SelectedItem.ToString().Contains("competence"))
                 BtnLancerTraitement.Enabled = true;
             else BtnLancerTraitement.Enabled = false;
@@ -764,6 +778,7 @@ namespace Compétences
                         var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
                         var output = File.Open(strPath, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input, output);
+                        //File.SetAttributes(strPath, FileAttributes.Hidden);
                         input?.Dispose();
                         output.Dispose();
 
@@ -773,6 +788,7 @@ namespace Compétences
                         var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
                         var output1 = File.Open(strPath1, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input1, output1);
+                        //File.SetAttributes(strPath1, FileAttributes.Hidden);
                         input1?.Dispose();
                         output1.Dispose();
 
@@ -822,7 +838,41 @@ namespace Compétences
                                             DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
                         srcworkBook.Close();
                         destworkBook.Close();
+                        
+                        var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"DNB\");
+                        foreach (var fichier1 in tousLesFichiers)
+                        {
+                            if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
+                            {
+                                File.SetAttributes(fichier1, FileAttributes.Hidden);
+                            }
+                        }
                     }
+            }
+        }
+
+        private void ConvertirXlsxEnPdf(string période)
+        {
+            Application appExcel = new Application();
+            var files = Directory.GetFiles(LblCheminDossierXlsx.Text + période + @"\", "*.xlsx", SearchOption.AllDirectories);
+            foreach (string line in File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_classes_annee.txt"))
+            {
+                foreach (var file in files)
+                {
+                    if (file.Contains("competence") && file.Contains(line))
+                    {
+                        string path = Path.GetFullPath(file);
+                        string path1 = Path.GetDirectoryName(file);
+                        var nomFichier = Path.GetFileNameWithoutExtension(file);
+                        Workbook excelDocument = appExcel.Workbooks.Open(path);
+                        excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
+                            path1 + @"\" + nomFichier + @".pdf");
+                        File.SetAttributes(path, FileAttributes.Hidden);
+                        appExcel.Workbooks.Close();
+                        appExcel.Quit();
+                        GC.Collect();
+                    }
+                }
             }
         }
 
