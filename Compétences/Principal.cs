@@ -256,27 +256,53 @@ namespace Compétences
             MessageTraitement.Controls.Find("LblMessageTraitement", true).First().Text =
                 @"Traitement des fichiers terminé !";
             MessageTraitement.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = true;
+            CacherFichiersXlsxDocx();
         }
 
         private void BtnGénérerfichiersExcelDnb_Click(object sender, EventArgs e)
         {
-            var traitementMacro = new BackgroundWorker();
-            traitementMacro.DoWork += DébutGénérerfichiersExcelDnb;
-            traitementMacro.RunWorkerCompleted += FinGénérerfichiersExcelDnb;
-            traitementMacro.RunWorkerAsync();
-            traitementMacro.WorkerSupportsCancellation = true;
+            DialogResult result = MessageBox.Show(this, @"S'agit-il du DNB N°1 ?", @"Confirmation", MessageBoxButtons.YesNo);
 
-            MessageTraitement.Controls.Find("LblMessageTraitement", true).First().Text =
-                ListBoxXlsxPrésents.SelectedItems.Count +
-                @" classes à traiter...Veuillez patienter...";
+            if (result == DialogResult.Yes)
+            {
+                var traitementMacro = new BackgroundWorker();
+                traitementMacro.DoWork += DébutGénérerfichiersExcelDnb1;
+                traitementMacro.RunWorkerCompleted += FinGénérerfichiersExcelDnb;
+                traitementMacro.RunWorkerAsync();
+                traitementMacro.WorkerSupportsCancellation = true;
 
-            MessageTraitement.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
-            MessageTraitement.ShowDialog();
+                MessageTraitement.Controls.Find("LblMessageTraitement", true).First().Text =
+                    ListBoxXlsxPrésents.SelectedItems.Count +
+                    @" classes à traiter...Veuillez patienter...";
+
+                MessageTraitement.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
+                MessageTraitement.ShowDialog();
+            }
+            else if (result == DialogResult.No)
+            {
+                var traitementMacro = new BackgroundWorker();
+                traitementMacro.DoWork += DébutGénérerfichiersExcelDnb2;
+                traitementMacro.RunWorkerCompleted += FinGénérerfichiersExcelDnb;
+                traitementMacro.RunWorkerAsync();
+                traitementMacro.WorkerSupportsCancellation = true;
+
+                MessageTraitement.Controls.Find("LblMessageTraitement", true).First().Text =
+                    ListBoxXlsxPrésents.SelectedItems.Count +
+                    @" classes à traiter...Veuillez patienter...";
+
+                MessageTraitement.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = false;
+                MessageTraitement.ShowDialog();
+            }
         }
 
-        private void DébutGénérerfichiersExcelDnb(object sender, DoWorkEventArgs e)
+        private void DébutGénérerfichiersExcelDnb1(object sender, DoWorkEventArgs e)
         {
-            GénérerFichiersXlsxDnb();
+            GénérerFichiersXlsxDnb("Type_dnb", "DNB1-");
+        }
+
+        private void DébutGénérerfichiersExcelDnb2(object sender, DoWorkEventArgs e)
+        {
+            GénérerFichiersXlsxDnb("Type_dnb_oral", "DNB2-");
         }
 
         private void FinGénérerfichiersExcelDnb(object sender, RunWorkerCompletedEventArgs e)
@@ -289,6 +315,7 @@ namespace Compétences
             MessageTraitement.Controls.Find("LblMessageTraitement", true).First().Text =
                 @"Traitement des fichiers terminé !";
             MessageTraitement.Controls.Find("BtnFermerMessageTraitement", true).First().Visible = true;
+            CacherFichiersXlsxDocx();
         }
 
         private void BtnSuppressionFichierCsvAtraiter(object sender, EventArgs e)
@@ -509,10 +536,10 @@ namespace Compétences
             foreach (var listBoxItem in ListBoxXlsxPrésents.SelectedItems)
             {
                 listeSélection.Items.Add(listBoxItem.ToString());
-                if (listBoxItem.ToString().Contains("DNB-") && listBoxItem.ToString().Contains("xlsx"))
+                if (listBoxItem.ToString().Contains("DNB") && listBoxItem.ToString().Contains("xlsx"))
                 {
                     File.AppendAllText(CheminElyco + @"\ELyco\Config\ELyco_classes_dnb.txt",
-                        Path.GetFileName(listBoxItem.ToString()).Substring(0, 17) + Environment.NewLine);
+                        Path.GetFileName(listBoxItem.ToString()).Substring(0, 18) + Environment.NewLine);
                     listeDnbXlsx.Items.Add(listBoxItem.ToString());
                 }
                 if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx") || listBoxItem.ToString().Contains("pdf"))
@@ -755,7 +782,7 @@ namespace Compétences
             }
         }
 
-        private void GénérerFichiersXlsxDnb()
+        public void GénérerFichiersXlsxDnb(string typeDnb, string nommage)
         {
             var fichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"Année\");
 
@@ -766,19 +793,19 @@ namespace Compétences
                 foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
                     if (fichierSélectionné.ToString() == fichier)
                     {
-                        var strPath = LblCheminDossierXlsx.Text + @"DNB\" + "Type_dnb.xlsx";
+                        var strPath = LblCheminDossierXlsx.Text + @"DNB\" + typeDnb + ".xlsx";
                         if (File.Exists(strPath)) File.Delete(strPath);
                         var assembly = Assembly.GetExecutingAssembly();
-                        var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
+                        var input = assembly.GetManifestResourceStream("Compétences.Resources." + typeDnb + ".xlsx");
                         var output = File.Open(strPath, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input, output);
                         input?.Dispose();
                         output.Dispose();
 
-                        var strPath1 = LblCheminDossierXlsx.Text + @"DNB\" + "Type_dnb.docx";
+                        var strPath1 = LblCheminDossierXlsx.Text + @"DNB\" + typeDnb + ".docx";
                         if (File.Exists(strPath1)) File.Delete(strPath1);
                         var assembly1 = Assembly.GetExecutingAssembly();
-                        var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
+                        var input1 = assembly1.GetManifestResourceStream("Compétences.Resources." + typeDnb + ".docx");
                         var output1 = File.Open(strPath1, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input1, output1);
                         input1?.Dispose();
@@ -826,10 +853,11 @@ namespace Compétences
 
                         del.Delete();
 
-                        destworkBook.SaveAs(LblCheminDossierXlsx.Text + @"DNB\DNB-" + classe + "_" +
+                        destworkBook.SaveAs(LblCheminDossierXlsx.Text + @"DNB\" + nommage + classe + "_" +
                                             DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
                         srcworkBook.Close();
                         destworkBook.Close();
+                        GC.Collect();
                     }
             }
         }
