@@ -174,24 +174,28 @@ namespace Compétences
                 ExécuterMacro("Deplacer_P1.Deplacer_P1");
                 ExécuterMacro("Compétences_par_lot_P1.Compétences_par_lot_P1");
                 ConvertirXlsxEnPdf("1ère période");
+                CacherFichiersXlsxDocx();
             }
             if (RadioBtnPériode2.Checked)
             {
                 ExécuterMacro("Deplacer_P2.Deplacer_P2");
                 ExécuterMacro("Compétences_par_lot_P2.Compétences_par_lot_P2");
                 ConvertirXlsxEnPdf("2ème période");
+                CacherFichiersXlsxDocx();
             }
             if (RadioBtnPériode3.Checked)
             {
                 ExécuterMacro("Deplacer_P3.Deplacer_P3");
                 ExécuterMacro("Compétences_par_lot_P3.Compétences_par_lot_P3");
                 ConvertirXlsxEnPdf("3ème période");
+                CacherFichiersXlsxDocx();
             }
             if (RadioBtnAnnée.Checked)
             {
                 ExécuterMacro("Fusionner.Fusionner");
                 ExécuterMacro("Compétences_par_lot_Année.Compétences_par_lot_Année");
                 ConvertirXlsxEnPdf("Année");
+                CacherFichiersXlsxDocx();
             }
         }
 
@@ -242,15 +246,6 @@ namespace Compétences
                     appWord.Documents.Close();
                     appWord.Quit();
                     GC.Collect();
-                }
-            }
-
-            var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"DNB\");
-            foreach (var fichier1 in tousLesFichiers)
-            {
-                if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
-                {
-                    File.SetAttributes(fichier1, FileAttributes.Hidden);
                 }
             }
         }
@@ -774,11 +769,9 @@ namespace Compétences
                         var strPath = LblCheminDossierXlsx.Text + @"DNB\" + "Type_dnb.xlsx";
                         if (File.Exists(strPath)) File.Delete(strPath);
                         var assembly = Assembly.GetExecutingAssembly();
-                        //In the next line you should provide      NameSpace.FileName.Extension that you have embedded
                         var input = assembly.GetManifestResourceStream("Compétences.Resources.Type_dnb.xlsx");
                         var output = File.Open(strPath, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input, output);
-                        //File.SetAttributes(strPath, FileAttributes.Hidden);
                         input?.Dispose();
                         output.Dispose();
 
@@ -788,7 +781,6 @@ namespace Compétences
                         var input1 = assembly1.GetManifestResourceStream("Compétences.Resources.Type_dnb.docx");
                         var output1 = File.Open(strPath1, FileMode.CreateNew);
                         CopieFichiersTypeDnb(input1, output1);
-                        //File.SetAttributes(strPath1, FileAttributes.Hidden);
                         input1?.Dispose();
                         output1.Dispose();
 
@@ -838,16 +830,19 @@ namespace Compétences
                                             DateTime.Now.ToString("dd-MM-yyyy") + ".xlsx");
                         srcworkBook.Close();
                         destworkBook.Close();
-                        
-                        var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"DNB\");
-                        foreach (var fichier1 in tousLesFichiers)
-                        {
-                            if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
-                            {
-                                File.SetAttributes(fichier1, FileAttributes.Hidden);
-                            }
-                        }
                     }
+            }
+        }
+
+        private void CacherFichiersXlsxDocx()
+        {
+            var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text, "*.*", SearchOption.AllDirectories);
+            foreach (var fichier1 in tousLesFichiers)
+            {
+                if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
+                {
+                    File.SetAttributes(fichier1, FileAttributes.Hidden);
+                }
             }
         }
 
@@ -867,7 +862,6 @@ namespace Compétences
                         Workbook excelDocument = appExcel.Workbooks.Open(path);
                         excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
                             path1 + @"\" + nomFichier + @".pdf");
-                        File.SetAttributes(path, FileAttributes.Hidden);
                         appExcel.Workbooks.Close();
                         appExcel.Quit();
                         GC.Collect();
