@@ -114,7 +114,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau6.Location = new System.Drawing.Point(343, 93);
+            this.ComboNiveau6.Location = new System.Drawing.Point(422, 95);
             this.ComboNiveau6.Name = "ComboNiveau6";
             this.ComboNiveau6.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau6.TabIndex = 2;
@@ -136,7 +136,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau5.Location = new System.Drawing.Point(475, 93);
+            this.ComboNiveau5.Location = new System.Drawing.Point(554, 95);
             this.ComboNiveau5.Name = "ComboNiveau5";
             this.ComboNiveau5.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau5.TabIndex = 3;
@@ -158,7 +158,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau4.Location = new System.Drawing.Point(609, 93);
+            this.ComboNiveau4.Location = new System.Drawing.Point(688, 95);
             this.ComboNiveau4.Name = "ComboNiveau4";
             this.ComboNiveau4.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau4.TabIndex = 4;
@@ -180,7 +180,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau3.Location = new System.Drawing.Point(728, 93);
+            this.ComboNiveau3.Location = new System.Drawing.Point(807, 95);
             this.ComboNiveau3.Name = "ComboNiveau3";
             this.ComboNiveau3.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau3.TabIndex = 5;
@@ -198,7 +198,7 @@
             "2022-2023",
             "2023-2024",
             "2024-2025"});
-            this.ComboAnnéeScolaire.Location = new System.Drawing.Point(155, 93);
+            this.ComboAnnéeScolaire.Location = new System.Drawing.Point(234, 95);
             this.ComboAnnéeScolaire.Name = "ComboAnnéeScolaire";
             this.ComboAnnéeScolaire.Size = new System.Drawing.Size(118, 21);
             this.ComboAnnéeScolaire.TabIndex = 6;
@@ -206,7 +206,7 @@
             // BtnDossierCsv
             // 
             this.BtnDossierCsv.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnDossierCsv.Location = new System.Drawing.Point(155, 139);
+            this.BtnDossierCsv.Location = new System.Drawing.Point(234, 140);
             this.BtnDossierCsv.Name = "BtnDossierCsv";
             this.BtnDossierCsv.Size = new System.Drawing.Size(118, 23);
             this.BtnDossierCsv.TabIndex = 7;
@@ -219,7 +219,7 @@
             this.LblCheminDossierCsv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblCheminDossierCsv.AutoSize = true;
             this.LblCheminDossierCsv.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LblCheminDossierCsv.Location = new System.Drawing.Point(312, 144);
+            this.LblCheminDossierCsv.Location = new System.Drawing.Point(391, 145);
             this.LblCheminDossierCsv.Name = "LblCheminDossierCsv";
             this.LblCheminDossierCsv.Size = new System.Drawing.Size(0, 13);
             this.LblCheminDossierCsv.TabIndex = 8;
@@ -282,7 +282,7 @@
             // BtnCréationArborescence
             // 
             this.BtnCréationArborescence.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnCréationArborescence.Location = new System.Drawing.Point(155, 197);
+            this.BtnCréationArborescence.Location = new System.Drawing.Point(234, 198);
             this.BtnCréationArborescence.Name = "BtnCréationArborescence";
             this.BtnCréationArborescence.Size = new System.Drawing.Size(118, 23);
             this.BtnCréationArborescence.TabIndex = 9;
@@ -293,7 +293,7 @@
             // BtnDossierXlsx
             // 
             this.BtnDossierXlsx.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.BtnDossierXlsx.Location = new System.Drawing.Point(155, 168);
+            this.BtnDossierXlsx.Location = new System.Drawing.Point(234, 169);
             this.BtnDossierXlsx.Name = "BtnDossierXlsx";
             this.BtnDossierXlsx.Size = new System.Drawing.Size(118, 23);
             this.BtnDossierXlsx.TabIndex = 14;
@@ -306,7 +306,7 @@
             this.LblCheminDossierXlsx.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.LblCheminDossierXlsx.AutoSize = true;
             this.LblCheminDossierXlsx.ForeColor = System.Drawing.Color.ForestGreen;
-            this.LblCheminDossierXlsx.Location = new System.Drawing.Point(312, 173);
+            this.LblCheminDossierXlsx.Location = new System.Drawing.Point(391, 174);
             this.LblCheminDossierXlsx.Name = "LblCheminDossierXlsx";
             this.LblCheminDossierXlsx.Size = new System.Drawing.Size(0, 13);
             this.LblCheminDossierXlsx.TabIndex = 15;
@@ -340,7 +340,7 @@
             this.LblAnnéeScolaire.AutoSize = true;
             this.LblAnnéeScolaire.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblAnnéeScolaire.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblAnnéeScolaire.Location = new System.Drawing.Point(169, 74);
+            this.LblAnnéeScolaire.Location = new System.Drawing.Point(248, 76);
             this.LblAnnéeScolaire.Name = "LblAnnéeScolaire";
             this.LblAnnéeScolaire.Size = new System.Drawing.Size(91, 13);
             this.LblAnnéeScolaire.TabIndex = 19;
@@ -352,7 +352,7 @@
             this.LblNiveau6.AutoSize = true;
             this.LblNiveau6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNiveau6.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblNiveau6.Location = new System.Drawing.Point(340, 74);
+            this.LblNiveau6.Location = new System.Drawing.Point(419, 76);
             this.LblNiveau6.Name = "LblNiveau6";
             this.LblNiveau6.Size = new System.Drawing.Size(102, 13);
             this.LblNiveau6.TabIndex = 20;
@@ -364,7 +364,7 @@
             this.LblNiveau5.AutoSize = true;
             this.LblNiveau5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNiveau5.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblNiveau5.Location = new System.Drawing.Point(472, 74);
+            this.LblNiveau5.Location = new System.Drawing.Point(551, 76);
             this.LblNiveau5.Name = "LblNiveau5";
             this.LblNiveau5.Size = new System.Drawing.Size(102, 13);
             this.LblNiveau5.TabIndex = 21;
@@ -376,7 +376,7 @@
             this.LblNiveau4.AutoSize = true;
             this.LblNiveau4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNiveau4.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblNiveau4.Location = new System.Drawing.Point(606, 74);
+            this.LblNiveau4.Location = new System.Drawing.Point(685, 76);
             this.LblNiveau4.Name = "LblNiveau4";
             this.LblNiveau4.Size = new System.Drawing.Size(102, 13);
             this.LblNiveau4.TabIndex = 22;
@@ -388,7 +388,7 @@
             this.LblNiveau3.AutoSize = true;
             this.LblNiveau3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.LblNiveau3.ForeColor = System.Drawing.Color.RoyalBlue;
-            this.LblNiveau3.Location = new System.Drawing.Point(725, 74);
+            this.LblNiveau3.Location = new System.Drawing.Point(804, 76);
             this.LblNiveau3.Name = "LblNiveau3";
             this.LblNiveau3.Size = new System.Drawing.Size(102, 13);
             this.LblNiveau3.TabIndex = 23;
@@ -397,9 +397,9 @@
             // BtnSuppressionBases
             // 
             this.BtnSuppressionBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSuppressionBases.Location = new System.Drawing.Point(1025, 139);
+            this.BtnSuppressionBases.Location = new System.Drawing.Point(30, 95);
             this.BtnSuppressionBases.Name = "BtnSuppressionBases";
-            this.BtnSuppressionBases.Size = new System.Drawing.Size(151, 23);
+            this.BtnSuppressionBases.Size = new System.Drawing.Size(124, 23);
             this.BtnSuppressionBases.TabIndex = 26;
             this.BtnSuppressionBases.Text = "Supprimer les bases";
             this.BtnSuppressionBases.UseVisualStyleBackColor = true;
@@ -408,7 +408,7 @@
             // PictureStJacques
             // 
             this.PictureStJacques.Image = global::Compétences.Properties.Resources.St_Jacques;
-            this.PictureStJacques.Location = new System.Drawing.Point(14, 9);
+            this.PictureStJacques.Location = new System.Drawing.Point(30, 12);
             this.PictureStJacques.Name = "PictureStJacques";
             this.PictureStJacques.Size = new System.Drawing.Size(94, 55);
             this.PictureStJacques.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -513,9 +513,9 @@
             // BtnSauvegarderBases
             // 
             this.BtnSauvegarderBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSauvegarderBases.Location = new System.Drawing.Point(1025, 168);
+            this.BtnSauvegarderBases.Location = new System.Drawing.Point(30, 124);
             this.BtnSauvegarderBases.Name = "BtnSauvegarderBases";
-            this.BtnSauvegarderBases.Size = new System.Drawing.Size(151, 23);
+            this.BtnSauvegarderBases.Size = new System.Drawing.Size(124, 23);
             this.BtnSauvegarderBases.TabIndex = 37;
             this.BtnSauvegarderBases.Text = "Sauvegarder les bases";
             this.BtnSauvegarderBases.UseVisualStyleBackColor = true;
@@ -524,9 +524,9 @@
             // BtnRestaurerBases
             // 
             this.BtnRestaurerBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRestaurerBases.Location = new System.Drawing.Point(1025, 197);
+            this.BtnRestaurerBases.Location = new System.Drawing.Point(30, 153);
             this.BtnRestaurerBases.Name = "BtnRestaurerBases";
-            this.BtnRestaurerBases.Size = new System.Drawing.Size(151, 23);
+            this.BtnRestaurerBases.Size = new System.Drawing.Size(124, 23);
             this.BtnRestaurerBases.TabIndex = 38;
             this.BtnRestaurerBases.Text = "Restaurer les bases";
             this.BtnRestaurerBases.UseVisualStyleBackColor = true;
