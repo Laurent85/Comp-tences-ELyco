@@ -67,9 +67,16 @@
             this.BtnRestaurerBases = new System.Windows.Forms.Button();
             this.BtnSuppressionFichierCsvATraiter = new System.Windows.Forms.Button();
             this.PanelTrimestre = new System.Windows.Forms.Panel();
+            this.PanelFiltres = new System.Windows.Forms.Panel();
+            this.ChkXlsx = new System.Windows.Forms.CheckBox();
+            this.ChkDocx = new System.Windows.Forms.CheckBox();
+            this.ChkPdf = new System.Windows.Forms.CheckBox();
+            this.PanelClasses = new System.Windows.Forms.Panel();
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).BeginInit();
             this.PanelTrimestre.SuspendLayout();
+            this.PanelFiltres.SuspendLayout();
+            this.PanelClasses.SuspendLayout();
             this.SuspendLayout();
             // 
             // BtnLancerTraitement
@@ -114,7 +121,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau6.Location = new System.Drawing.Point(422, 95);
+            this.ComboNiveau6.Location = new System.Drawing.Point(17, 5);
             this.ComboNiveau6.Name = "ComboNiveau6";
             this.ComboNiveau6.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau6.TabIndex = 2;
@@ -136,7 +143,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau5.Location = new System.Drawing.Point(554, 95);
+            this.ComboNiveau5.Location = new System.Drawing.Point(149, 5);
             this.ComboNiveau5.Name = "ComboNiveau5";
             this.ComboNiveau5.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau5.TabIndex = 3;
@@ -158,7 +165,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau4.Location = new System.Drawing.Point(688, 95);
+            this.ComboNiveau4.Location = new System.Drawing.Point(283, 5);
             this.ComboNiveau4.Name = "ComboNiveau4";
             this.ComboNiveau4.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau4.TabIndex = 4;
@@ -180,7 +187,7 @@
             "10",
             "11",
             "12"});
-            this.ComboNiveau3.Location = new System.Drawing.Point(807, 95);
+            this.ComboNiveau3.Location = new System.Drawing.Point(402, 5);
             this.ComboNiveau3.Name = "ComboNiveau3";
             this.ComboNiveau3.Size = new System.Drawing.Size(99, 21);
             this.ComboNiveau3.TabIndex = 5;
@@ -554,12 +561,68 @@
             this.PanelTrimestre.Size = new System.Drawing.Size(425, 23);
             this.PanelTrimestre.TabIndex = 40;
             // 
+            // PanelFiltres
+            // 
+            this.PanelFiltres.Controls.Add(this.ChkPdf);
+            this.PanelFiltres.Controls.Add(this.ChkDocx);
+            this.PanelFiltres.Controls.Add(this.ChkXlsx);
+            this.PanelFiltres.Location = new System.Drawing.Point(1079, 169);
+            this.PanelFiltres.Name = "PanelFiltres";
+            this.PanelFiltres.Size = new System.Drawing.Size(97, 90);
+            this.PanelFiltres.TabIndex = 41;
+            // 
+            // ChkXlsx
+            // 
+            this.ChkXlsx.AutoSize = true;
+            this.ChkXlsx.Location = new System.Drawing.Point(0, 13);
+            this.ChkXlsx.Name = "ChkXlsx";
+            this.ChkXlsx.Size = new System.Drawing.Size(43, 17);
+            this.ChkXlsx.TabIndex = 0;
+            this.ChkXlsx.Text = "xlsx";
+            this.ChkXlsx.UseVisualStyleBackColor = true;
+            this.ChkXlsx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ChkDocx
+            // 
+            this.ChkDocx.AutoSize = true;
+            this.ChkDocx.Location = new System.Drawing.Point(0, 36);
+            this.ChkDocx.Name = "ChkDocx";
+            this.ChkDocx.Size = new System.Drawing.Size(49, 17);
+            this.ChkDocx.TabIndex = 1;
+            this.ChkDocx.Text = "docx";
+            this.ChkDocx.UseVisualStyleBackColor = true;
+            this.ChkDocx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ChkPdf
+            // 
+            this.ChkPdf.AutoSize = true;
+            this.ChkPdf.Location = new System.Drawing.Point(0, 59);
+            this.ChkPdf.Name = "ChkPdf";
+            this.ChkPdf.Size = new System.Drawing.Size(41, 17);
+            this.ChkPdf.TabIndex = 2;
+            this.ChkPdf.Text = "pdf";
+            this.ChkPdf.UseVisualStyleBackColor = true;
+            this.ChkPdf.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // PanelClasses
+            // 
+            this.PanelClasses.Controls.Add(this.ComboNiveau3);
+            this.PanelClasses.Controls.Add(this.ComboNiveau4);
+            this.PanelClasses.Controls.Add(this.ComboNiveau5);
+            this.PanelClasses.Controls.Add(this.ComboNiveau6);
+            this.PanelClasses.Location = new System.Drawing.Point(405, 90);
+            this.PanelClasses.Name = "PanelClasses";
+            this.PanelClasses.Size = new System.Drawing.Size(516, 34);
+            this.PanelClasses.TabIndex = 42;
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
+            this.Controls.Add(this.PanelClasses);
+            this.Controls.Add(this.PanelFiltres);
             this.Controls.Add(this.PanelTrimestre);
             this.Controls.Add(this.BtnSuppressionFichierCsvATraiter);
             this.Controls.Add(this.BtnRestaurerBases);
@@ -588,10 +651,6 @@
             this.Controls.Add(this.LblCheminDossierCsv);
             this.Controls.Add(this.BtnDossierCsv);
             this.Controls.Add(this.ComboAnnéeScolaire);
-            this.Controls.Add(this.ComboNiveau3);
-            this.Controls.Add(this.ComboNiveau4);
-            this.Controls.Add(this.ComboNiveau5);
-            this.Controls.Add(this.ComboNiveau6);
             this.Controls.Add(this.ListBoxCsvATraiter);
             this.Controls.Add(this.BtnLancerTraitement);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -604,6 +663,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).EndInit();
             this.PanelTrimestre.ResumeLayout(false);
             this.PanelTrimestre.PerformLayout();
+            this.PanelFiltres.ResumeLayout(false);
+            this.PanelFiltres.PerformLayout();
+            this.PanelClasses.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -649,6 +711,11 @@
         private System.Windows.Forms.Button BtnRestaurerBases;
         private System.Windows.Forms.Button BtnSuppressionFichierCsvATraiter;
         private System.Windows.Forms.Panel PanelTrimestre;
+        private System.Windows.Forms.Panel PanelFiltres;
+        private System.Windows.Forms.CheckBox ChkPdf;
+        private System.Windows.Forms.CheckBox ChkDocx;
+        private System.Windows.Forms.CheckBox ChkXlsx;
+        private System.Windows.Forms.Panel PanelClasses;
     }
 }
 
