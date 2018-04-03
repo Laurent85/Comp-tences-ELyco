@@ -31,10 +31,6 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Principal));
             this.BtnLancerTraitement = new System.Windows.Forms.Button();
             this.ListBoxCsvATraiter = new System.Windows.Forms.ListBox();
-            this.ComboNiveau6 = new System.Windows.Forms.ComboBox();
-            this.ComboNiveau5 = new System.Windows.Forms.ComboBox();
-            this.ComboNiveau4 = new System.Windows.Forms.ComboBox();
-            this.ComboNiveau3 = new System.Windows.Forms.ComboBox();
             this.ComboAnnéeScolaire = new System.Windows.Forms.ComboBox();
             this.BtnDossierCsv = new System.Windows.Forms.Button();
             this.LblCheminDossierCsv = new System.Windows.Forms.Label();
@@ -68,10 +64,17 @@
             this.BtnSuppressionFichierCsvATraiter = new System.Windows.Forms.Button();
             this.PanelTrimestre = new System.Windows.Forms.Panel();
             this.PanelFiltres = new System.Windows.Forms.Panel();
-            this.ChkXlsx = new System.Windows.Forms.CheckBox();
-            this.ChkDocx = new System.Windows.Forms.CheckBox();
             this.ChkPdf = new System.Windows.Forms.CheckBox();
+            this.ChkDocx = new System.Windows.Forms.CheckBox();
+            this.ChkXlsx = new System.Windows.Forms.CheckBox();
+            this.ChkCsv = new System.Windows.Forms.CheckBox();
+            this.ComboNiveau6 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau5 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau4 = new System.Windows.Forms.ComboBox();
+            this.ComboNiveau3 = new System.Windows.Forms.ComboBox();
             this.PanelClasses = new System.Windows.Forms.Panel();
+            this.BtnNouvelleAnnée = new System.Windows.Forms.Button();
+            this.BtnSuppressionAnnée = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).BeginInit();
             this.PanelTrimestre.SuspendLayout();
@@ -104,94 +107,6 @@
             this.ListBoxCsvATraiter.DragDrop += new System.Windows.Forms.DragEventHandler(this.GlisserDéplacerCsvAtraiter);
             this.ListBoxCsvATraiter.DragEnter += new System.Windows.Forms.DragEventHandler(this.GlisserValiderCsvAtraiter);
             // 
-            // ComboNiveau6
-            // 
-            this.ComboNiveau6.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComboNiveau6.FormattingEnabled = true;
-            this.ComboNiveau6.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.ComboNiveau6.Location = new System.Drawing.Point(17, 5);
-            this.ComboNiveau6.Name = "ComboNiveau6";
-            this.ComboNiveau6.Size = new System.Drawing.Size(99, 21);
-            this.ComboNiveau6.TabIndex = 2;
-            // 
-            // ComboNiveau5
-            // 
-            this.ComboNiveau5.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComboNiveau5.FormattingEnabled = true;
-            this.ComboNiveau5.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.ComboNiveau5.Location = new System.Drawing.Point(149, 5);
-            this.ComboNiveau5.Name = "ComboNiveau5";
-            this.ComboNiveau5.Size = new System.Drawing.Size(99, 21);
-            this.ComboNiveau5.TabIndex = 3;
-            // 
-            // ComboNiveau4
-            // 
-            this.ComboNiveau4.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComboNiveau4.FormattingEnabled = true;
-            this.ComboNiveau4.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.ComboNiveau4.Location = new System.Drawing.Point(283, 5);
-            this.ComboNiveau4.Name = "ComboNiveau4";
-            this.ComboNiveau4.Size = new System.Drawing.Size(99, 21);
-            this.ComboNiveau4.TabIndex = 4;
-            // 
-            // ComboNiveau3
-            // 
-            this.ComboNiveau3.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.ComboNiveau3.FormattingEnabled = true;
-            this.ComboNiveau3.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.ComboNiveau3.Location = new System.Drawing.Point(402, 5);
-            this.ComboNiveau3.Name = "ComboNiveau3";
-            this.ComboNiveau3.Size = new System.Drawing.Size(99, 21);
-            this.ComboNiveau3.TabIndex = 5;
-            // 
             // ComboAnnéeScolaire
             // 
             this.ComboAnnéeScolaire.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -209,6 +124,7 @@
             this.ComboAnnéeScolaire.Name = "ComboAnnéeScolaire";
             this.ComboAnnéeScolaire.Size = new System.Drawing.Size(118, 21);
             this.ComboAnnéeScolaire.TabIndex = 6;
+            this.ComboAnnéeScolaire.SelectedIndexChanged += new System.EventHandler(this.ComboAnnéeScolaire_SelectedIndexChanged);
             // 
             // BtnDossierCsv
             // 
@@ -563,29 +479,30 @@
             // 
             // PanelFiltres
             // 
+            this.PanelFiltres.Controls.Add(this.ChkCsv);
             this.PanelFiltres.Controls.Add(this.ChkPdf);
             this.PanelFiltres.Controls.Add(this.ChkDocx);
             this.PanelFiltres.Controls.Add(this.ChkXlsx);
-            this.PanelFiltres.Location = new System.Drawing.Point(1079, 169);
+            this.PanelFiltres.Location = new System.Drawing.Point(1079, 140);
             this.PanelFiltres.Name = "PanelFiltres";
-            this.PanelFiltres.Size = new System.Drawing.Size(97, 90);
+            this.PanelFiltres.Size = new System.Drawing.Size(97, 102);
             this.PanelFiltres.TabIndex = 41;
             // 
-            // ChkXlsx
+            // ChkPdf
             // 
-            this.ChkXlsx.AutoSize = true;
-            this.ChkXlsx.Location = new System.Drawing.Point(0, 13);
-            this.ChkXlsx.Name = "ChkXlsx";
-            this.ChkXlsx.Size = new System.Drawing.Size(43, 17);
-            this.ChkXlsx.TabIndex = 0;
-            this.ChkXlsx.Text = "xlsx";
-            this.ChkXlsx.UseVisualStyleBackColor = true;
-            this.ChkXlsx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            this.ChkPdf.AutoSize = true;
+            this.ChkPdf.Location = new System.Drawing.Point(0, 73);
+            this.ChkPdf.Name = "ChkPdf";
+            this.ChkPdf.Size = new System.Drawing.Size(41, 17);
+            this.ChkPdf.TabIndex = 2;
+            this.ChkPdf.Text = "pdf";
+            this.ChkPdf.UseVisualStyleBackColor = true;
+            this.ChkPdf.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
             // 
             // ChkDocx
             // 
             this.ChkDocx.AutoSize = true;
-            this.ChkDocx.Location = new System.Drawing.Point(0, 36);
+            this.ChkDocx.Location = new System.Drawing.Point(0, 50);
             this.ChkDocx.Name = "ChkDocx";
             this.ChkDocx.Size = new System.Drawing.Size(49, 17);
             this.ChkDocx.TabIndex = 1;
@@ -593,16 +510,123 @@
             this.ChkDocx.UseVisualStyleBackColor = true;
             this.ChkDocx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
             // 
-            // ChkPdf
+            // ChkXlsx
             // 
-            this.ChkPdf.AutoSize = true;
-            this.ChkPdf.Location = new System.Drawing.Point(0, 59);
-            this.ChkPdf.Name = "ChkPdf";
-            this.ChkPdf.Size = new System.Drawing.Size(41, 17);
-            this.ChkPdf.TabIndex = 2;
-            this.ChkPdf.Text = "pdf";
-            this.ChkPdf.UseVisualStyleBackColor = true;
-            this.ChkPdf.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            this.ChkXlsx.AutoSize = true;
+            this.ChkXlsx.Location = new System.Drawing.Point(0, 27);
+            this.ChkXlsx.Name = "ChkXlsx";
+            this.ChkXlsx.Size = new System.Drawing.Size(43, 17);
+            this.ChkXlsx.TabIndex = 0;
+            this.ChkXlsx.Text = "xlsx";
+            this.ChkXlsx.UseVisualStyleBackColor = true;
+            this.ChkXlsx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ChkCsv
+            // 
+            this.ChkCsv.AutoSize = true;
+            this.ChkCsv.Location = new System.Drawing.Point(0, 4);
+            this.ChkCsv.Name = "ChkCsv";
+            this.ChkCsv.Size = new System.Drawing.Size(43, 17);
+            this.ChkCsv.TabIndex = 3;
+            this.ChkCsv.Text = "csv";
+            this.ChkCsv.UseVisualStyleBackColor = true;
+            this.ChkCsv.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ComboNiveau6
+            // 
+            this.ComboNiveau6.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau6.FormattingEnabled = true;
+            this.ComboNiveau6.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.ComboNiveau6.Location = new System.Drawing.Point(17, 5);
+            this.ComboNiveau6.Name = "ComboNiveau6";
+            this.ComboNiveau6.Size = new System.Drawing.Size(99, 21);
+            this.ComboNiveau6.TabIndex = 2;
+            this.ComboNiveau6.SelectedIndexChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ComboNiveau5
+            // 
+            this.ComboNiveau5.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau5.FormattingEnabled = true;
+            this.ComboNiveau5.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.ComboNiveau5.Location = new System.Drawing.Point(149, 5);
+            this.ComboNiveau5.Name = "ComboNiveau5";
+            this.ComboNiveau5.Size = new System.Drawing.Size(99, 21);
+            this.ComboNiveau5.TabIndex = 3;
+            this.ComboNiveau5.SelectedIndexChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ComboNiveau4
+            // 
+            this.ComboNiveau4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau4.FormattingEnabled = true;
+            this.ComboNiveau4.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.ComboNiveau4.Location = new System.Drawing.Point(283, 5);
+            this.ComboNiveau4.Name = "ComboNiveau4";
+            this.ComboNiveau4.Size = new System.Drawing.Size(99, 21);
+            this.ComboNiveau4.TabIndex = 4;
+            this.ComboNiveau4.SelectedIndexChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
+            // ComboNiveau3
+            // 
+            this.ComboNiveau3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ComboNiveau3.FormattingEnabled = true;
+            this.ComboNiveau3.Items.AddRange(new object[] {
+            "0",
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.ComboNiveau3.Location = new System.Drawing.Point(402, 5);
+            this.ComboNiveau3.Name = "ComboNiveau3";
+            this.ComboNiveau3.Size = new System.Drawing.Size(99, 21);
+            this.ComboNiveau3.TabIndex = 5;
+            this.ComboNiveau3.SelectedIndexChanged += new System.EventHandler(this.ChangementFiltres);
             // 
             // PanelClasses
             // 
@@ -615,12 +639,36 @@
             this.PanelClasses.Size = new System.Drawing.Size(516, 34);
             this.PanelClasses.TabIndex = 42;
             // 
+            // BtnNouvelleAnnée
+            // 
+            this.BtnNouvelleAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnNouvelleAnnée.Location = new System.Drawing.Point(30, 182);
+            this.BtnNouvelleAnnée.Name = "BtnNouvelleAnnée";
+            this.BtnNouvelleAnnée.Size = new System.Drawing.Size(124, 23);
+            this.BtnNouvelleAnnée.TabIndex = 43;
+            this.BtnNouvelleAnnée.Text = "Nouvelle année";
+            this.BtnNouvelleAnnée.UseVisualStyleBackColor = true;
+            this.BtnNouvelleAnnée.Click += new System.EventHandler(this.BtnNouvelleAnnée_Click);
+            // 
+            // BtnSuppressionAnnée
+            // 
+            this.BtnSuppressionAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSuppressionAnnée.Location = new System.Drawing.Point(30, 211);
+            this.BtnSuppressionAnnée.Name = "BtnSuppressionAnnée";
+            this.BtnSuppressionAnnée.Size = new System.Drawing.Size(124, 23);
+            this.BtnSuppressionAnnée.TabIndex = 44;
+            this.BtnSuppressionAnnée.Text = "Supprimer année";
+            this.BtnSuppressionAnnée.UseVisualStyleBackColor = true;
+            this.BtnSuppressionAnnée.Click += new System.EventHandler(this.BtnSuppressionAnnée_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
+            this.Controls.Add(this.BtnSuppressionAnnée);
+            this.Controls.Add(this.BtnNouvelleAnnée);
             this.Controls.Add(this.PanelClasses);
             this.Controls.Add(this.PanelFiltres);
             this.Controls.Add(this.PanelTrimestre);
@@ -675,10 +723,6 @@
 
         private System.Windows.Forms.Button BtnLancerTraitement;
         private System.Windows.Forms.ListBox ListBoxCsvATraiter;
-        private System.Windows.Forms.ComboBox ComboNiveau6;
-        private System.Windows.Forms.ComboBox ComboNiveau5;
-        private System.Windows.Forms.ComboBox ComboNiveau4;
-        private System.Windows.Forms.ComboBox ComboNiveau3;
         private System.Windows.Forms.ComboBox ComboAnnéeScolaire;
         private System.Windows.Forms.Button BtnDossierCsv;
         private System.Windows.Forms.Label LblCheminDossierCsv;
@@ -715,7 +759,14 @@
         private System.Windows.Forms.CheckBox ChkPdf;
         private System.Windows.Forms.CheckBox ChkDocx;
         private System.Windows.Forms.CheckBox ChkXlsx;
+        private System.Windows.Forms.CheckBox ChkCsv;
+        private System.Windows.Forms.ComboBox ComboNiveau6;
+        private System.Windows.Forms.ComboBox ComboNiveau5;
+        private System.Windows.Forms.ComboBox ComboNiveau4;
+        private System.Windows.Forms.ComboBox ComboNiveau3;
         private System.Windows.Forms.Panel PanelClasses;
+        private System.Windows.Forms.Button BtnNouvelleAnnée;
+        private System.Windows.Forms.Button BtnSuppressionAnnée;
     }
 }
 

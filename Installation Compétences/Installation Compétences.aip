@@ -3,16 +3,16 @@
   <COMPONENT cid="caphyon.advinst.msicomp.MsiPropsComponent">
     <ROW Property="AI_BITMAP_DISPLAY_MODE" Value="0"/>
     <ROW Property="AI_FINDEXE_TITLE" Value="Select the installation package for [|ProductName]" ValueLocId="AI.Property.FindExeTitle"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe" Value="..\Compétences\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Release"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.docx" Value="..\Compétences\bin\Release\Resources"/>
-    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.xlsx" Value="..\Compétences\bin\Release\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_A.docx" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_B.docx" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe" Value="..\Compétences\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.exe.config" Value="..\Compétences\bin\Debug"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Comptences.xlsm" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.docx" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.xlsx" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.docx" Value="Type_dnb.docx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_B.docx" Value="Type_dnb.xlsx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Comptences.exe" Value="Compétences.exe"/>
