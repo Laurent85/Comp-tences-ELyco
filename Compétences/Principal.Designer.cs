@@ -64,16 +64,15 @@
             this.BtnSuppressionFichierCsvATraiter = new System.Windows.Forms.Button();
             this.PanelTrimestre = new System.Windows.Forms.Panel();
             this.PanelFiltres = new System.Windows.Forms.Panel();
+            this.ChkCsv = new System.Windows.Forms.CheckBox();
             this.ChkPdf = new System.Windows.Forms.CheckBox();
             this.ChkDocx = new System.Windows.Forms.CheckBox();
             this.ChkXlsx = new System.Windows.Forms.CheckBox();
-            this.ChkCsv = new System.Windows.Forms.CheckBox();
             this.ComboNiveau6 = new System.Windows.Forms.ComboBox();
             this.ComboNiveau5 = new System.Windows.Forms.ComboBox();
             this.ComboNiveau4 = new System.Windows.Forms.ComboBox();
             this.ComboNiveau3 = new System.Windows.Forms.ComboBox();
             this.PanelClasses = new System.Windows.Forms.Panel();
-            this.BtnNouvelleAnnée = new System.Windows.Forms.Button();
             this.BtnSuppressionAnnée = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).BeginInit();
@@ -320,7 +319,7 @@
             // BtnSuppressionBases
             // 
             this.BtnSuppressionBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSuppressionBases.Location = new System.Drawing.Point(30, 95);
+            this.BtnSuppressionBases.Location = new System.Drawing.Point(30, 140);
             this.BtnSuppressionBases.Name = "BtnSuppressionBases";
             this.BtnSuppressionBases.Size = new System.Drawing.Size(124, 23);
             this.BtnSuppressionBases.TabIndex = 26;
@@ -436,7 +435,7 @@
             // BtnSauvegarderBases
             // 
             this.BtnSauvegarderBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSauvegarderBases.Location = new System.Drawing.Point(30, 124);
+            this.BtnSauvegarderBases.Location = new System.Drawing.Point(30, 169);
             this.BtnSauvegarderBases.Name = "BtnSauvegarderBases";
             this.BtnSauvegarderBases.Size = new System.Drawing.Size(124, 23);
             this.BtnSauvegarderBases.TabIndex = 37;
@@ -447,7 +446,7 @@
             // BtnRestaurerBases
             // 
             this.BtnRestaurerBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnRestaurerBases.Location = new System.Drawing.Point(30, 153);
+            this.BtnRestaurerBases.Location = new System.Drawing.Point(30, 198);
             this.BtnRestaurerBases.Name = "BtnRestaurerBases";
             this.BtnRestaurerBases.Size = new System.Drawing.Size(124, 23);
             this.BtnRestaurerBases.TabIndex = 38;
@@ -488,6 +487,17 @@
             this.PanelFiltres.Size = new System.Drawing.Size(97, 102);
             this.PanelFiltres.TabIndex = 41;
             // 
+            // ChkCsv
+            // 
+            this.ChkCsv.AutoSize = true;
+            this.ChkCsv.Location = new System.Drawing.Point(0, 4);
+            this.ChkCsv.Name = "ChkCsv";
+            this.ChkCsv.Size = new System.Drawing.Size(43, 17);
+            this.ChkCsv.TabIndex = 3;
+            this.ChkCsv.Text = "csv";
+            this.ChkCsv.UseVisualStyleBackColor = true;
+            this.ChkCsv.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
+            // 
             // ChkPdf
             // 
             this.ChkPdf.AutoSize = true;
@@ -520,17 +530,6 @@
             this.ChkXlsx.Text = "xlsx";
             this.ChkXlsx.UseVisualStyleBackColor = true;
             this.ChkXlsx.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
-            // 
-            // ChkCsv
-            // 
-            this.ChkCsv.AutoSize = true;
-            this.ChkCsv.Location = new System.Drawing.Point(0, 4);
-            this.ChkCsv.Name = "ChkCsv";
-            this.ChkCsv.Size = new System.Drawing.Size(43, 17);
-            this.ChkCsv.TabIndex = 3;
-            this.ChkCsv.Text = "csv";
-            this.ChkCsv.UseVisualStyleBackColor = true;
-            this.ChkCsv.CheckedChanged += new System.EventHandler(this.ChangementFiltres);
             // 
             // ComboNiveau6
             // 
@@ -639,21 +638,10 @@
             this.PanelClasses.Size = new System.Drawing.Size(516, 34);
             this.PanelClasses.TabIndex = 42;
             // 
-            // BtnNouvelleAnnée
-            // 
-            this.BtnNouvelleAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnNouvelleAnnée.Location = new System.Drawing.Point(30, 182);
-            this.BtnNouvelleAnnée.Name = "BtnNouvelleAnnée";
-            this.BtnNouvelleAnnée.Size = new System.Drawing.Size(124, 23);
-            this.BtnNouvelleAnnée.TabIndex = 43;
-            this.BtnNouvelleAnnée.Text = "Nouvelle année";
-            this.BtnNouvelleAnnée.UseVisualStyleBackColor = true;
-            this.BtnNouvelleAnnée.Click += new System.EventHandler(this.BtnNouvelleAnnée_Click);
-            // 
             // BtnSuppressionAnnée
             // 
             this.BtnSuppressionAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BtnSuppressionAnnée.Location = new System.Drawing.Point(30, 211);
+            this.BtnSuppressionAnnée.Location = new System.Drawing.Point(30, 93);
             this.BtnSuppressionAnnée.Name = "BtnSuppressionAnnée";
             this.BtnSuppressionAnnée.Size = new System.Drawing.Size(124, 23);
             this.BtnSuppressionAnnée.TabIndex = 44;
@@ -668,7 +656,6 @@
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
             this.Controls.Add(this.BtnSuppressionAnnée);
-            this.Controls.Add(this.BtnNouvelleAnnée);
             this.Controls.Add(this.PanelClasses);
             this.Controls.Add(this.PanelFiltres);
             this.Controls.Add(this.PanelTrimestre);
@@ -765,7 +752,6 @@
         private System.Windows.Forms.ComboBox ComboNiveau4;
         private System.Windows.Forms.ComboBox ComboNiveau3;
         private System.Windows.Forms.Panel PanelClasses;
-        private System.Windows.Forms.Button BtnNouvelleAnnée;
         private System.Windows.Forms.Button BtnSuppressionAnnée;
     }
 }
