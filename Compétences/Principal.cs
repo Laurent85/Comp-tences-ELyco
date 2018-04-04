@@ -1,7 +1,4 @@
-﻿using Compétences.Properties;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
-using System;
+﻿using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -10,8 +7,13 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Application = Microsoft.Office.Interop.Excel.Application;
+using Compétences.Properties;
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
+using Application = Microsoft.Office.Interop.Word.Application;
+using CheckBox = System.Windows.Forms.CheckBox;
 using ListBox = System.Windows.Forms.ListBox;
+using Range = Microsoft.Office.Interop.Excel.Range;
 
 namespace Compétences
 {
@@ -60,10 +62,14 @@ namespace Compétences
             {
                 ComboAnnéeScolaire.Text =
                     File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(2).Take(3).First();
-                ComboNiveau6.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(3).Take(4).First() + @" classes";
-                ComboNiveau5.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(4).Take(5).First() + @" classes";
-                ComboNiveau4.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(5).Take(6).First() + @" classes";
-                ComboNiveau3.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(6).Take(7).First() + @" classes";
+                ComboNiveau6.Text =
+                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(3).Take(4).First() + @" classes";
+                ComboNiveau5.Text =
+                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(4).Take(5).First() + @" classes";
+                ComboNiveau4.Text =
+                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(5).Take(6).First() + @" classes";
+                ComboNiveau3.Text =
+                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(6).Take(7).First() + @" classes";
             }
             catch (Exception)
             {
@@ -77,7 +83,7 @@ namespace Compétences
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var chemin = dlg.SelectedPath + @"ELyco_CSV\" + ComboAnnéeScolaire.SelectedItem;
+                var chemin = dlg.SelectedPath + @"\ELyco_CSV\" + ComboAnnéeScolaire.SelectedItem;
                 LblCheminDossierCsv.Text = chemin;
                 Directory.CreateDirectory(CheminElyco + @"\ELyco\Config");
 
@@ -100,7 +106,7 @@ namespace Compétences
                 using (var sw = new StreamWriter(CheminElyco + @"\ELyco\Config\ELyco_in.txt"))
                 {
                     sw.WriteLine(LblCheminDossierCsv.Text);
-                    sw.WriteLine(dlg.SelectedPath + @"ELyco_CSV" + "\n");
+                    sw.WriteLine(dlg.SelectedPath + @"\ELyco_CSV" + "\n");
                 }
             }
         }
@@ -111,7 +117,7 @@ namespace Compétences
 
             if (dlg.ShowDialog() == DialogResult.OK)
             {
-                var cheminXlsx = dlg.SelectedPath + @"ELyco_Competences\" + ComboAnnéeScolaire.SelectedItem;
+                var cheminXlsx = dlg.SelectedPath + @"\ELyco_Competences\" + ComboAnnéeScolaire.SelectedItem;
                 LblCheminDossierXlsx.Text = cheminXlsx;
                 Directory.CreateDirectory(CheminElyco + @"\ELyco\Config");
 
@@ -122,7 +128,7 @@ namespace Compétences
                 using (var sw = new StreamWriter(CheminElyco + @"\ELyco\Config\ELyco_out.txt"))
                 {
                     sw.WriteLine(LblCheminDossierXlsx.Text);
-                    sw.WriteLine(dlg.SelectedPath + @"ELyco_Competences");
+                    sw.WriteLine(dlg.SelectedPath + @"\ELyco_Competences");
                 }
             }
         }
@@ -140,26 +146,29 @@ namespace Compétences
             Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "Année");
             Directory.CreateDirectory(LblCheminDossierXlsx.Text + @"\" + "DNB");
 
-            StreamReader file = new StreamReader(CheminElyco + @"\ELyco\Config\ELyco_in.txt");
-            int nbLignes = 0;
-            while ((file.ReadLine()) != null)
-            {
+            var file = new StreamReader(CheminElyco + @"\ELyco\Config\ELyco_in.txt");
+            var nbLignes = 0;
+            while (file.ReadLine() != null)
                 nbLignes++;
-            }
             file.Close();
 
             if (nbLignes < 7)
             {
-                ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
-                ChangerLigneFichierTxt(ComboNiveau6.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt", 4);
-                ChangerLigneFichierTxt(ComboNiveau5.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt", 5);
-                ChangerLigneFichierTxt(ComboNiveau4.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt", 6);
-                ChangerLigneFichierTxt(ComboNiveau3.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt", 7);
+                ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem + "\n",
+                    CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
+                ChangerLigneFichierTxt(ComboNiveau6.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt",
+                    4);
+                ChangerLigneFichierTxt(ComboNiveau5.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt",
+                    5);
+                ChangerLigneFichierTxt(ComboNiveau4.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt",
+                    6);
+                ChangerLigneFichierTxt(ComboNiveau3.SelectedItem + "\n", CheminElyco + @"\ELyco\Config\ELyco_in.txt",
+                    7);
             }
             else
             {
                 ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem.ToString(),
-                       CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
+                    CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
                 ChangerLigneFichierTxt(ComboNiveau6.SelectedItem.ToString(),
                     CheminElyco + @"\ELyco\Config\ELyco_in.txt", 4);
                 ChangerLigneFichierTxt(ComboNiveau5.SelectedItem.ToString(),
@@ -264,19 +273,19 @@ namespace Compétences
             ExécuterMacro("Publipostage.Publipostage");
 
             foreach (var fichierSélectionné in ListBoxXlsxPrésents.SelectedItems)
-            {
                 if (fichierSélectionné.ToString().Contains("xlsx"))
                 {
-                    Microsoft.Office.Interop.Word.Application appWord = new Microsoft.Office.Interop.Word.Application();
+                    var appWord = new Application();
                     var strPath = LblCheminDossierXlsx.Text + @"DNB\" + fichierSélectionné;
                     var nomFichier = Path.GetFileNameWithoutExtension(strPath);
-                    Document wordDocument = appWord.Documents.Open(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".docx");
-                    wordDocument.ExportAsFixedFormat(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".pdf", WdExportFormat.wdExportFormatPDF);
+                    var wordDocument =
+                        appWord.Documents.Open(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".docx");
+                    wordDocument.ExportAsFixedFormat(LblCheminDossierXlsx.Text + @"DNB\" + nomFichier + @".pdf",
+                        WdExportFormat.wdExportFormatPDF);
                     appWord.Documents.Close();
                     appWord.Quit();
                     GC.Collect();
                 }
-            }
         }
 
         private void FinMacroDnb(object sender, RunWorkerCompletedEventArgs e)
@@ -290,7 +299,7 @@ namespace Compétences
 
         private void BtnGénérerfichiersExcelDnb_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show(this, @"S'agit-il du DNB N°1 ?", @"Confirmation", MessageBoxButtons.YesNo);
+            var result = MessageBox.Show(this, @"S'agit-il du DNB N°1 ?", @"Confirmation", MessageBoxButtons.YesNo);
 
             if (result == DialogResult.Yes)
             {
@@ -494,57 +503,68 @@ namespace Compétences
 
         private void BtnSuppressionAnnée_Click(object sender, EventArgs e)
         {
-            try
+            var dialogResult = MessageBox.Show(
+                @"Etes-vous sûr de vouloir supprimer l'année " + ComboAnnéeScolaire.SelectedItem + @" ?",
+                @"Attention !",
+                MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListBoxCsvPrésents,
-                    SearchOption.AllDirectories);
-            }
-            catch
-            {
-                // ignored
-            }
-            try
-            {
-                SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListBoxXlsxPrésents,
-                    SearchOption.AllDirectories);
-            }
-            catch
-            {
-                // ignored
-            }
-            try
-            {
-                Directory.Delete(
-                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(0).Take(1).First(), true);
-            }
-            catch
-            {
-                // ignored
-            }
-            try
-            {
-                Directory.Delete(
-                    File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(0).Take(1).First(), true);
-            }
-            catch (Exception)
-            {
-                // ignored
-            }
+                try
+                {
+                    SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListBoxCsvPrésents,
+                        SearchOption.AllDirectories);
+                }
+                catch
+                {
+                    // ignored
+                }
+                try
+                {
+                    SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListBoxXlsxPrésents,
+                        SearchOption.AllDirectories);
+                }
+                catch
+                {
+                    // ignored
+                }
+                try
+                {
+                    Directory.Delete(
+                        File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(0).Take(1).First(), true);
+                }
+                catch
+                {
+                    // ignored
+                }
+                try
+                {
+                    Directory.Delete(
+                        File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(0).Take(1).First(), true);
+                }
+                catch (Exception)
+                {
+                    // ignored
+                }
 
-            LblCheminDossierCsv.Text = "";
-            LblCheminDossierXlsx.Text = "";
-            ComboAnnéeScolaire.Text = "";
-            ResetComboNiveau();
+                LblCheminDossierCsv.Text = "";
+                LblCheminDossierXlsx.Text = "";
+                ComboAnnéeScolaire.Text = "";
+                ResetComboNiveau();
 
-            EffacerListbox(ListBoxCsvATraiter);
-            EffacerListbox(ListBoxCsvPrésents);
-            EffacerListbox(ListBoxXlsxPrésents);
-            RemplirListeCsvPrésents();
-            RemplirListeXlsxPrésents();
-            ListBoxCsvATraiter.Refresh();
-            ListBoxCsvPrésents.Refresh();
-            ListBoxXlsxPrésents.Refresh();
-            LblFichiersCsvATraiter.Text = "";
+                EffacerListbox(ListBoxCsvATraiter);
+                EffacerListbox(ListBoxCsvPrésents);
+                EffacerListbox(ListBoxXlsxPrésents);
+                RemplirListeCsvPrésents();
+                RemplirListeXlsxPrésents();
+                ListBoxCsvATraiter.Refresh();
+                ListBoxCsvPrésents.Refresh();
+                ListBoxXlsxPrésents.Refresh();
+                LblFichiersCsvATraiter.Text = "";
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
 
         private void SuppressionSélectionsListbox(object sender, EventArgs e)
@@ -613,7 +633,8 @@ namespace Compétences
                         Path.GetFileName(listBoxItem.ToString()).Substring(0, 18) + Environment.NewLine);
                     listeDnbXlsx.Items.Add(listBoxItem.ToString());
                 }
-                if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx") || listBoxItem.ToString().Contains("pdf"))
+                if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx") ||
+                    listBoxItem.ToString().Contains("pdf"))
                     listeDocxXlsx.Items.Add(listBoxItem.ToString());
                 if (listBoxItem.ToString().Contains("Annee"))
                     listeAnnéeXlsx.Items.Add(listBoxItem.ToString());
@@ -664,7 +685,8 @@ namespace Compétences
         {
             DétectionPériode();
             if (DétectionPériode() != null && DétectionPériode().Contains("période") &&
-                ListBoxCsvATraiter.Items.Count != 0 || DétectionPériode() != null && ListBoxCsvPrésents.SelectedItems.Count != 0 &&
+                ListBoxCsvATraiter.Items.Count != 0 || DétectionPériode() != null &&
+                ListBoxCsvPrésents.SelectedItems.Count != 0 &&
                 ListBoxCsvPrésents.SelectedItem.ToString().Contains("competence"))
                 BtnLancerTraitement.Enabled = true;
             else BtnLancerTraitement.Enabled = false;
@@ -673,39 +695,62 @@ namespace Compétences
         private void ComboAnnéeScolaire_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (ComboAnnéeScolaire.SelectedItem.ToString() != "")
-            {
                 if (File.Exists(CheminElyco + @"\ELyco\Config\ELyco_in.txt"))
                 {
-                    string cheminCsv =
+                    var cheminCsv =
                         File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
                         ComboAnnéeScolaire.SelectedItem;
-                    string cheminXlsx =
+                    var cheminXlsx =
                         File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() + @"\" +
                         ComboAnnéeScolaire.SelectedItem;
 
                     if (Directory.Exists(cheminCsv) && Directory.Exists(cheminXlsx))
                     {
-                        ChangerLigneFichierTxt(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_in.txt", 1);
-                        ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem.ToString(), CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
-                        ChangerLigneFichierTxt(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() + @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_out.txt", 1);
+                        ChangerLigneFichierTxt(
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
+                            ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_in.txt", 1);
+                        ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem.ToString(),
+                            CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
+                        ChangerLigneFichierTxt(
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() +
+                            @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_out.txt", 1);
 
-                        LblCheminDossierCsv.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
-                        ComboAnnéeScolaire.SelectedItem + @"\";
-                        LblCheminDossierXlsx.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() + @"\" +
-                        ComboAnnéeScolaire.SelectedItem + @"\";
+                        LblCheminDossierCsv.Text =
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
+                            ComboAnnéeScolaire.SelectedItem + @"\";
+                        LblCheminDossierXlsx.Text =
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() +
+                            @"\" +
+                            ComboAnnéeScolaire.SelectedItem + @"\";
 
-                        DirectoryInfo chemin = new DirectoryInfo(LblCheminDossierCsv.Text + @"\Année");
-                        DirectoryInfo[] dossiers = chemin.GetDirectories();
-                        int nb6 = 0;
-                        int nb5 = 0;
-                        int nb4 = 0;
-                        int nb3 = 0;
+                        var chemin = new DirectoryInfo(LblCheminDossierCsv.Text + @"\Année");
+                        var dossiers = chemin.GetDirectories();
+                        var nb6 = 0;
+                        var nb5 = 0;
+                        var nb4 = 0;
+                        var nb3 = 0;
                         foreach (var dossier in dossiers)
                         {
-                            if (dossier.ToString().Contains("6")) { ComboNiveau6.Items.Add(dossier); nb6++; }
-                            if (dossier.ToString().Contains("5")) { ComboNiveau5.Items.Add(dossier); nb5++; }
-                            if (dossier.ToString().Contains("4")) { ComboNiveau4.Items.Add(dossier); nb4++; }
-                            if (dossier.ToString().Contains("3")) { ComboNiveau3.Items.Add(dossier); nb3++; }
+                            if (dossier.ToString().Contains("6"))
+                            {
+                                ComboNiveau6.Items.Add(dossier);
+                                nb6++;
+                            }
+                            if (dossier.ToString().Contains("5"))
+                            {
+                                ComboNiveau5.Items.Add(dossier);
+                                nb5++;
+                            }
+                            if (dossier.ToString().Contains("4"))
+                            {
+                                ComboNiveau4.Items.Add(dossier);
+                                nb4++;
+                            }
+                            if (dossier.ToString().Contains("3"))
+                            {
+                                ComboNiveau3.Items.Add(dossier);
+                                nb3++;
+                            }
                         }
 
                         ChangerLigneFichierTxt(nb6.ToString(), CheminElyco + @"\ELyco\Config\ELyco_in.txt", 4);
@@ -713,18 +758,17 @@ namespace Compétences
                         ChangerLigneFichierTxt(nb4.ToString(), CheminElyco + @"\ELyco\Config\ELyco_in.txt", 6);
                         ChangerLigneFichierTxt(nb3.ToString(), CheminElyco + @"\ELyco\Config\ELyco_in.txt", 7);
 
-                        int ligne = 7;
+                        var ligne = 7;
                         foreach (ComboBox combo in PanelClasses.Controls)
                         {
-                            string niveau = combo.Name.Substring(combo.Name.Length - 1);
+                            var niveau = combo.Name.Substring(combo.Name.Length - 1);
 
                             combo.Items.Clear();
-                            combo.Items.Add(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(ligne - 1).Take(ligne).First() + " classes");
+                            combo.Items.Add(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(ligne - 1)
+                                                .Take(ligne).First() + " classes");
 
                             foreach (var dossier in dossiers)
-                            {
-                                if (dossier.ToString().Contains(niveau)) { combo.Items.Add(dossier); }
-                            }
+                                if (dossier.ToString().Contains(niveau)) combo.Items.Add(dossier);
                             combo.Items.Add("Masquer niveau");
                             ligne--;
                         }
@@ -732,18 +776,25 @@ namespace Compétences
                     }
                     else
                     {
-                        ChangerLigneFichierTxt(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_in.txt", 1);
-                        ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem.ToString(), CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
-                        ChangerLigneFichierTxt(File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() + @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_out.txt", 1);
+                        ChangerLigneFichierTxt(
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
+                            ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_in.txt", 1);
+                        ChangerLigneFichierTxt(ComboAnnéeScolaire.SelectedItem.ToString(),
+                            CheminElyco + @"\ELyco\Config\ELyco_in.txt", 3);
+                        ChangerLigneFichierTxt(
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() +
+                            @"\" + ComboAnnéeScolaire.SelectedItem, CheminElyco + @"\ELyco\Config\ELyco_out.txt", 1);
 
-                        LblCheminDossierCsv.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
-                        ComboAnnéeScolaire.SelectedItem + @"\";
-                        LblCheminDossierXlsx.Text = File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() + @"\" +
-                        ComboAnnéeScolaire.SelectedItem + @"\";
+                        LblCheminDossierCsv.Text =
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(1).Take(2).First() + @"\" +
+                            ComboAnnéeScolaire.SelectedItem + @"\";
+                        LblCheminDossierXlsx.Text =
+                            File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_out.txt").Skip(1).Take(2).First() +
+                            @"\" +
+                            ComboAnnéeScolaire.SelectedItem + @"\";
                         ResetComboNiveau();
                     }
                 }
-            }
         }
 
         private void ChangementFiltres(object sender, EventArgs e)
@@ -766,7 +817,7 @@ namespace Compétences
 
         private void GlisserDéplacerCsvAtraiter(object sender, DragEventArgs e)
         {
-            var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            var fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
             foreach (var file in fileList)
             {
                 var filename = Path.GetFullPath(file);
@@ -799,9 +850,9 @@ namespace Compétences
             var files = Directory.GetFiles(chemin, "*.*", chercher);
 
             foreach (var file in files)
-                foreach (var item in liste.SelectedItems)
-                    if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
-                        File.Delete(file);
+            foreach (var item in liste.SelectedItems)
+                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
+                    File.Delete(file);
             var selectedItems = liste.SelectedItems;
 
             if (liste.SelectedIndex != -1)
@@ -835,7 +886,8 @@ namespace Compétences
         {
             var classe = 'A';
 
-            var combo = (ComboBox)PanelClasses.Controls.Find(string.Format("ComboNiveau" + niveau), false).FirstOrDefault();
+            var combo = (ComboBox) PanelClasses.Controls.Find(string.Format("ComboNiveau" + niveau), false)
+                .FirstOrDefault();
             if (combo != null)
                 for (var i = 1; i <= int.Parse(combo.Items[combo.SelectedIndex].ToString()); i++)
                 {
@@ -918,45 +970,29 @@ namespace Compétences
                 var subdirectoryInfo = directoryInfo.GetDirectories();
 
                 if (liste == ListBoxCsvPrésents)
-                {
                     foreach (var subDirectory in subdirectoryInfo)
 
                         ListeFichiersPrésents(subDirectory.FullName, "", liste);
+
+                foreach (var file in fileInfo)
+                foreach (CheckBox filtre in PanelFiltres.Controls)
+                {
+                    if (file.Length > 2000 && file.Name.Contains(filtre.Text) &&
+                        filtre.Checked)
+                        liste.Items.Add(file.Name);
+                    if (file.Length <= 2000 && !file.Name.Contains(".txt"))
+                        file.Delete();
+                    if (file.Name.Contains("Type"))
+                        liste.Items.Remove(file.Name);
                 }
 
                 foreach (var file in fileInfo)
-                {
-                    foreach (System.Windows.Forms.CheckBox filtre in PanelFiltres.Controls)
-                    {
-                        if (file.Length > 2000 && file.Name.Contains(filtre.Text) &&
-                            filtre.Checked)
-                            liste.Items.Add(file.Name);
-                        if (file.Length <= 2000 && !file.Name.Contains(".txt"))
-                            file.Delete();
-                        if (file.Name.Contains("Type"))
-                            liste.Items.Remove(file.Name);
-                    }
-                }
-
-                foreach (var file in fileInfo)
-                {
-                    foreach (ComboBox filtre2 in PanelClasses.Controls)
-                    {
-                        foreach (var item in filtre2.Items)
-                        {
-                            if (filtre2.SelectedItem != null)
-                            {
-                                if (filtre2.SelectedItem.ToString() == "Masquer niveau")
-                                {
-                                    if (file.Name.Contains(item.ToString()))
-                                    {
-                                        liste.Items.Remove(file.Name);
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
+                foreach (ComboBox filtre2 in PanelClasses.Controls)
+                foreach (var item in filtre2.Items)
+                    if (filtre2.SelectedItem != null)
+                        if (filtre2.SelectedItem.ToString() == "Masquer niveau")
+                            if (file.Name.Contains(item.ToString()))
+                                liste.Items.Remove(file.Name);
             }
         }
 
@@ -1001,21 +1037,21 @@ namespace Compétences
                         input1?.Dispose();
                         output1.Dispose();
 
-                        var excelApplication = new Application();
+                        var excelApplication = new Microsoft.Office.Interop.Excel.Application();
 
                         var srcPath = LblCheminDossierXlsx.Text + @"Année\" + fichier;
                         var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                        var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
+                        var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
 
                         var destPath = strPath;
                         var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                        var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
-                        var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
+                        var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
+                        var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
 
                         var range = srcworkSheet.Range["A2:A50"];
                         var cnt = -3;
 
-                        foreach (Microsoft.Office.Interop.Excel.Range element in range.Cells)
+                        foreach (Range element in range.Cells)
 
                             if (element.Value2 != null)
                                 cnt = cnt + 1;
@@ -1056,36 +1092,29 @@ namespace Compétences
         {
             var tousLesFichiers = Directory.GetFiles(LblCheminDossierXlsx.Text, "*.*", SearchOption.AllDirectories);
             foreach (var fichier1 in tousLesFichiers)
-            {
                 if (fichier1.Contains("docx") || fichier1.Contains("xlsx"))
-                {
                     File.SetAttributes(fichier1, FileAttributes.Hidden);
-                }
-            }
         }
 
         private void ConvertirXlsxEnPdf(string période)
         {
-            Application appExcel = new Application();
-            var files = Directory.GetFiles(LblCheminDossierXlsx.Text + période + @"\", "*.xlsx", SearchOption.AllDirectories);
-            foreach (string line in File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_classes_annee.txt"))
-            {
-                foreach (var file in files)
+            var appExcel = new Microsoft.Office.Interop.Excel.Application();
+            var files = Directory.GetFiles(LblCheminDossierXlsx.Text + période + @"\", "*.xlsx",
+                SearchOption.AllDirectories);
+            foreach (var line in File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_classes_annee.txt"))
+            foreach (var file in files)
+                if (file.Contains("competence") && file.Contains(line))
                 {
-                    if (file.Contains("competence") && file.Contains(line))
-                    {
-                        string path = Path.GetFullPath(file);
-                        string path1 = Path.GetDirectoryName(file);
-                        var nomFichier = Path.GetFileNameWithoutExtension(file);
-                        Workbook excelDocument = appExcel.Workbooks.Open(path);
-                        excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
-                            path1 + @"\" + nomFichier + @".pdf");
-                        appExcel.Workbooks.Close();
-                        appExcel.Quit();
-                        GC.Collect();
-                    }
+                    var path = Path.GetFullPath(file);
+                    var path1 = Path.GetDirectoryName(file);
+                    var nomFichier = Path.GetFileNameWithoutExtension(file);
+                    var excelDocument = appExcel.Workbooks.Open(path);
+                    excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
+                        path1 + @"\" + nomFichier + @".pdf");
+                    appExcel.Workbooks.Close();
+                    appExcel.Quit();
+                    GC.Collect();
                 }
-            }
         }
 
         private int CompterFichiersPrésents(ListBox listbox)
@@ -1176,7 +1205,7 @@ namespace Compétences
         private void ExécuterMacro(string macro)
         {
             //~~> Define your Excel Objects
-            var xlApp = new Application();
+            var xlApp = new Microsoft.Office.Interop.Excel.Application();
 
             var sPath = Path.GetTempFileName();
             File.WriteAllBytes(sPath, Resources.Compétences);
@@ -1203,10 +1232,8 @@ namespace Compétences
             foreach (ComboBox combo in PanelClasses.Controls)
             {
                 combo.Items.Clear();
-                for (int i = 0; i < 13; i++)
-                {
+                for (var i = 0; i < 13; i++)
                     combo.Items.Add(i);
-                }
                 combo.SelectedIndex = 0;
             }
         }
