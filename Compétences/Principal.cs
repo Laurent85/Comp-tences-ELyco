@@ -44,6 +44,7 @@ namespace Compétences
             ChkPdf.Checked = true;
             ChkXlsx.Checked = true;
             ChkCsv.Checked = true;
+            CacherFichiersXlsxDocx();
 
             foreach (var listBoxItem in ListBoxCsvATraiter.Items)
             {

@@ -30,10 +30,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="Comptences.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Collège Saint Jacques"/>
-    <ROW Property="ProductCode" Value="1033:{29379C0E-A503-48EB-84EC-10F80CB5B834} 1036:{9AF159DE-4F71-4F86-9585-CDCA02F4D481} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{AEEC194B-65EC-483D-B68F-7194928E643C} 1036:{FADD81AC-E27C-4FC1-888F-51C6A0D76171} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Domaines de Compétences"/>
-    <ROW Property="ProductVersion" Value="1.0.27" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.28" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{110B651E-DE8A-4788-BF44-7E05DCC2F5A8}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -149,7 +149,7 @@
     <ROW XmlAttribute="ShortcutPath_4" XmlElement="DesktopApp_4" Name="ShortcutPath" Flags="0" Order="0" Value="%USERPROFILE%\Desktop\Domaines de compétences.lnk"/>
     <ROW XmlAttribute="Square150x150Logo" XmlElement="VisualElements" Name="Square150x150Logo" Flags="0" Order="0" FileId="ComptencesSquare150x150Logo.scale100.png"/>
     <ROW XmlAttribute="Square44x44Logo" XmlElement="VisualElements" Name="Square44x44Logo" Flags="0" Order="0" FileId="ComptencesSquare44x44Logo.scale100.png"/>
-    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.27.0"/>
+    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.28.0"/>
     <ROW XmlAttribute="WorkingDirectory" XmlElement="Application" Name="WorkingDirectory" Flags="0" Order="0" Value="APPDIR\Compétences"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.GenericXmlElementComponent">
