@@ -318,7 +318,6 @@
             // 
             // BtnSuppressionBases
             // 
-            this.BtnSuppressionBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSuppressionBases.Location = new System.Drawing.Point(30, 140);
             this.BtnSuppressionBases.Name = "BtnSuppressionBases";
             this.BtnSuppressionBases.Size = new System.Drawing.Size(124, 23);
@@ -414,6 +413,7 @@
             // 
             // BtnGénérerPublipostageDnb
             // 
+            this.BtnGénérerPublipostageDnb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGénérerPublipostageDnb.Location = new System.Drawing.Point(921, 557);
             this.BtnGénérerPublipostageDnb.Name = "BtnGénérerPublipostageDnb";
             this.BtnGénérerPublipostageDnb.Size = new System.Drawing.Size(151, 23);
@@ -424,6 +424,7 @@
             // 
             // BtnGénérerfichiersExcelDnb
             // 
+            this.BtnGénérerfichiersExcelDnb.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnGénérerfichiersExcelDnb.Location = new System.Drawing.Point(921, 516);
             this.BtnGénérerfichiersExcelDnb.Name = "BtnGénérerfichiersExcelDnb";
             this.BtnGénérerfichiersExcelDnb.Size = new System.Drawing.Size(151, 23);
@@ -434,7 +435,6 @@
             // 
             // BtnSauvegarderBases
             // 
-            this.BtnSauvegarderBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSauvegarderBases.Location = new System.Drawing.Point(30, 169);
             this.BtnSauvegarderBases.Name = "BtnSauvegarderBases";
             this.BtnSauvegarderBases.Size = new System.Drawing.Size(124, 23);
@@ -445,7 +445,6 @@
             // 
             // BtnRestaurerBases
             // 
-            this.BtnRestaurerBases.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnRestaurerBases.Location = new System.Drawing.Point(30, 198);
             this.BtnRestaurerBases.Name = "BtnRestaurerBases";
             this.BtnRestaurerBases.Size = new System.Drawing.Size(124, 23);
@@ -456,7 +455,7 @@
             // 
             // BtnSuppressionFichierCsvATraiter
             // 
-            this.BtnSuppressionFichierCsvATraiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.BtnSuppressionFichierCsvATraiter.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.BtnSuppressionFichierCsvATraiter.Location = new System.Drawing.Point(440, 516);
             this.BtnSuppressionFichierCsvATraiter.Name = "BtnSuppressionFichierCsvATraiter";
             this.BtnSuppressionFichierCsvATraiter.Size = new System.Drawing.Size(109, 23);
@@ -467,6 +466,7 @@
             // 
             // PanelTrimestre
             // 
+            this.PanelTrimestre.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.PanelTrimestre.Controls.Add(this.RadioBtnPériode1);
             this.PanelTrimestre.Controls.Add(this.RadioBtnPériode2);
             this.PanelTrimestre.Controls.Add(this.RadioBtnPériode3);
@@ -478,6 +478,7 @@
             // 
             // PanelFiltres
             // 
+            this.PanelFiltres.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.PanelFiltres.Controls.Add(this.ChkCsv);
             this.PanelFiltres.Controls.Add(this.ChkPdf);
             this.PanelFiltres.Controls.Add(this.ChkDocx);
@@ -489,6 +490,7 @@
             // 
             // ChkCsv
             // 
+            this.ChkCsv.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkCsv.AutoSize = true;
             this.ChkCsv.Location = new System.Drawing.Point(0, 4);
             this.ChkCsv.Name = "ChkCsv";
@@ -500,6 +502,7 @@
             // 
             // ChkPdf
             // 
+            this.ChkPdf.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkPdf.AutoSize = true;
             this.ChkPdf.Location = new System.Drawing.Point(0, 73);
             this.ChkPdf.Name = "ChkPdf";
@@ -511,6 +514,7 @@
             // 
             // ChkDocx
             // 
+            this.ChkDocx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkDocx.AutoSize = true;
             this.ChkDocx.Location = new System.Drawing.Point(0, 50);
             this.ChkDocx.Name = "ChkDocx";
@@ -522,6 +526,7 @@
             // 
             // ChkXlsx
             // 
+            this.ChkXlsx.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ChkXlsx.AutoSize = true;
             this.ChkXlsx.Location = new System.Drawing.Point(0, 27);
             this.ChkXlsx.Name = "ChkXlsx";
@@ -629,6 +634,7 @@
             // 
             // PanelClasses
             // 
+            this.PanelClasses.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.PanelClasses.Controls.Add(this.ComboNiveau3);
             this.PanelClasses.Controls.Add(this.ComboNiveau4);
             this.PanelClasses.Controls.Add(this.ComboNiveau5);
@@ -640,7 +646,6 @@
             // 
             // BtnSuppressionAnnée
             // 
-            this.BtnSuppressionAnnée.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.BtnSuppressionAnnée.Location = new System.Drawing.Point(30, 93);
             this.BtnSuppressionAnnée.Name = "BtnSuppressionAnnée";
             this.BtnSuppressionAnnée.Size = new System.Drawing.Size(124, 23);

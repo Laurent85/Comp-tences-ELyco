@@ -365,14 +365,16 @@ namespace Compétences
         {
             SuppressionFichiersIndividuels(LblCheminDossierCsv.Text, ListBoxCsvPrésents, SearchOption.AllDirectories);
             LblFichiersCsvPrésents.Text = CompterFichiersPrésents(ListBoxCsvPrésents) + @" fichiers CSV présents";
-            LblFichiersXlsxPrésents.Text = CompterFichiersPrésents(ListBoxXlsxPrésents) + @" fichiers XLSX présents";
+            LblFichiersXlsxPrésents.Text = CompterFichiersPrésents(ListBoxXlsxPrésents) + @" fichiers XLSX et " +
+                                           CompterFichiersDnb(ListBoxXlsxPrésents) + @" fichiers DNB";
         }
 
         private void BtnSuppressionFichierXlsx_Click(object sender, EventArgs e)
         {
             SuppressionFichiersIndividuels(LblCheminDossierXlsx.Text, ListBoxXlsxPrésents, SearchOption.AllDirectories);
             LblFichiersCsvPrésents.Text = CompterFichiersPrésents(ListBoxCsvPrésents) + @" fichiers CSV présents";
-            LblFichiersXlsxPrésents.Text = CompterFichiersPrésents(ListBoxXlsxPrésents) + @" fichiers XLSX présents";
+            LblFichiersXlsxPrésents.Text = CompterFichiersPrésents(ListBoxXlsxPrésents) + @" fichiers XLSX et " +
+                                           CompterFichiersDnb(ListBoxXlsxPrésents) + @" fichiers DNB";
         }
 
         private void BtnSuppressionBases_Click(object sender, EventArgs e)
@@ -636,7 +638,7 @@ namespace Compétences
                 if (listBoxItem.ToString().Contains("docx") || listBoxItem.ToString().Contains("xlsx") ||
                     listBoxItem.ToString().Contains("pdf"))
                     listeDocxXlsx.Items.Add(listBoxItem.ToString());
-                if (listBoxItem.ToString().Contains("Annee"))
+                if (listBoxItem.ToString().Contains("Annee") && listBoxItem.ToString().Contains("3"))
                     listeAnnéeXlsx.Items.Add(listBoxItem.ToString());
             }
 
@@ -851,14 +853,14 @@ namespace Compétences
 
             foreach (var file in files)
             foreach (var item in liste.SelectedItems)
-                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB-")))
+                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB1-") || file.Contains("DNB2-")))
                     File.Delete(file);
             var selectedItems = liste.SelectedItems;
 
             if (liste.SelectedIndex != -1)
                 for (var i = selectedItems.Count - 1; i >= 0; i--)
 
-                    if (selectedItems.Contains("competence") || selectedItems.Contains("DNB-"))
+                    if (selectedItems.Contains("competence") || selectedItems.Contains("DNB1-") || selectedItems.Contains("DNB2-"))
                         liste.Items.Remove(selectedItems[i]);
             RafraichirListbox();
         }
@@ -1173,6 +1175,9 @@ namespace Compétences
             RemplirListeXlsxPrésents();
             RemplirListeCsvATraiter();
             LblFichiersCsvATraiter.Text = ListBoxCsvATraiter.Items.Count + @" classes à traiter";
+            LblFichiersCsvPrésents.Text = CompterFichiersPrésents(ListBoxCsvPrésents) + @" fichiers CSV";
+            LblFichiersXlsxPrésents.Text = CompterFichiersPrésents(ListBoxXlsxPrésents) + @" fichiers XLSX et " +
+                                           CompterFichiersDnb(ListBoxXlsxPrésents) + @" fichiers DNB";
 
             SélectionPériode(new object(), new EventArgs());
         }
