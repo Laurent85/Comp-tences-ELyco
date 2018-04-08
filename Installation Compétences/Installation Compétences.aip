@@ -11,6 +11,7 @@
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_ELyco.jpg" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Elyco.ico" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_StJacques.png" Value="..\Compétences\bin\Debug\Resources"/>
+    <ROW Property="AI_PROPPATH_DIR_PERBUILD_Statistiques.xlsx" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.docx" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.xlsx" Value="..\Compétences\bin\Debug\Resources"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_A.docx" Value="Type_dnb.docx"/>
@@ -21,6 +22,7 @@
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg" Value="E-Lyco.jpg"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico" Value="Elyco.ico"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_StJacques.png" Value="St Jacques.png"/>
+    <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Statistiques.xlsx" Value="Statistiques.xlsx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.docx" Value="Type_dnb_oral.docx"/>
     <ROW Property="AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.xlsx" Value="Type_dnb_oral.xlsx"/>
     <ROW Property="AI_ThemeStyle" Value="aero" MultiBuildValue="DefaultBuild:style3blue" MsiKey="AI_ThemeStyle"/>
@@ -30,10 +32,10 @@
     <ROW Property="ARPNOREPAIR" MultiBuildValue="DefaultBuild:1"/>
     <ROW Property="ARPPRODUCTICON" Value="Comptences.exe" Type="8"/>
     <ROW Property="Manufacturer" Value="Collège Saint Jacques"/>
-    <ROW Property="ProductCode" Value="1033:{EAFDE49F-6CCD-4CE8-9A95-CFC797B1ECF7} 1036:{68849E27-831B-4270-A035-B87B25A87C22} " Type="16"/>
+    <ROW Property="ProductCode" Value="1033:{0AD882AA-8B97-433A-B295-CFA636978D5E} 1036:{9796F691-14EA-454A-AB69-A95108E694B8} " Type="16"/>
     <ROW Property="ProductLanguage" Value="1033"/>
     <ROW Property="ProductName" Value="Domaines de Compétences"/>
-    <ROW Property="ProductVersion" Value="1.0.30" Type="32"/>
+    <ROW Property="ProductVersion" Value="1.0.31" Type="32"/>
     <ROW Property="SecureCustomProperties" Value="OLDPRODUCTS;AI_NEWERPRODUCTFOUND;AI_SETUPEXEPATH;SETUPEXEDIR"/>
     <ROW Property="UpgradeCode" Value="{110B651E-DE8A-4788-BF44-7E05DCC2F5A8}"/>
     <ROW Property="WindowsType9X" MultiBuildValue="DefaultBuild:Windows 9x/ME" ValueLocId="-"/>
@@ -78,9 +80,10 @@
     <ROW File="ELyco.jpg" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_ELyco.jpg&gt;" SelfReg="false" NextFile="StJacques.png"/>
     <ROW File="Elyco.ico" Component_="Comptences_ContentOutput_Resources" FileName="[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Elyco.ico&gt;" SelfReg="false" NextFile="A.docx"/>
     <ROW File="StJacques.png" Component_="Comptences_ContentOutput_Resources" FileName="STJACQ~2.PNG|[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_StJacques.png&gt;" SelfReg="false" NextFile="ComptencesSquare44x44Logo.scale100.png"/>
+    <ROW File="Statistiques.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="STATIS~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_Statistiques.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Statistiques.xlsx&gt;" SelfReg="false"/>
     <ROW File="Store50x50Logo.scale100.png" Component_="ComptencesSquare44x44Logo.scale100.png" FileName="STORE5~1.PNG|Store50x50Logo.scale-100.png" Attributes="0" SourcePath="&lt;AI_RES&gt;appx\StoreLogo.png" SelfReg="false" NextFile="Elyco.ico"/>
     <ROW File="Type_dnb_oral.docx" Component_="Comptences_ContentOutput_Resources" FileName="TYPE_D~2.DOC|[|AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.docx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Type_dnb_oral.docx&gt;" SelfReg="false" NextFile="Type_dnb_oral.xlsx"/>
-    <ROW File="Type_dnb_oral.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="TYPE_D~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Type_dnb_oral.xlsx&gt;" SelfReg="false"/>
+    <ROW File="Type_dnb_oral.xlsx" Component_="Comptences_ContentOutput_Resources" FileName="TYPE_D~2.XLS|[|AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.xlsx]" Attributes="0" SourcePath="&lt;AI_APPPATH_PERBUILD_Type_dnb_oral.xlsx&gt;" SelfReg="false" NextFile="Statistiques.xlsx"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.AppPathsComponent">
     <ROW Name="AI_APPPATH_PERBUILD_A.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_A.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_A.docx]" Type="2" Content="0"/>
@@ -91,6 +94,7 @@
     <ROW Name="AI_APPPATH_PERBUILD_ELyco.jpg" Path="[|AI_PROPPATH_DIR_PERBUILD_ELyco.jpg]\[|AI_PROPPATH_FILENAME_PERBUILD_ELyco.jpg]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Elyco.ico" Path="[|AI_PROPPATH_DIR_PERBUILD_Elyco.ico]\[|AI_PROPPATH_FILENAME_PERBUILD_Elyco.ico]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_StJacques.png" Path="[|AI_PROPPATH_DIR_PERBUILD_StJacques.png]\[|AI_PROPPATH_FILENAME_PERBUILD_StJacques.png]" Type="2" Content="0"/>
+    <ROW Name="AI_APPPATH_PERBUILD_Statistiques.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_Statistiques.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_Statistiques.xlsx]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Type_dnb_oral.docx" Path="[|AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.docx]\[|AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.docx]" Type="2" Content="0"/>
     <ROW Name="AI_APPPATH_PERBUILD_Type_dnb_oral.xlsx" Path="[|AI_PROPPATH_DIR_PERBUILD_Type_dnb_oral.xlsx]\[|AI_PROPPATH_FILENAME_PERBUILD_Type_dnb_oral.xlsx]" Type="2" Content="0"/>
   </COMPONENT>
@@ -149,7 +153,7 @@
     <ROW XmlAttribute="ShortcutPath_4" XmlElement="DesktopApp_4" Name="ShortcutPath" Flags="0" Order="0" Value="%USERPROFILE%\Desktop\Domaines de compétences.lnk"/>
     <ROW XmlAttribute="Square150x150Logo" XmlElement="VisualElements" Name="Square150x150Logo" Flags="0" Order="0" FileId="ComptencesSquare150x150Logo.scale100.png"/>
     <ROW XmlAttribute="Square44x44Logo" XmlElement="VisualElements" Name="Square44x44Logo" Flags="0" Order="0" FileId="ComptencesSquare44x44Logo.scale100.png"/>
-    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.30.0"/>
+    <ROW XmlAttribute="Version" XmlElement="Identity" Name="Version" Flags="0" Order="0" Value="1.0.31.0"/>
     <ROW XmlAttribute="WorkingDirectory" XmlElement="Application" Name="WorkingDirectory" Flags="0" Order="0" Value="APPDIR\Compétences"/>
   </COMPONENT>
   <COMPONENT cid="caphyon.advinst.msicomp.GenericXmlElementComponent">
@@ -322,5 +326,6 @@
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="B.docx"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Type_dnb_oral.docx"/>
     <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Type_dnb_oral.xlsx"/>
+    <ROW ProjectId="{ad8ce078-dd7c-4e16-a571-685017bd12e6}" ProjectName="Compétences" OutputGroup="ContentOutput" OutputFile="Statistiques.xlsx"/>
   </COMPONENT>
 </DOCUMENT>

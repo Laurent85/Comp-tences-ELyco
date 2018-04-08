@@ -74,6 +74,7 @@
             this.ComboNiveau3 = new System.Windows.Forms.ComboBox();
             this.PanelClasses = new System.Windows.Forms.Panel();
             this.BtnSuppressionAnnée = new System.Windows.Forms.Button();
+            this.BtnStatistiques = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.PictureStJacques)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.PictureELyco)).BeginInit();
             this.PanelTrimestre.SuspendLayout();
@@ -654,12 +655,23 @@
             this.BtnSuppressionAnnée.UseVisualStyleBackColor = true;
             this.BtnSuppressionAnnée.Click += new System.EventHandler(this.BtnSuppressionAnnée_Click);
             // 
+            // BtnStatistiques
+            // 
+            this.BtnStatistiques.Location = new System.Drawing.Point(1079, 557);
+            this.BtnStatistiques.Name = "BtnStatistiques";
+            this.BtnStatistiques.Size = new System.Drawing.Size(97, 23);
+            this.BtnStatistiques.TabIndex = 45;
+            this.BtnStatistiques.Text = "Statistiques";
+            this.BtnStatistiques.UseVisualStyleBackColor = true;
+            this.BtnStatistiques.Click += new System.EventHandler(this.BtnStatistiques_Click);
+            // 
             // Principal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.PaleGoldenrod;
             this.ClientSize = new System.Drawing.Size(1188, 594);
+            this.Controls.Add(this.BtnStatistiques);
             this.Controls.Add(this.BtnSuppressionAnnée);
             this.Controls.Add(this.PanelClasses);
             this.Controls.Add(this.PanelFiltres);
@@ -758,6 +770,7 @@
         private System.Windows.Forms.ComboBox ComboNiveau3;
         private System.Windows.Forms.Panel PanelClasses;
         private System.Windows.Forms.Button BtnSuppressionAnnée;
+        private System.Windows.Forms.Button BtnStatistiques;
     }
 }
 

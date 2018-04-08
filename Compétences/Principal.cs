@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Compétences.Properties;
+using Microsoft.Office.Interop.Excel;
+using Microsoft.Office.Interop.Word;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
@@ -7,9 +10,6 @@ using System.Linq;
 using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
-using Compétences.Properties;
-using Microsoft.Office.Interop.Excel;
-using Microsoft.Office.Interop.Word;
 using Application = Microsoft.Office.Interop.Word.Application;
 using CheckBox = System.Windows.Forms.CheckBox;
 using ListBox = System.Windows.Forms.ListBox;
@@ -819,7 +819,7 @@ namespace Compétences
 
         private void GlisserDéplacerCsvAtraiter(object sender, DragEventArgs e)
         {
-            var fileList = (string[]) e.Data.GetData(DataFormats.FileDrop, false);
+            var fileList = (string[])e.Data.GetData(DataFormats.FileDrop, false);
             foreach (var file in fileList)
             {
                 var filename = Path.GetFullPath(file);
@@ -852,15 +852,17 @@ namespace Compétences
             var files = Directory.GetFiles(chemin, "*.*", chercher);
 
             foreach (var file in files)
-            foreach (var item in liste.SelectedItems)
-                if (file.Contains(item.ToString()) && (file.Contains("competence") || file.Contains("DNB1-") || file.Contains("DNB2-")))
-                    File.Delete(file);
+                foreach (var item in liste.SelectedItems)
+                    if (file.Contains(item.ToString()) &&
+                        (file.Contains("competence") || file.Contains("DNB1-") || file.Contains("DNB2-")))
+                        File.Delete(file);
             var selectedItems = liste.SelectedItems;
 
             if (liste.SelectedIndex != -1)
                 for (var i = selectedItems.Count - 1; i >= 0; i--)
 
-                    if (selectedItems.Contains("competence") || selectedItems.Contains("DNB1-") || selectedItems.Contains("DNB2-"))
+                    if (selectedItems.Contains("competence") || selectedItems.Contains("DNB1-") ||
+                        selectedItems.Contains("DNB2-"))
                         liste.Items.Remove(selectedItems[i]);
             RafraichirListbox();
         }
@@ -888,7 +890,7 @@ namespace Compétences
         {
             var classe = 'A';
 
-            var combo = (ComboBox) PanelClasses.Controls.Find(string.Format("ComboNiveau" + niveau), false)
+            var combo = (ComboBox)PanelClasses.Controls.Find(string.Format("ComboNiveau" + niveau), false)
                 .FirstOrDefault();
             if (combo != null)
                 for (var i = 1; i <= int.Parse(combo.Items[combo.SelectedIndex].ToString()); i++)
@@ -977,24 +979,24 @@ namespace Compétences
                         ListeFichiersPrésents(subDirectory.FullName, "", liste);
 
                 foreach (var file in fileInfo)
-                foreach (CheckBox filtre in PanelFiltres.Controls)
-                {
-                    if (file.Length > 2000 && file.Name.Contains(filtre.Text) &&
-                        filtre.Checked)
-                        liste.Items.Add(file.Name);
-                    if (file.Length <= 2000 && !file.Name.Contains(".txt"))
-                        file.Delete();
-                    if (file.Name.Contains("Type"))
-                        liste.Items.Remove(file.Name);
-                }
+                    foreach (CheckBox filtre in PanelFiltres.Controls)
+                    {
+                        if (file.Length > 2000 && file.Name.Contains(filtre.Text) &&
+                            filtre.Checked)
+                            liste.Items.Add(file.Name);
+                        if (file.Length <= 2000 && !file.Name.Contains(".txt"))
+                            file.Delete();
+                        if (file.Name.Contains("Type"))
+                            liste.Items.Remove(file.Name);
+                    }
 
                 foreach (var file in fileInfo)
-                foreach (ComboBox filtre2 in PanelClasses.Controls)
-                foreach (var item in filtre2.Items)
-                    if (filtre2.SelectedItem != null)
-                        if (filtre2.SelectedItem.ToString() == "Masquer niveau")
-                            if (file.Name.Contains(item.ToString()))
-                                liste.Items.Remove(file.Name);
+                    foreach (ComboBox filtre2 in PanelClasses.Controls)
+                        foreach (var item in filtre2.Items)
+                            if (filtre2.SelectedItem != null)
+                                if (filtre2.SelectedItem.ToString() == "Masquer niveau")
+                                    if (file.Name.Contains(item.ToString()))
+                                        liste.Items.Remove(file.Name);
             }
         }
 
@@ -1043,12 +1045,12 @@ namespace Compétences
 
                         var srcPath = LblCheminDossierXlsx.Text + @"Année\" + fichier;
                         var srcworkBook = excelApplication.Workbooks.Open(srcPath);
-                        var srcworkSheet = (Worksheet) srcworkBook.Sheets.Item[1];
+                        var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
 
                         var destPath = strPath;
                         var destworkBook = excelApplication.Workbooks.Open(destPath, 0, false);
-                        var destworkSheet = (Worksheet) destworkBook.Sheets.Item[1];
-                        var destworkSheet2 = (Worksheet) destworkBook.Sheets.Item[2];
+                        var destworkSheet = (Worksheet)destworkBook.Sheets.Item[1];
+                        var destworkSheet2 = (Worksheet)destworkBook.Sheets.Item[2];
 
                         var range = srcworkSheet.Range["A2:A50"];
                         var cnt = -3;
@@ -1104,19 +1106,19 @@ namespace Compétences
             var files = Directory.GetFiles(LblCheminDossierXlsx.Text + période + @"\", "*.xlsx",
                 SearchOption.AllDirectories);
             foreach (var line in File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_classes_annee.txt"))
-            foreach (var file in files)
-                if (file.Contains("competence") && file.Contains(line))
-                {
-                    var path = Path.GetFullPath(file);
-                    var path1 = Path.GetDirectoryName(file);
-                    var nomFichier = Path.GetFileNameWithoutExtension(file);
-                    var excelDocument = appExcel.Workbooks.Open(path);
-                    excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
-                        path1 + @"\" + nomFichier + @".pdf");
-                    appExcel.Workbooks.Close();
-                    appExcel.Quit();
-                    GC.Collect();
-                }
+                foreach (var file in files)
+                    if (file.Contains("competence") && file.Contains(line))
+                    {
+                        var path = Path.GetFullPath(file);
+                        var path1 = Path.GetDirectoryName(file);
+                        var nomFichier = Path.GetFileNameWithoutExtension(file);
+                        var excelDocument = appExcel.Workbooks.Open(path);
+                        excelDocument.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
+                            path1 + @"\" + nomFichier + @".pdf");
+                        appExcel.Workbooks.Close();
+                        appExcel.Quit();
+                        GC.Collect();
+                    }
         }
 
         private int CompterFichiersPrésents(ListBox listbox)
@@ -1241,6 +1243,164 @@ namespace Compétences
                     combo.Items.Add(i);
                 combo.SelectedIndex = 0;
             }
+        }
+
+        private void BtnStatistiques_Click(object sender, EventArgs e)
+        {
+            var fichiers = Directory.GetFiles(LblCheminDossierXlsx.Text + @"DNB\");
+            var strPath = LblCheminDossierXlsx.Text + @"DNB\Statistiques.xlsx";
+            if (File.Exists(strPath)) File.Delete(strPath);
+            var assembly = Assembly.GetExecutingAssembly();
+            var input = assembly.GetManifestResourceStream("Compétences.Resources.Statistiques.xlsx");
+            var output = File.Open(strPath, FileMode.CreateNew);
+            CopieFichiersTypeDnb(input, output);
+            input?.Dispose();
+            output.Dispose();
+            var srcPath1 = LblCheminDossierXlsx.Text + @"DNB\Statistiques.xlsx";
+            var excelApplication = new Microsoft.Office.Interop.Excel.Application();
+            var srcworkBook1 = excelApplication.Workbooks.Open(srcPath1);
+            var srcworkSheet1 = (Worksheet)srcworkBook1.Sheets.Item[1];
+            int ligne = 3;
+            srcworkSheet1.Range["B4:G13"].Value = 0;
+
+            foreach (var file in fichiers)
+            {
+                var fichier = Path.GetFileName(file);
+                if (fichier.Contains("DNB1") && fichier.Contains("xlsx"))
+                {
+                    ligne++;
+                    var srcPath = LblCheminDossierXlsx.Text + @"DNB\" + fichier;
+                    var srcworkBook = excelApplication.Workbooks.Open(srcPath);
+                    var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
+
+                    var range = srcworkSheet.Range["AG2:AG50"];
+
+                    srcworkSheet1.Range["A" + ligne].Value = srcworkSheet.Range["B2"].Value.ToString();
+
+                    foreach (Range element in range.Cells)
+                    {
+                        if (element.Value2 != null)
+                        {
+                            if (element.Value.ToString().Contains("Non"))
+                            {
+                                srcworkSheet1.Range["C" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["C" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("sans mention"))
+                            {
+                                srcworkSheet1.Range["D" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["D" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention AB"))
+                            {
+                                srcworkSheet1.Range["E" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["E" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention B"))
+                            {
+                                srcworkSheet1.Range["F" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["F" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention TB"))
+                            {
+                                srcworkSheet1.Range["G" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["G" + ligne].Value.ToString()) + 1;
+                            }
+                            srcworkSheet1.Range["B" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["B" + ligne].Value.ToString()) + 1;
+                        }
+                    }
+
+                    srcworkBook.Close();
+                }
+            }
+            var range1 = srcworkSheet1.Range["A" + (ligne + 1), "I13"];
+            range1.Value = "";
+            srcworkSheet1.Range["A" + (ligne + 2)].Value = "Niveau";
+            srcworkSheet1.Range["B" + (ligne + 2)].Formula = "=SUM(B4:B" + ligne + ")";
+            srcworkSheet1.Range["C" + (ligne + 2)].Formula = "=SUM(C4:C" + ligne + ")";
+            srcworkSheet1.Range["D" + (ligne + 2)].Formula = "=SUM(D4:D" + ligne + ")";
+            srcworkSheet1.Range["E" + (ligne + 2)].Formula = "=SUM(E4:E" + ligne + ")";
+            srcworkSheet1.Range["F" + (ligne + 2)].Formula = "=SUM(F4:F" + ligne + ")";
+            srcworkSheet1.Range["G" + (ligne + 2)].Formula = "=SUM(G4:G" + ligne + ")";
+            srcworkSheet1.Range["H" + (ligne + 2)].Formula = "=SUM(H4:H" + ligne + ")";
+            srcworkSheet1.Range["I" + (ligne + 2)].Formula = "=H" + (ligne + 2) + "/B" + (ligne + 2);
+
+            ligne = 15;
+            srcworkSheet1.Range["B16:G25"].Value = 0;
+
+            foreach (var file in fichiers)
+            {
+                var fichier = Path.GetFileName(file);
+                if (fichier.Contains("DNB2") && fichier.Contains("xlsx"))
+                {
+                    ligne++;
+                    var srcPath = LblCheminDossierXlsx.Text + @"DNB\" + fichier;
+                    var srcworkBook = excelApplication.Workbooks.Open(srcPath);
+                    var srcworkSheet = (Worksheet)srcworkBook.Sheets.Item[1];
+
+                    var range = srcworkSheet.Range["AH2:AH50"];
+
+                    srcworkSheet1.Range["A" + ligne].Value = srcworkSheet.Range["B2"].Value.ToString();
+
+                    foreach (Range element in range.Cells)
+                    {
+                        if (element.Value2 != null)
+                        {
+                            if (element.Value.ToString().Contains("Non"))
+                            {
+                                srcworkSheet1.Range["C" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["C" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("sans mention"))
+                            {
+                                srcworkSheet1.Range["D" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["D" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention AB"))
+                            {
+                                srcworkSheet1.Range["E" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["E" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention B"))
+                            {
+                                srcworkSheet1.Range["F" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["F" + ligne].Value.ToString()) + 1;
+                            }
+                            if (element.Value.ToString().Contains("mention TB"))
+                            {
+                                srcworkSheet1.Range["G" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["G" + ligne].Value.ToString()) + 1;
+                            }
+                            srcworkSheet1.Range["B" + ligne].Value =
+                                    int.Parse(srcworkSheet1.Range["B" + ligne].Value.ToString()) + 1;
+                        }
+                    }
+
+                    srcworkBook.Close();
+                }
+            }
+            var range2 = srcworkSheet1.Range["A" + (ligne + 1), "I25"];
+            range2.Value = "";
+
+            srcworkSheet1.Range["A" + (ligne + 2)].Value = "Niveau";
+            srcworkSheet1.Range["B" + (ligne + 2)].Formula = "=SUM(B16:B" + ligne + ")";
+            srcworkSheet1.Range["C" + (ligne + 2)].Formula = "=SUM(C16:C" + ligne + ")";
+            srcworkSheet1.Range["D" + (ligne + 2)].Formula = "=SUM(D16:D" + ligne + ")";
+            srcworkSheet1.Range["E" + (ligne + 2)].Formula = "=SUM(E16:E" + ligne + ")";
+            srcworkSheet1.Range["F" + (ligne + 2)].Formula = "=SUM(F16:F" + ligne + ")";
+            srcworkSheet1.Range["G" + (ligne + 2)].Formula = "=SUM(G16:G" + ligne + ")";
+            srcworkSheet1.Range["H" + (ligne + 2)].Formula = "=SUM(H16:H" + ligne + ")";
+            srcworkSheet1.Range["I" + (ligne + 2)].Formula = "=H" + (ligne + 2) + "/B" + (ligne + 2);
+
+            excelApplication.DisplayAlerts = false;
+            srcworkBook1.SaveAs(srcPath1);
+            srcworkBook1.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
+                            LblCheminDossierXlsx.Text + @"DNB\Statistiques.pdf");
+            srcworkBook1.Close();
+            GC.Collect();
+            CacherFichiersXlsxDocx();
+
         }
     }
 }
