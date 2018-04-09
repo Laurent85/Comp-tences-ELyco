@@ -1256,7 +1256,7 @@ namespace Compétences
             CopieFichiersTypeDnb(input, output);
             input?.Dispose();
             output.Dispose();
-            
+
             var excelApplication = new Microsoft.Office.Interop.Excel.Application();
             var statXlsx = excelApplication.Workbooks.Open(fichierStat);
             var statSynthèse = (Worksheet)statXlsx.Sheets.Item[1];
@@ -1326,7 +1326,7 @@ namespace Compétences
                 statSynthèse.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "4:" + colonne + ligne + ")";
                 colonne++;
             }
-            
+
             statSynthèse.Range["I" + (ligne + 2)].Formula = "=H" + (ligne + 2) + "/B" + (ligne + 2);
 
             ligne = 15;
@@ -1394,7 +1394,7 @@ namespace Compétences
                 statSynthèse.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "16:" + colonne + ligne + ")";
                 colonne++;
             }
-            
+
             statSynthèse.Range["I" + (ligne + 2)].Formula = "=H" + (ligne + 2) + "/B" + (ligne + 2);
 
             ligne = 3;
@@ -1410,7 +1410,7 @@ namespace Compétences
                     var dnbXlsx = excelApplication.Workbooks.Open(fichierDnb);
                     var dnbEpreuvesEcrites = (Worksheet)dnbXlsx.Sheets.Item[2];
                     statMoyennes.Range["A" + ligne].Value = ((Worksheet)dnbXlsx.Sheets.Item[1]).Range["B2"].Value.ToString();
-
+                    statMoyennes.Range["I" + ligne].Value = "";
                     colonne = 'B';
                     for (int i = 1; i < 8; i++)
                     {
@@ -1421,27 +1421,69 @@ namespace Compétences
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / effectif;
                         statMoyennes.Range[colonne.ToString() + ligne].Value =
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / barême * 20;
-                        statMoyennes.Range[colonne + "3"].Value =
-                            (dnbEpreuvesEcrites.Range[colonne + "1"].Value.ToString());
                         colonne++;
                     }
                 }
             }
 
-            var range3 = statMoyennes.Range["A" + (ligne + 1), "J25"];
+            var range3 = statMoyennes.Range["A" + (ligne + 1), "J13"];
             range3.Value = "";
 
             statMoyennes.Range["A1"].Value = "Année scolaire " + File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(2).Take(3).First();
             statMoyennes.Range["A" + (ligne + 2)].Value = "Niveau";
 
             colonne = 'B';
-            for (int i = 1; i < 10; i++)
+            for (int i = 1; i < 8; i++)
             {
                 statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "4:" + colonne + ligne + ")";
                 statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value = float.Parse(statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value.ToString()) / (ligne - 3);
                 colonne++;
             }
-            
+            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
+
+            ligne = 15;
+
+            foreach (var file in fichiersDnbXlsx)
+            {
+                var fichierDnbXlsx = Path.GetFileName(file);
+
+                if (fichierDnbXlsx.Contains("DNB2") && fichierDnbXlsx.Contains("xlsx"))
+                {
+                    ligne++;
+                    var fichierDnb = LblCheminDossierXlsx.Text + @"DNB\" + fichierDnbXlsx;
+                    var dnbXlsx = excelApplication.Workbooks.Open(fichierDnb);
+                    var dnbEpreuvesEcrites = (Worksheet)dnbXlsx.Sheets.Item[2];
+                    statMoyennes.Range["A" + ligne].Value = ((Worksheet)dnbXlsx.Sheets.Item[1]).Range["B2"].Value.ToString(); //classe
+                    colonne = 'B';
+                    for (int i = 1; i < 9; i++)
+                    {
+                        int barême = int.Parse(dnbEpreuvesEcrites.Range[colonne + "1"].Value.ToString().Split(new[] { '/', ')' })[1]);
+                        int effectif = int.Parse(statSynthèse.Range["B" + (ligne-12)].Value.ToString());
+                        dnbEpreuvesEcrites.Range["K" + (ligne)].Formula = "=SUM(" + colonne + "2:" + colonne + "40)";
+                        dnbEpreuvesEcrites.Range["K" + (ligne)].Value =
+                            float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / effectif;
+                        statMoyennes.Range[colonne.ToString() + ligne].Value =
+                            float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / barême * 20;
+                        colonne++;
+                    }
+                }
+            }
+
+            var range4 = statMoyennes.Range["A" + (ligne + 1), "J25"];
+            range4.Value = "";
+
+            statMoyennes.Range["A14"].Value = "DNB N°2 - Epreuves écrites + oral  ( / 20)";
+            statMoyennes.Range["A" + (ligne + 2)].Value = "Niveau";
+
+            colonne = 'B';
+            for (int i = 1; i < 9; i++)
+            {
+                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "16:" + colonne + ligne + ")";
+                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value = float.Parse(statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value.ToString()) / (ligne - 3);
+                colonne++;
+            }
+            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J16:J" + ligne + ")";
+
             excelApplication.DisplayAlerts = false;
             statXlsx.SaveAs(fichierStat);
             statXlsx.ExportAsFixedFormat(XlFixedFormatType.xlTypePDF,
