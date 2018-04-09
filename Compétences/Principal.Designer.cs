@@ -661,7 +661,7 @@
             this.BtnStatistiques.Name = "BtnStatistiques";
             this.BtnStatistiques.Size = new System.Drawing.Size(97, 23);
             this.BtnStatistiques.TabIndex = 45;
-            this.BtnStatistiques.Text = "Statistiques";
+            this.BtnStatistiques.Text = "Statistiques DNB";
             this.BtnStatistiques.UseVisualStyleBackColor = true;
             this.BtnStatistiques.Click += new System.EventHandler(this.BtnStatistiques_Click);
             // 
