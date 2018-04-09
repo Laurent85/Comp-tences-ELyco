@@ -1472,7 +1472,7 @@ namespace Compétences
             var range4 = statMoyennes.Range["A" + (ligne + 1), "J25"];
             range4.Value = "";
 
-            statMoyennes.Range["A14"].Value = "DNB N°2 - Epreuves écrites + oral  ( / 20)";
+            statMoyennes.Range["A14"].Value = "DNB N°2 - Moyennes des épreuves écrites et de l'oral  ( /20)";
             statMoyennes.Range["A" + (ligne + 2)].Value = "Niveau";
 
             colonne = 'B';
