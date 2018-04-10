@@ -1283,6 +1283,9 @@ namespace Compétences
                     {
                         if (element.Value2 != null)
                         {
+                            statSynthèse.Range["B" + ligne].Value =
+                                    int.Parse(statSynthèse.Range["B" + ligne].Value.ToString()) + 1;
+
                             if (element.Value.ToString().Contains("Non"))
                             {
                                 statSynthèse.Range["C" + ligne].Value =
@@ -1308,8 +1311,9 @@ namespace Compétences
                                 statSynthèse.Range["G" + ligne].Value =
                                     int.Parse(statSynthèse.Range["G" + ligne].Value.ToString()) + 1;
                             }
-                            statSynthèse.Range["B" + ligne].Value =
-                                    int.Parse(statSynthèse.Range["B" + ligne].Value.ToString()) + 1;
+
+                            statSynthèse.Range["H" + ligne].Formula = "=SUM(D" + ligne + ":G" + ligne + ")";
+                            statSynthèse.Range["I" + ligne].Formula = "=H" + ligne + "/B" + ligne;
                         }
                     }
 
@@ -1349,6 +1353,9 @@ namespace Compétences
                     {
                         if (element.Value2 != null)
                         {
+                            statSynthèse.Range["B" + ligne].Value =
+                                   int.Parse(statSynthèse.Range["B" + ligne].Value.ToString()) + 1;
+
                             if (element.Value.ToString().Contains("Non"))
                             {
                                 statSynthèse.Range["C" + ligne].Value =
@@ -1374,8 +1381,9 @@ namespace Compétences
                                 statSynthèse.Range["G" + ligne].Value =
                                     int.Parse(statSynthèse.Range["G" + ligne].Value.ToString()) + 1;
                             }
-                            statSynthèse.Range["B" + ligne].Value =
-                                    int.Parse(statSynthèse.Range["B" + ligne].Value.ToString()) + 1;
+
+                            statSynthèse.Range["H" + ligne].Formula = "=SUM(D" + ligne + ":G" + ligne + ")";
+                            statSynthèse.Range["I" + ligne].Formula = "=H" + ligne + "/B" + ligne;
                         }
                     }
 
@@ -1423,6 +1431,7 @@ namespace Compétences
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / barême * 20;
                         colonne++;
                     }
+                    statMoyennes.Range["J" + ligne].Formula = "=AVERAGE(B" + ligne + ":H" + ligne + ")";
                 }
             }
 
@@ -1435,11 +1444,10 @@ namespace Compétences
             colonne = 'B';
             for (int i = 1; i < 8; i++)
             {
-                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "4:" + colonne + ligne + ")";
-                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value = float.Parse(statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value.ToString()) / (ligne - 3);
+                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=AVERAGE(" + colonne + "4:" + colonne + ligne + ")";
                 colonne++;
             }
-            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
+            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(B" + (ligne + 2) + ":H" + (ligne + 2) + ")";
 
             ligne = 15;
 
@@ -1458,7 +1466,7 @@ namespace Compétences
                     for (int i = 1; i < 9; i++)
                     {
                         int barême = int.Parse(dnbEpreuvesEcrites.Range[colonne + "1"].Value.ToString().Split(new[] { '/', ')' })[1]);
-                        int effectif = int.Parse(statSynthèse.Range["B" + (ligne-12)].Value.ToString());
+                        int effectif = int.Parse(statSynthèse.Range["B" + (ligne - 12)].Value.ToString());
                         dnbEpreuvesEcrites.Range["K" + (ligne)].Formula = "=SUM(" + colonne + "2:" + colonne + "40)";
                         dnbEpreuvesEcrites.Range["K" + (ligne)].Value =
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / effectif;
@@ -1466,6 +1474,7 @@ namespace Compétences
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / barême * 20;
                         colonne++;
                     }
+                    statMoyennes.Range["J" + ligne].Formula = "=AVERAGE(B" + ligne + ":I" + ligne + ")";
                 }
             }
 
@@ -1478,11 +1487,10 @@ namespace Compétences
             colonne = 'B';
             for (int i = 1; i < 9; i++)
             {
-                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=SUM(" + colonne + "16:" + colonne + ligne + ")";
-                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value = float.Parse(statMoyennes.Range[colonne.ToString() + (ligne + 2)].Value.ToString()) / (ligne - 3);
+                statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=AVERAGE(" + colonne + "16:" + colonne + ligne + ")";
                 colonne++;
             }
-            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J16:J" + ligne + ")";
+            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(B" + (ligne + 2) + ":I" + (ligne + 2) + ")";
 
             excelApplication.DisplayAlerts = false;
             statXlsx.SaveAs(fichierStat);
