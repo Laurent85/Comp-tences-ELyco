@@ -1480,10 +1480,14 @@ namespace Compétences
 
                         colonne++;
                     }
-                   
+                    
                         statMoyennes.Range["J" + ligne].Formula = "=AVERAGE(B" + ligne + ":I" + ligne + ")";
+                    if (statMoyennes.Range["J" + ligne].Text == "#DIV/0!")
+                    {
+                        statMoyennes.Range["J" + ligne].Value = "";
+                    }
 
-                   
+
                 }
             }
 
