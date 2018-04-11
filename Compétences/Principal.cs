@@ -1417,13 +1417,15 @@ namespace Compétences
                     var fichierDnb = LblCheminDossierXlsx.Text + @"DNB\" + fichierDnbXlsx;
                     var dnbXlsx = excelApplication.Workbooks.Open(fichierDnb);
                     var dnbEpreuvesEcrites = (Worksheet)dnbXlsx.Sheets.Item[2];
+                    var dnbRécapitulatif = (Worksheet)dnbXlsx.Sheets.Item[1];
                     statMoyennes.Range["A" + ligne].Value = ((Worksheet)dnbXlsx.Sheets.Item[1]).Range["B2"].Value.ToString();
                     statMoyennes.Range["I" + ligne].Value = "";
+                    int effectif = int.Parse(statSynthèse.Range["B" + ligne.ToString()].Value.ToString());
                     colonne = 'B';
                     for (int i = 1; i < 8; i++)
                     {
                         int barême = int.Parse(dnbEpreuvesEcrites.Range[colonne + "1"].Value.ToString().Split(new[] { '/', ')' })[1]);
-                        int effectif = int.Parse(statSynthèse.Range["B" + ligne.ToString()].Value.ToString());
+                        
                         dnbEpreuvesEcrites.Range["K" + (ligne)].Formula = "=SUM(" + colonne + "2:" + colonne + "40)";
                         dnbEpreuvesEcrites.Range["K" + (ligne)].Value =
                             float.Parse(dnbEpreuvesEcrites.Range["K" + (ligne)].Value.ToString()) / effectif;
@@ -1433,7 +1435,8 @@ namespace Compétences
                         
                         colonne++;
                     }
-                    statMoyennes.Range["J" + ligne].Formula = "=AVERAGE(B" + ligne + ":H" + ligne + ")";
+                    dnbRécapitulatif.Range["L" + (ligne)].Formula = "=AVERAGE(AD2:AD" + (effectif+1) + ")";
+                    statMoyennes.Range["J" + ligne].Value = float.Parse(dnbRécapitulatif.Range["L" + (ligne)].Value.ToString());
                 }
             }
 
@@ -1449,7 +1452,7 @@ namespace Compétences
                 statMoyennes.Range[colonne.ToString() + (ligne + 2)].Formula = "=AVERAGE(" + colonne + "4:" + colonne + ligne + ")";
                 colonne++;
             }
-            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(B" + (ligne + 2) + ":H" + (ligne + 2) + ")";
+            statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
 
             ligne = 15;
 
