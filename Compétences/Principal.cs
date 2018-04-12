@@ -1261,6 +1261,7 @@ namespace Compétences
             var statXlsx = excelApplication.Workbooks.Open(fichierStat);
             var statSynthèse = (Worksheet)statXlsx.Sheets.Item[1];
             var statMoyennes = (Worksheet)statXlsx.Sheets.Item[2];
+            var statMoyennesControle = (Worksheet)statXlsx.Sheets.Item[3];
 
             #region Dnb1Synthèse
             int ligne = 3;
@@ -1453,6 +1454,7 @@ namespace Compétences
                     dnbRécapitulatif.Range["L" + (ligne)].Formula = "=AVERAGE(AD2:AD" + (effectif + 1) + ")";
                     statMoyennes.Range["J" + ligne].Value = float.Parse(dnbRécapitulatif.Range["L" + (ligne)].Value.ToString());
                 }
+
             }
 
             var range3 = statMoyennes.Range["A" + (ligne + 1), "J13"];
@@ -1468,6 +1470,7 @@ namespace Compétences
                 colonne++;
             }
             statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
+
             #endregion
 
             #region Dnb2MoyennesEpreuves
@@ -1508,6 +1511,8 @@ namespace Compétences
                     {
                         statMoyennes.Range["J" + ligne].NumberFormat = ";;;";
                     }
+                    excelApplication.DisplayAlerts = false;
+                    dnbXlsx.Close();
                 }
             }
 
@@ -1532,6 +1537,56 @@ namespace Compétences
             {
                 statMoyennes.Range["J" + (ligne + 2)].NumberFormat = ";;;";
             }
+            #endregion
+
+            #region Dnb1MoyennesControleContinu
+            ligne = 3;
+            
+            foreach (var file in fichiersDnbXlsx)
+            {
+                var fichierDnbXlsx = Path.GetFileName(file);
+
+                if (fichierDnbXlsx.Contains("DNB1") && fichierDnbXlsx.Contains("xlsx"))
+                {
+                    ligne++;
+                    var colonne1 = 'C';
+                    var fichierDnb = LblCheminDossierXlsx.Text + @"DNB\" + fichierDnbXlsx;
+                    var dnbXlsx = excelApplication.Workbooks.Open(fichierDnb);
+                    //var dnbEpreuvesEcrites = (Worksheet)dnbXlsx.Sheets.Item[2];
+                    var dnbRécapitulatif = (Worksheet)dnbXlsx.Sheets.Item[1];
+                    statMoyennesControle.Range["A" + ligne].Value = ((Worksheet)dnbXlsx.Sheets.Item[1]).Range["B2"].Value.ToString();
+                    statMoyennesControle.Range["I" + ligne].Value = "";
+                    int effectif = int.Parse(statSynthèse.Range["B" + ligne.ToString()].Value.ToString());
+                    colonne = 'B';
+                    for (int i = 1; i < 8; i++)
+                    {
+                        dnbRécapitulatif.Range[colonne1 + ":" + colonne1].Copy(dnbRécapitulatif.Range["AZ:AZ"]);
+                        dnbRécapitulatif.Range["AZ" + (effectif + 3)].Formula = "=AVERAGE(AZ2:AZ" + (effectif + 1) +")";
+                       
+                        statMoyennesControle.Range[colonne.ToString() + ligne].Value = 
+                            float.Parse(dnbRécapitulatif.Range["AZ" + (effectif + 3)].Value.ToString());
+
+                        colonne++;
+                        colonne1++;
+                    }
+                    dnbRécapitulatif.Range["L" + (ligne)].Formula = "=AVERAGE(AD2:AD" + (effectif + 1) + ")";
+                    statMoyennesControle.Range["J" + ligne].Value = float.Parse(dnbRécapitulatif.Range["L" + (ligne)].Value.ToString());
+                }
+            }
+
+            var range5 = statMoyennesControle.Range["A" + (ligne + 1), "J13"];
+            range5.Value = "";
+
+            statMoyennesControle.Range["A1"].Value = "Année scolaire " + File.ReadLines(CheminElyco + @"\ELyco\Config\ELyco_in.txt").Skip(2).Take(3).First();
+            statMoyennesControle.Range["A" + (ligne + 2)].Value = "Niveau";
+
+            colonne = 'B';
+            for (int i = 1; i < 8; i++)
+            {
+                statMoyennesControle.Range[colonne.ToString() + (ligne + 2)].Formula = "=AVERAGE(" + colonne + "4:" + colonne + ligne + ")";
+                colonne++;
+            }
+            statMoyennesControle.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
             #endregion
 
             excelApplication.DisplayAlerts = false;
