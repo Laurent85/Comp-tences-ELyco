@@ -1261,6 +1261,8 @@ namespace Compétences
             var statXlsx = excelApplication.Workbooks.Open(fichierStat);
             var statSynthèse = (Worksheet)statXlsx.Sheets.Item[1];
             var statMoyennes = (Worksheet)statXlsx.Sheets.Item[2];
+
+            #region Dnb1Synthèse
             int ligne = 3;
             statSynthèse.Range["B4:G13"].Value = 0;
             statMoyennes.Range["B4:I13"].Value = 0;
@@ -1332,10 +1334,12 @@ namespace Compétences
             }
 
             statSynthèse.Range["I" + (ligne + 2)].Formula = "=H" + (ligne + 2) + "/B" + (ligne + 2);
+            #endregion
 
+            #region Dnb2Synthèse
             ligne = 15;
             statSynthèse.Range["B16:G25"].Value = 0;
-
+            
             foreach (var file in fichiersDnbXlsx)
             {
                 var fichierDnbXlsx = Path.GetFileName(file);
@@ -1413,7 +1417,9 @@ namespace Compétences
             {
                 statSynthèse.Range["B" + (ligne + 2) + ":I" + (ligne + 2)].NumberFormat = ";;;";
             }
+            #endregion
 
+            #region Dnb1MoyennesEpreuves
             ligne = 3;
 
             foreach (var file in fichiersDnbXlsx)
@@ -1462,7 +1468,9 @@ namespace Compétences
                 colonne++;
             }
             statMoyennes.Range["J" + (ligne + 2)].Formula = "=AVERAGE(J4:J" + ligne + ")";
+            #endregion
 
+            #region Dnb2MoyennesEpreuves
             ligne = 15;
 
             foreach (var file in fichiersDnbXlsx)
@@ -1524,6 +1532,7 @@ namespace Compétences
             {
                 statMoyennes.Range["J" + (ligne + 2)].NumberFormat = ";;;";
             }
+            #endregion
 
             excelApplication.DisplayAlerts = false;
             statXlsx.SaveAs(fichierStat);
