@@ -1453,7 +1453,7 @@ namespace Compétences
                     }
                     dnbRécapitulatif.Range["L" + (ligne)].Formula = "=AVERAGE(AD2:AD" + (effectif + 1) + ")";
                     statMoyennes.Range["J" + ligne].Value = float.Parse(dnbRécapitulatif.Range["L" + (ligne)].Value.ToString());
-                }
+                   }
 
             }
 
@@ -1558,19 +1558,23 @@ namespace Compétences
                     statMoyennesControle.Range["I" + ligne].Value = "";
                     int effectif = int.Parse(statSynthèse.Range["B" + ligne.ToString()].Value.ToString());
                     colonne = 'B';
-                    for (int i = 1; i < 8; i++)
+                    for (int i = 1; i < 9; i++)
                     {
-                        dnbRécapitulatif.Range[colonne1 + ":" + colonne1].Copy(dnbRécapitulatif.Range["AZ:AZ"]);
-                        dnbRécapitulatif.Range["AZ" + (effectif + 3)].Formula = "=AVERAGE(AZ2:AZ" + (effectif + 1) +")";
-                       
-                        statMoyennesControle.Range[colonne.ToString() + ligne].Value = 
-                            float.Parse(dnbRécapitulatif.Range["AZ" + (effectif + 3)].Value.ToString());
+                        float somme = 0;
+                        for (int j = 2; j <= effectif + 1; j++)
+                        {
+                            somme = somme + float.Parse(dnbRécapitulatif.Range[colonne1.ToString() + j].Value.ToString());
+
+                        }
+
+                        statMoyennesControle.Range[colonne.ToString() + ligne].Value = somme / effectif;
 
                         colonne++;
                         colonne1++;
                     }
-                    dnbRécapitulatif.Range["L" + (ligne)].Formula = "=AVERAGE(AD2:AD" + (effectif + 1) + ")";
-                    statMoyennesControle.Range["J" + ligne].Value = float.Parse(dnbRécapitulatif.Range["L" + (ligne)].Value.ToString());
+
+                    statMoyennesControle.Range["J" + ligne].Formula = "=AVERAGE(B" + ligne + ":I" + ligne;
+                    dnbXlsx.Close();
                 }
             }
 
@@ -1581,7 +1585,7 @@ namespace Compétences
             statMoyennesControle.Range["A" + (ligne + 2)].Value = "Niveau";
 
             colonne = 'B';
-            for (int i = 1; i < 8; i++)
+            for (int i = 1; i < 9; i++)
             {
                 statMoyennesControle.Range[colonne.ToString() + (ligne + 2)].Formula = "=AVERAGE(" + colonne + "4:" + colonne + ligne + ")";
                 colonne++;
