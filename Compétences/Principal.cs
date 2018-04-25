@@ -733,7 +733,7 @@ namespace Compétences
 
                             statSynthèse.Range["H" + ligne].Formula = "=SUM(D" + ligne + ":G" + ligne + ")";
                             statSynthèse.Range["I" + ligne].Formula = "=H" + ligne + "/B" + ligne;
-
+                            statSynthèse.Range["I" + ligne + ":I" + ligne].NumberFormat = "0,0%";
                             if (statSynthèse.Range["I" + ligne].Text == "0,0%")
                             {
                                 statSynthèse.Range["B" + ligne + ":I" + ligne].NumberFormat = ";;;";
@@ -751,7 +751,7 @@ namespace Compétences
                         }
                     }
                     statSynthèse.Range["J" + ligne].Value = total / compteur;
-                    if (statSynthèse.Range["B" + ligne + ":I" + ligne].NumberFormat == ";;;")
+                    if (statSynthèse.Range["B" + ligne + ":I" + ligne].NumberFormat.ToString() == ";;;")
                     {
                         statSynthèse.Range["J" + ligne].NumberFormat = ";;;";
                     }
